@@ -1,0 +1,632 @@
+\RequirePackage[T1]{fontenc}
+\documentclass[12pt]{article}
+
+\usepackage[height=8.85in,width=6.45in]{geometry}
+%\usepackage{showkeys}
+\renewcommand{\baselinestretch}{1.08}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\numberwithin{equation}{section}
+\usepackage{slashed}
+\usepackage{braket}
+\usepackage[svgnames,psnames]{xcolor}
+\usepackage[colorlinks,citecolor=DarkGreen,linkcolor=FireBrick,linktocpage]{hyperref}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{times}
+\usepackage{courier}
+\usepackage{bm}
+\usepackage{subfig}
+\usepackage{ascmac}
+
+\usepackage{mdframed}
+\newenvironment{claim}{  \begin{mdframed}[linecolor=black!0,backgroundcolor=black!10]\noindent\itshape\ignorespaces}{\end{mdframed}}
+
+\let\originalfigure=\figure
+\let\endoriginalfigure=\endfigure
+\let\originaltable=\table
+\let\endoriginaltable=\endtable
+
+\renewenvironment{figure}[1][]{
+  \begin{originalfigure}[#1]
+    \begin{mdframed}[linecolor=black!0,backgroundcolor=black!1]
+}{
+    \end{mdframed}
+  \end{originalfigure}
+}
+\renewenvironment{table}[1][]{
+  \begin{originaltable}[#1]
+    \begin{mdframed}[linecolor=black!0,backgroundcolor=black!1]
+}{
+    \end{mdframed}
+  \end{originaltable}
+}%% Comment
+\newcommand{\comment}[1]{\textcolor{red}{[#1]}}
+
+%% Color
+\usepackage{colortbl}
+\definecolor{lightyellow}{rgb}{1.0, 0.95, 0.7}
+\definecolor{lightblue}{rgb}{0.7, 0.9, 1.0}
+\definecolor{lightpink}{rgb}{1.0, 0.85, 0.95}
+\definecolor{lightgreen}{rgb}{0.7, 1.0, 0.4}
+
+%% Yuji's macros
+%%list HigherSymmetriesAndDuality
+\newcommand*{\bZ}{\mathbb{Z}}
+\newcommand*{\bR}{\mathbb{R}}
+\newcommand*{\dint}{\displaystyle\int}
+\newcommand*{\cP}{\mathcal{P}}
+\newcommand*{\fP}{\mathfrak{P}}
+\def\Nequals#1{$\mathcal{N}{=}#1$}
+\def\SO{\mathrm{SO}}
+\def\so{\mathfrak{so}}
+\def\Spin{\mathrm{Spin}}
+
+\def\boo{0.0}
+
+\def\xlattice#1#2#3{
+\begin{tikzpicture}[scale=.5]
+\filldraw[color=black!5!white](-.5,-.5) rectangle (1.5,1.5);
+\draw[->] (-1,0) -- (2,0);
+\draw[->] (0,-1) -- (0,2);
+\foreach \x in {0,1} {
+	\foreach \y in {0,1}{
+		\pgfmathsetmacro\a{mod(#1 * \x - #2 * \y,2)}
+		\ifx\a\boo
+			\filldraw[color=#3] (\x,\y) circle (.5em);
+		\else
+			\filldraw[fill=white,draw=gray] (\x,\y) circle (.5em);
+		\fi
+	}
+}
+\end{tikzpicture}
+}
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{flushright}
+IPMU-19-0124
+\end{flushright}
+
+\vskip 3cm
+
+\begin{center}
+
+{\Large \bfseries Matching higher symmetries across Seiberg duality}
+
+
+\vskip 1cm
+Yasunori Lee$^1$, Kantaro Ohmori$^2$, and Yuji Tachikawa$^1$
+\vskip 1cm
+
+\begin{tabular}{ll}
+$^1$ & Kavli Institute for the Physics and Mathematics of the Universe (WPI), \\
+& University of Tokyo,  Kashiwa, Chiba 277-8583, Japan\\
+$^2$ & Simons Center for Geometry and Physics, \\
+& SUNY, Stony Brook, NY 11794, USA
+\end{tabular}
+
+
+\vskip 1cm
+
+\end{center}
+
+
+\noindent 
+We study the generalized symmetries of 4d \Nequals1 supersymmetric $\mathfrak{so}(2n_c)$ gauge theory with $N_f=2n_f$ flavors and their anomalies.
+We find that they depend on the parity of $n_c$ and $n_f$ 
+and also on the choice of the global form of the gauge group and the discrete theta angle,
+and that they agree across Seiberg duality.
+In particular, when $n_c$ is odd and $n_f$ is even, 
+the $\bZ_2$ one-form symmetry nontrivially extends the 0-form flavor symmetry to form a 2-group for $\Spin$ or $\SO_-$ theories,
+while the $\bZ_2$ one-form symmetry and the 0-form flavor symmetry remains a direct product but has a nontrivial mixed anomaly for $\SO_+$ theories.
+
+
+\end{titlepage}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%\newpage
+
+\section{Introduction and summary}
+Our understanding of the concept of symmetries in quantum field theories has been greatly improved in the last several years.
+We now have the concept of $p$-form symmetries acting on $p$-dimensional objects \cite{Gaiotto:2014kfa}.
+This concept  gives a unifying point of view to both
+ordinary symmetries acting on point operators for $p=0$
+and center symmetries of gauge theories acting on Wilson line operators for $p=1$.
+In addition, the 't Hooft magnetic flux \cite{tHooft:1979rtg} can now be thought of as a background gauge field for the 1-form center symmetry.
+It is also realized more recently that 0-form symmetries and 1-form symmetries can not only coexist in a direct product but also mix in a more intricate manner, defining a symmetry structure called 2-groups \cite{Cordova:2018cvg,Benini:2018reh}.
+
+These new concepts can be used very effectively to constrain the dynamics of various strongly-coupled systems,
+as demonstrated beautifully in \cite{Gaiotto:2017yup} and later works inspired by it.
+These were mostly done on non-supersymmetric quantum field theories,
+for which the concept of generalized symmetries is a big new addition to the few analytical tools already available.
+This should not, however, stop us to apply this new tool to the study of supersymmetric systems.
+There are indeed  many existing techniques to study them exactly,
+but the concept of generalized symmetries might shed a somewhat different light on them from a different angle.
+
+In this short note we intend to initiate such a study, 
+by having a look at the generalized symmetries of 4d \Nequals1 supersymmetric $\mathfrak{so}(2n_c)$ QCD with $N_f=2n_f$ flavors.
+It is  a classic fact \cite{Intriligator:1995id} that this theory has a Seiberg dual description as an $\mathfrak{so}(2n_c')$ QCD with $N_f=2n_f$ flavors with additional singlets and a superpotential term, where $n_c'=n_f+2-n_c$.
+To fully specify the theory, one needs to pick the global structure of the gauge group and the discrete theta angle.
+In the case of $\mathfrak{so}$ QCD,
+there are three choices\footnote{%
+Here we made a simplifying assumption that the spacetime has a spin structure,
+the gauge group and the spacetime symmetry forms a direct product,
+and the gauge group is connected.
+}, namely $\Spin(2n_c)$, $\SO(2n_c)_+$ and $\SO(2n_c)_-$,
+and the Seiberg duality exchanges $\Spin$ and $\SO_-$ while keeping $\SO_+$ fixed \cite{Aharony:2013hda}.
+This action of the Seiberg duality was deduced by studying the behavior of line operators acted on by a $\bZ_2$ 1-form symmetry,
+and was given a more detailed check by a study of the supersymmetric index on the lens space \cite{Razamat:2013opa}.
+Our concrete objective in this paper is to understand the interplay of this $\bZ_2$ 1-form symmetry and the 0-form flavor symmetry acting on $N_f=2n_f$ flavors.
+
+More concretely, we find that interesting phenomena happen when $n_f$ is even and $n_c$ is odd.
+We will find that when the gauge group is either $\Spin$ or $\SO_-$, the 0-form flavor symmetry is extended by the $\bZ_2$ one-form symmetry to become a genuine 2-group.
+We will also find that when the gauge group is $\SO_+$, the 0-form flavor symmetry
+and the $\bZ_2$ one-form symmetry remains a direct product
+but that there is a mixed anomaly between them.
+We will see that this distribution of the extension and the anomaly is consistent with the action of Seiberg duality.
+We will also see that it is consistent also under the gauging of one-form symmetries to go back and forth among various choices of the gauge groups. 
+
+The rest of this short note contains two sections. 
+In Sec.~\ref{sec:known}, 
+we recall the properties of $\bZ_2$ 1-form symmetries of the $\Spin$, $\SO_+$ and $\SO_-$ quantum chromodynamics,
+and the properties of groups whose Lie algebra is $\so(2n_c)$.
+Then in Sec.~\ref{sec:unknown},
+we study whether the $\bZ_2$ 1-form symmetry extends the 0-form flavor symmetry,
+or there is a mixed anomaly between them,
+in the three cases of $\Spin$, $\SO_+$ and $\SO_-$.
+Finally we check that our findings are consistent with the action of Seiberg duality.
+
+Before proceeding we note that except at the very end we do not use any property of Seiberg duality.
+The bulk of the paper is about the study of the global structure formed by the $\bZ_2$ 1-form symmetry and the 0-form flavor symmetry and its anomaly in each of the three choices.
+We will also see that the cross-check provided by our analysis on the Seiberg duality of $\so$ theories is not trivial but not strong either.
+That said,  the authors believe that it can be fruitfully applied to many other known and unknown \Nequals1 duality pairs.
+
+\section{Known facts}
+\label{sec:known}
+Let us quickly summarize known facts we will make use of in the rest of the paper.
+We are interested in $\mathfrak{so}$ gauge theories with matter fields in the vector representation.
+
+\subsection{Line operators and the three choices $\Spin/\SO_+/\SO_-$}
+\label{sec:lines}
+Consider an electric Wilson line operator in the spinor representation $W$.
+Its square is in the vector representation, and can be screened by the dynamical matter field.
+This means that the electric lines can be labeled by  $\bZ_2$.
+Let us next consider a magnetic 't Hooft line operator $H$,
+which has a minimal unit of allowed magnetic charge with respect to the matter in the vector representation.
+It is characterized by a nontrivial Stiefel-Whitney class $w_2\in H^2(S^2,\bZ_2)$ of  the gauge bundle on the $S^2$ around the line operator,
+meaning that the magnetic lines can also be labeled by $\bZ_2$.
+In total the topological classification of the line operators in an $\mathfrak{so}$ theory with matter fields in the vector representation is given by $\bZ_2\times \bZ_2=\{1,W\}\times \{1,H\}$,
+but $W$ and $H$ are mutually non-local.
+
+
+\begin{figure}
+\centering
+\begin{tabular}{c@{\qquad}c@{\qquad}c}
+\xlattice01{Red} & \xlattice10{Green} & \xlattice11{Blue} \\
+$\Spin$ & $\SO_+$ & $\SO_-$
+\end{tabular}
+\caption{The line operators present in $\Spin$, $\SO_+$, $\SO_-$ quantum chromodynamics.
+The horizontal  axis and the vertical axis measure the electric charge and the magnetic charge, respectively.
+In all cases, the group of lines is a $\bZ_2$ subgroup of the $\bZ_2\times \bZ_2$ group of possibly mutually-nonlocal lines of $\mathfrak{so}$ quantum chromodynamics.
+The $\Spin$, $\SO_+$, $\SO_-$ theory contains an electric line,
+a magnetic line, and a dyonic line, respectively.
+\label{fig:lines}
+}
+\end{figure}
+
+To fully specify a quantum field theory, we need to pick a maximal set of mutually-local line operators.
+There are three choices: $\{1,W\}$, $\{1,H\}$ and $\{1,D:=WH\}$.
+The first choice is the $\Spin$ gauge theory, and the second is the standard $\SO$ gauge theory.
+The existence of the third choice was more recently noticed
+and is given by an $\SO$ gauge theory with a discrete theta term \begin{equation}
+\exp\left(2\pi i \frac14 \int_X \mathfrak{P}(w_2)\right)
+\label{pont}
+\end{equation} 
+in the exponentiated action, where $\mathfrak{P}(w_2)\in H^4(X,\bZ_4)$ is the Pontryagin square of the Stiefel-Whitney class $w_2\in H^2(X,\bZ_2)$ of the gauge bundle on the spacetime $X$.
+When $X$ is spin as we assume throughout in the paper,
+the integral of $\mathfrak{P}(w_2)$ is even,
+producing a sign in the integrand of the path integral.
+This makes the 't Hooft line to acquire an electric charge $W$.
+For details, we refer the reader to \cite{Aharony:2013hda}.
+We summarized the choice of line operators in Fig.~\ref{fig:lines}.
+
+It is a classic result in the study of 4d \Nequals1 supersymmetric theories
+that the Seiberg dual of the $\so(N_c)$ gauge theory with $N_f$ flavors
+is given by an $\so(N_c')$ gauge theory with  $N_f$ flavors 
+with an additional gauge singlet meson fields and a superpotential term,
+where $N_c'=N_f+4-N_c$ \cite{Intriligator:1995id}.
+In \cite{Aharony:2013hda} the action of the Seiberg duality was refined to take into account the three possibilities $\Spin$, $\SO_+$ and $\SO_-$;
+it was found there that $\SO_+$ is self-dual while $\Spin$ and $\SO_-$ are exchanged.
+This was indirectly argued in \cite{Aharony:2013hda} from the behavior of the line operators,
+and was later given a more direct check via the computation of the supersymmetric index on the lens spaces in \cite{Razamat:2013opa}.
+
+\subsection{Facts concerning $\so(2n)$}
+\label{sec:math}
+We are going to refine the understanding reviewed above when $N_c$ and $N_f$ are both even.
+For this we need to recall a few facts concerning $\so(2n)$.
+This is mostly to set the notations;
+a reader might want to skip the rest of this section and come back only when an unfamiliar symbol is used.
+
+The simply-connected group $\Spin(2n)$ has a center  of order four,
+given by $\bZ_4=\{0,s,v=s^2,c=s^3\}$ when $n$ is odd
+and $\bZ_2\times \bZ_2=\{0,s\}\times \{0,c\}$ when $n$ is even;
+we define $v=s+c$ for the latter case.
+The representations of $\Spin(2n)$ can be classified into four classes $0$, $S$, $C$, $V$
+according to how the center acts on them.
+
+
+\begin{figure}
+\[
+\begin{tikzpicture}[scale=.5,baseline=(SO.base)]
+\node(Spin) at (0,0) {$\Spin(2n)$};
+\node(Ss) at (-8,-2) {$\mathrm{Ss}(2n)$};
+\node(SO) at (0,-2) {$\SO(2n)$};
+\node(Ss') at (+8,-2) {$\mathrm{Ss}'(2n)$};
+\node(PSO) at (0,-4) {$\SO(2n)/\bZ_2$};
+\node(legend) at (0,-6) {$n$ even};
+\draw[->] (Spin) to node[above]{\footnotesize $v_2{=}w_2'$}  (Ss); 
+\draw[->] (Spin) to node[left]{\footnotesize $w_2{=}w_2'$}  (SO); 
+\draw[->] (Spin) to node[above]{\footnotesize $v_2{=}w_2$}  (Ss'); 
+\draw[->] (Ss) to node[below]{\footnotesize $w_2$} (PSO);
+\draw[->] (SO) to node[left]{\footnotesize $v_2$} (PSO);
+\draw[->] (Ss') to node[below]{\footnotesize $w_2'$} (PSO);
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[scale=.5,baseline=(SO.base)]
+\node(Spin) at (0,0) {$\Spin(2n)$};
+\node(SO) at (0,-2) {$\SO(2n)$};
+\node(PSO) at (0,-4) {$\SO(2n)/\bZ_2$};
+\node(legend) at (0,-6) {$n$ odd};
+\draw[->] (Spin) to node[left]{\footnotesize $w_2$}  (SO); 
+\draw[->] (SO) to node[left]{\footnotesize $v_2$} (PSO);
+\draw[->,dashed,out=-10,in=10] (Spin.east) to node[right]{\footnotesize $\tilde v_2$}  (PSO.east); 
+\end{tikzpicture}
+\]
+\caption{%
+Various quotients of $\Spin(2n)$ and the characteristic classes associated to their bundles. 
+Solid arrows are $\bZ_2$ quotients and the dashed arrow is a $\bZ_4$ quotient.
+Each arrow is labeled by the corresponding obstruction classes.
+\label{fig:classes}}
+\end{figure}
+
+The quotient of $\Spin(2n)$ by $\bZ_2=\{0,v\}$ is $\SO(2n)$.
+Accordingly, an $\SO(2n)$ bundle $A$ on a space $X$ has the second Stiefel-Whitney class $w_2(A)\in H^2(X,\bZ_2)$, which is trivial if and only if the bundle $A$ lifts to a $\Spin(2n)$ bundle.
+The group $\SO(2n)$ has the center $\bZ_2=\{0,s=c\}$,
+and we can form a further quotient $\SO(2n)/\bZ_2$.
+Analogously to the case just mentioned above,
+an $\SO(2n)/\bZ_2$ bundle $A'$ on a space $X$ has an obstruction class in $H^2(X,\bZ_2)$, which is trivial if and only if the bundle $A'$ lifts to an $\SO(2n)$ bundle.
+There does not seem to be a common name for this class; 
+we denote it by $v_2(A')\in H^2(X,\bZ_2)$.
+
+When $n$ is odd, $\pi_1(\SO(2n)/\bZ_2)=\bZ_4$, and therefore
+there is an obstruction class $\tilde v_2(A')\in H^2(X,\bZ_4)$ which controls if $A'$ lifts all the way to $\Spin(2n)$,
+and $v_2(A')$ is simply the mod-2 reduction of $\tilde v_2(A')$.
+When $n$ is even, $\pi_1(\SO(2n)/\bZ_2)=\bZ_2\times \bZ_2$.
+Correspondingly, we have two classes $w_2(A')$, $w_2'(A')\in H^2(X,\bZ_2)$
+controlling whether the bundle $A'$ lifts to 
+an $\mathrm{Ss}(2n)=\Spin(2n)/\{0,s\}$ bundle or  
+an $\mathrm{Ss}'(2m)=\Spin(2n)/\{0,c\}$ bundle.\footnote{%
+$\mathrm{Ss}$ stands for semi-spin.
+}
+Here we have  $v_2(A')=w_2(A')+w_2'(A')$.
+The information are summarized in Fig.~\ref{fig:classes}.
+
+
+\section{The mixed anomaly and the 2-group}
+\label{sec:unknown}
+Let us now consider $\so(2n_c)$ gauge theory with $2n_f$ flavors in the vector representation.
+We chose the number of colors $N_c$ to be even, $N_c=2n_c$,
+to see the effect of the larger center of $\Spin(2n_c)$ which is order 4.
+When the matter fields are massless, the system has $\mathfrak{su}(2n_f)$ flavor symmetry,
+but we choose to use only the $\mathfrak{so}(2n_f)$ sub-symmetry, which is compatible with a nonzero mass term.
+Our motivation to let the number of flavors $N_f$ to be even, $N_f=2n_f$, is again the same.
+
+Now the matter field is in the bivector representation of $\so(2n_c)$ and $\so(2n_f)$.
+Let us then take the global form of the combined gauge and flavor group to be 
+\begin{equation}
+\frac{\Spin(2n_c)\times \SO(2n_f)}{\bZ_2},\quad
+\frac{\SO(2n_c)_+\times \SO(2n_f)}{\bZ_2},\quad
+\frac{\SO(2n_c)_-\times \SO(2n_f)}{\bZ_2} 
+\label{foo}
+\end{equation}
+where the quotient is in general with respect to the diagonal subgroup of $\bZ_2$ centers which act trivially on the bivector representation, 
+with the exception that we consider \begin{equation}
+\frac{\Spin(2n_c)\times \SO(2n_f)}{\bZ_4}
+\label{bar}
+\end{equation}
+when $n_c$  is odd, for which we use the $\bZ_4$ subgroup generated by $(1,1) \in \{0,1,2,3\}\times \{0,1\}$.
+
+The 0-form part of the flavor symmetry is then $\SO(2n_f)/\bZ_2$,
+and we are interested in its interrelationship with the $\bZ_2$ 1-form symmetries of the gauge part we reviewed in Sec.~\ref{sec:lines}.
+
+\subsection{Appearance of 2-group in the $\Spin(2n_c)$ theory}
+Let us start by analyzing the charge of the line operators of the $\Spin(2n_c)$ theory.
+An important step in our brief review in Sec.~\ref{sec:lines}
+was to declare that the Wilson line in the vector representation is considered topologically trivial
+since there are dynamical fields in the vector representation.
+We now take into account the flavor symmetry.
+The dynamical fields are in the bivector representation of $\so(2n_c)$ and $\so(2n_f)$.
+This means that a gauge Wilson line in the vector of $\so(2n_c)$
+and a flavor Wilson line in the vector of $\so(2n_f)$ are considered topologically identical.
+
+Consider then a gauge Wilson line $W$ in the spinor of $\so(2n_c)$,
+which is charged under the $\bZ_2$ one-form symmetry of the $\Spin(2n_c)$ theory.
+When $n_c$ is odd, $W^2$ is in the vector representation of $\so(2n_c)$,
+which is then equivalent to a flavor Wilson line in the vector of $\so(2n_f)$.
+Let us furthermore assume that $n_f$ is even.
+Then there is no flavor Wilson line such that its square is in the vector of $\so(2n_f)$.
+We find that a flavor Wilson line in the vector of $\so(2n_f)$,
+which is not divisible by two if we only consider flavor Wilson lines,
+becomes divisible by two if we consider gauge Wilson lines.
+This means that the $\bZ_2$ 1-form symmetry extends the 0-form flavor symmetry nontrivially.
+
+To see why, consider an ordinary group extension \begin{equation}
+0\to \bZ_2\to \bZ_8 \to \bZ_4 \to 0.
+\end{equation} Taking the Pontryagin duals (i.e.~the groups formed by one-dimensional representations), we have \begin{equation}
+0\to \hat\bZ_4\to \hat\bZ_8 \to \hat\bZ_2 \to 0.
+\end{equation}
+In words,  a charge-1 representation of $\bZ_4$ corresponds to a charge-2 representation of $\bZ_8$,  which is clearly divisible by 2 as a $\bZ_8$ representation.
+In our case, the role of $\bZ_2$ is played by the 1-form $\bZ_2$ symmetry
+and the role of $\bZ_4$ is played by the flavor symmetry $\SO(2n_f)/\bZ_2$.
+The extension can be written as \begin{equation}
+0\to \bZ_2[1] \to  H \to \SO(2n_f)/\bZ_2 \to 0
+\label{2group}
+\end{equation} where $[1]$ after $\bZ_2$ is to signify it is a one-form symmetry;
+$H$ is a nontrivial extension of a continuous flavor symmetry by a discrete one-form symmetry,
+and is an example of a genuine 2-group.
+We note that in general an extension \begin{equation}
+0\to A[p] \to H \to G \to 0
+\end{equation} of a 0-form symmetry $G$ by an Abelian $p$-form symmetry $A$ is specified by a class \begin{equation}
+e\in H^{2+p} (BG,A)
+\end{equation} known as the Postnikov class of the extension;
+this reduces to the ordinary extension class in $H^2(BG,A)$ in the case of an extension of a 0-form symmetry by another 0-form symmetry.
+We will determine $e$ below.
+
+The appearance of a nontrivial 2-group can also be seen from the point of view of the background fields coupled to the symmetry.
+This point of view allows us to find the Postnikov class of the extension.
+The background $E\in H^2(X,\bZ_2)$ for the $\bZ_2$ one-form symmetry of the $\Spin(2n_c)$ theory sets the Stiefel-Whitney class $w_2(c)\in H^2(X,\bZ_2)$ of the $\SO(2n_c)$ gauge bundle to be $E=w_2(c)$.
+In the presence of a nontrivial $\SO(2n_f)/\bZ_2$ background $f$, however, 
+the gauge bundle is not necessarily an $\SO(2n_c)$ bundle.
+Rather, it is in general an $\SO(2n_c)/\bZ_2$ bundle such that $v_2(c)=v_2(f)$,
+where $v_2$ is the obstruction class controlling the lift from $\SO/\bZ_2$ to $\SO$.
+
+When $n_c$ is even this poses no problem since the classes $v_2$ and $w_2$ exist independently in $\SO(2n_c)/\bZ_2$.
+When $n_c$ is odd, however, there is a problem, since the $(\bZ_2)_{w_2}$ controlling $\Spin(2n_c)\to \SO(2n_c)$
+and $(\bZ_2)_{v_2}$ controlling $\SO(2n_c) \to \SO(2n_c)/\bZ_2$ form a nontrivial extension \begin{equation}
+0\to (\bZ_2)_{w_2} \to (\bZ_4)_{\tilde v_2} \to (\bZ_2)_{v_2} \to 0.
+\end{equation}
+This is reflected in the fact that the quotient is by $\bZ_4$ in \eqref{bar} when $n_c$ is odd.
+In this case, what is guaranteed to exist is the $\bZ_4$ class $\tilde v_2(c) \in H^2(X,\bZ_4)$.
+
+The data contained in $\tilde v_2(c)$ can be encoded by a closed cochain $v_2(c)\in H^2(X,\bZ_2)$
+and  a not-necessarily-closed cochain $w_2(c)\in C^2(X,\bZ_2)$ satisfying \begin{equation}
+\delta w_2(c) = \beta v_2(c).\label{asin}
+\end{equation} where $\delta$ is the coboundary and $\beta$ is the Bockstein.
+Recalling $v_2(c)=v_2(f)$, and $E=w_2(c)$, we see that the background fields for the $\Spin(2n_c)$ theory are given by a pair of an $\SO(2n_f)/\bZ_2$ bundle $f$
+and a cochain $E\in C^2(X,\bZ_2)$ satisfying the relation \begin{equation}
+\delta E= \beta v_2(f).
+\label{ext}
+\end{equation}
+This means that the 2-group extension \eqref{2group} is specified by the extension class \begin{equation}
+\beta v_2 \in H^3(B\SO(2n_f)/\bZ_2, \bZ_2).
+\end{equation}
+Recall that  the Bockstein $\beta x$ of a mod-2 class $x$ is defined so that it controls whether $x$ is a mod-2 reduction of the $\bZ_4$.
+When $n_f$ is odd, $v_2$ is a mod-2 reduction of the $\bZ_4$ class $\tilde v_2$ controlling the lift from $\SO(2n_f)/\bZ_2$  all the way to $\Spin(2n_f)$.
+Therefore the extension class $\beta v_2$ is trivial when $n_f$ is odd,
+whereas it  is nontrivial when $n_f$ is even.
+We conclude that we have a nontrivial 2-group only when $n_c$ is odd and $n_f$ is even.
+
+\subsection{Mixed anomaly in the $\SO(2n_c)_+$ theory}
+Let us next consider the $\SO(2n_c)_+$ theory.
+Here, the charged objects under the $\bZ_2$ one-form symmetry are the 't Hooft loops $H$.
+The background field $B\in H^2(X,\bZ_2)$ of the $\bZ_2$ one-form symmetry then enters in the exponentiated action as \begin{equation}
+\exp\left( 2\pi i \frac12 \int_X B w_2(c) \right)\label{magnetic}
+\end{equation} where $c$ is the $\SO(2n_c)$ gauge bundle. 
+
+We now introduce a background bundle $f$  for the flavor symmetry $\SO(2n_f)/\bZ_2$.
+Recall that the matter fields are in the bivector of $\SO(2n_c)\times \SO(2n_f)$.
+Therefore, the gauge bundle $c$ is in general an $\SO(2n_c)/\bZ_2$ bundle, such that $v_2(c)=v_2(f)$.
+This does not pose a problem when $n_c$ is even, since $w_2$ and $v_2$ exist independently as a $\bZ_2$-valued class, as we recalled in Sec.~\ref{sec:math}.
+When $n_c$ is odd, however, there is a potential problem, since $w_2(c)$ is no longer a closed cochain in general, but satisfies $\delta w_2(c)=\beta v_2(c)=\beta v_2(f)$ as in \eqref{asin}.
+Therefore we find that \begin{equation}
+\delta (B w_2(c)) = B \beta v_2(f).
+\end{equation}
+This means that the non-closed-ness of the coupling \eqref{magnetic}
+is purely given by a combination of the background fields,
+and can be cancelled by putting the 4d theory on the boundary $X$ of the 5d bulk $Y$ with the coupling \begin{equation}
+\exp\left(2\pi i \frac12 \int_Y B \beta v_2(f)\right)
+\label{anom}
+\end{equation}
+We again note that $\beta v_2(f)=0$ when $n_f$ is odd while it is nontrivial when $n_f$ is even.
+We should also pose here to mention that the analysis up to this point shows that
+the $\bZ_2$ one-form symmetry and the $\SO(2n_f)/\bZ_2$ flavor symmetry remain a direct product,
+and do not form a nontrivially-extended 2-group.
+
+Summarizing, we found that the $\SO(2n_c)_+$ theory has a mixed anomaly when $n_c$ is odd and $n_f$ is even, and anomaly-free otherwise.
+The anomaly is between the $\bZ_2$ 1-form symmetry and the $\SO(2n_f)/\bZ_2$ 0-form flavor symmetry  and is given by \eqref{anom}.
+
+Before continuing, we recall that the $\SO(2n_c)_+$ theory is obtained by gauging the electric $\bZ_2$ 1-form symmetry (with the background field $E$) of the $\Spin(2n_c)$ theory,
+while the $\Spin(2n_c)$ theory is obtained by gauging the magnetic $\bZ_2$ 1-form symmetry (with the background field $B$) of the $\SO(2n_c)_+$ theory \cite{Kapustin:2014gua}. 
+In Sec.~3.2 of \cite{Tachikawa:2017gyf}, it was already shown that when the electric background $E$ satisfies the extension of the form \eqref{ext}, the magnetic background $B$ have the anomaly of the form \eqref{anom}, 
+where a general element $\Omega\in H^3(BG,\bZ_2)$ was used instead of our specific choice $\beta v_2(f)$.
+The analysis in \cite{Tachikawa:2017gyf} was general but no concrete example was provided.
+The new point here is that a 4d $\so$ quantum chromodynamics provides a concrete example.
+
+\newpage
+
+\subsection{Appearance of 2-group in the $\SO(2n_c)_-$ theory}
+Let us finally study the $\SO(2n_c)_-$ theory.
+This theory has a $\bZ_2$ 1-form symmetry,
+whose charged object is the dyonic line $WH$.
+Its square $(WH)^2$ when $n_c$ is odd is a gauge Wilson line in the vector representation,
+which is equivalent to a flavor Wilson line in the vector representation.
+This behavior is the same as the $\Spin(2n_c)$ theory with odd $n_c$,
+and therefore we have the same nontrivial extension \eqref{2group}:
+\begin{equation}
+0\to \bZ_2[1] \to  H \to \SO(2n_f)/\bZ_2 \to 0.
+\end{equation}
+The extension should then be given by \eqref{ext}: \begin{equation}
+\delta B= \beta v_2(f),
+\label{ext-}
+\end{equation} where we denoted the background field for $\bZ_2$ 1-form symmetry by $B$.
+
+Let us see how the relation \eqref{ext-} can be understood from the point of view of the Lagrangian.
+The issue is the discrete theta angle term \eqref{pont}.
+Together with the magnetic coupling to $B$, we have the following contribution to the exponentiated action \begin{equation}
+\exp\left(2\pi i\int_X ( \frac14 \mathfrak{P}(w_2(c)) +\frac12 B w_2(c))\right).
+\label{boo}
+\end{equation}
+When $n_c$ is odd, $w_2(c)$ is not necessarily closed.
+Then the second term in \eqref{boo} is not closed, 
+and to even talk about the first term in \eqref{boo}, one first needs to extend the definition of the Pontryagin square $\fP$ to non-closed cochains.
+
+Let us show that the coupling \eqref{boo} can be made a well-defined, non-anomalous coupling after an addition of a counterterm, when $B$ satisfies the extension condition \eqref{ext-}.
+To do this, we recall that the non-closed-ness of $w_2(c)$ is governed by the \begin{equation}
+\delta w_2(c)=\beta v_2(c)= \beta v_2(f), 
+\end{equation} see \eqref{asin}.
+Combining with \eqref{ext-}, we see $w_2(c)+B$  is closed. 
+Therefore we can always consider the well-defined coupling \begin{equation}
+\exp \left(2\pi i \frac14 \int_X \fP(w_2(c)+B)\right) .
+\label{aho}
+\end{equation}
+In the special case when $B$ and $w_2(c)$ are closed, we can use the standard formula $\fP(x+y)=\fP(x)+\fP(y)+2 xy$ to show that the expression \eqref{aho} equals
+\begin{equation}
+= \exp\left(2\pi i \int_X 
+ ( \frac14 \mathfrak{P}(w_2(c)) +\frac12 B w_2(c) +\frac14 \mathfrak{P}(B) )
+\right) .
+\label{fPB}
+\end{equation}
+
+This means that the well-defined expression \eqref{aho} equals the naive expression \eqref{boo} 
+up to an addition of the Pontryagin square of the background field $B$ and the terms which vanish when $ w_2(c)$ and/or $B$ are closed.
+This is what we wanted to demonstrate.
+Note that the $\SO_-$ theory with a general 0-form symmetry background necessarily involves the pure background term $\fP(B)$ in it.
+We will come back to this point in Sec.~\ref{sec:last}.
+
+\begin{table}
+\centering
+\begin{tabular}{ll}
+				$\Spin$: &
+\begin{tabular}{l|cc}
+	 & $n_c$ even & $n_c$ odd\\
+		\hline
+		$n_f$ even   & -- &  extension \\
+		$n_f$ odd    & -- & --
+\end{tabular} \\[2em]
+ $\SO_+$:  &
+\begin{tabular}{l|cc}
+		 & $n_c$ even & $n_c$ odd\\
+		\hline
+		$n_f$ even   & -- &  anomaly \\
+		$n_f$ odd    & -- & --
+\end{tabular} \\[2em]
+$\SO_-$: &
+\begin{tabular}{l|cc}
+				 & $n_c$ even & $n_c$ odd\\
+		\hline
+		$n_f$ even   & -- &  extension \\
+		$n_f$ odd    & -- & --
+\end{tabular} 
+\end{tabular} 
+\caption{The extension and the anomaly of the $\so(2n_c)$ gauge theory with $N_f=2n_f$ flavors, in the three cases $\Spin$, $\SO_+$ and $\SO_-$.
+The symbol -- signifies that there is neither nontrivial extension nor nontrivial anomaly.
+\label{tab}}
+\end{table}
+
+\subsection{Summary}
+Let us summarize what we found. 
+We studied the interrelationship of the $\bZ_2$ 1-form symmetry of the $\Spin(2n_c)$, $\SO(2n_c)_+$ and $\SO(2n_c)_-$ theories and 
+their $\SO(2n_f)/\bZ_2$ flavor symmetry. 
+We found the  behavior summarized in Table~\ref{tab}.
+
+The Seiberg duality maps $\mathfrak{so}(N_c)$ with $N_f$ flavors with $\mathfrak{so}(N_c')$ with $N_f$ flavors,
+where $N_c'=N_f+4-N_c$.
+In terms of $N_c=2n_c$ and $N_f=2n_f$, this means $n_c'=n_f+2-n_c$.
+Therefore it acts on the parity of $n_c$ and $n_f$  as 
+\begin{center}
+	\begin{tabular}{l|cc}
+		& $n_c$ even & $n_c$ odd\\
+		\hline
+		$n_f$ even   & $\circlearrowleft$ & $\circlearrowleft$\\
+		$n_f$ odd    & \multicolumn{2}{c}{$\xleftrightarrow{\qquad\ }$}
+	\end{tabular},
+\end{center}
+and we also know that $\Spin$ and $\SO_-$ are exchanged while $\SO_+$ is self-dual.
+We see that the information summarized in Table~\ref{tab} is consistent with this action of the Seiberg duality.
+
+
+\subsection{A comment on $\Spin\leftrightarrow\SO_-$ duality}
+\label{sec:last}
+Let us consider the situation with a general flavor background $f$ for the 0-form $\SO(2n_f)/\bZ_2$ symmetry.
+The analysis in this paper shows, at least when $n_f$ is even and $n_c$ is odd, 
+that the $\SO_-$ theory requires the coupling $\fP(B)$ to be present in the action, 
+see the discussions around \eqref{fPB}.
+Conversely, we can \emph{not} introduce the coupling $\fP(E)$ in the dual $\Spin$ theory, 
+since $E$ is not closed in general and $\fP(E)$ alone does not make sense.
+This means the following, even after turning off the 0-form flavor background $f$, at least when $n_f$ is even and $n_c$ is odd:
+\begin{claim}
+The $\Spin\leftrightarrow\SO_-$ duality maps
+the $\Spin$ theory \emph{without} the $\fP(E)$ discrete theta angle to
+the $\SO$ theory \emph{with} the $\fP(B)$ discrete theta angle,
+where the background fields $E$ and $B$ are of course identified across the duality.
+\end{claim}
+Let us show that this property holds generally under the Seiberg duality between the $\Spin(N_c)$ theory with $N_f$ flavors and the $\SO(N_c')_-$ theory with $N_f$ flavors, where $N_c+N_c'=N_f+4$,
+without any restriction on the values of $N_c$ and $N_f$.
+
+To see this, we first give a large non-zero mass term to the flavors in the electric description,
+and perform the corresponding deformation on the magnetic side.
+The system is in the confined phase. 
+We put the system in a large compact spacetime, and 
+study the dependence of the phase of the partition function on the background field $E$ or $B$ for the 1-form symmetry.
+
+Consider the $\Spin$ theory without the $\fP(E)$ discrete theta term.
+Recall that the 1-form symmetry background $E$ is the Stiefel-Whitney class $w_2(c)$ of the gauge bundle $c$,
+which is physically known as the 't Hooft flux. 
+The system is confining, and therefore the 't Hooft flux is screened,
+and the phase of the partition function on a large compact spacetime is independent of it, i.e.~
+\begin{equation}
+\text{$Z^\Spin(E=w_2(c))$ is independent of $E$.}
+\label{AAA}
+\end{equation}
+
+Consider next the $\SO_-$ theory without the $\fP(B)$ discrete theta term.
+The partition function is of the form \begin{equation}
+	Z^{\SO_-}(B)\propto \sum_{w_2(c)}  Z^\Spin(w_2(c)) e^{2\pi i \int (\frac14 \mathfrak{P}(w_2(c)) +\frac12 B w_2(c)) }
+	 \propto e^{2\pi i \frac14 \int \mathfrak{P}(B)} \label{BBB}
+\end{equation} which also means that  \begin{equation}
+\text{$Z^{\SO_-}(B) e^{2\pi i \frac14 \mathfrak{P}(B)} $ is independent of $B$.}
+\label{CCC}
+\end{equation}
+Comparing \eqref{AAA}, \eqref{BBB} and \eqref{CCC},
+we see that the dual of the $\Spin$ theory without $\fP(E)$ is the $\SO_-$ theory with $\fP(B)$.
+
+This simple argument does not determine how the $\SO_+$ theories with and without $\fP(B)$ interaction are mapped among themselves.
+This is because \begin{equation}
+	Z^{\SO_+}(B)\propto \sum_{w_2(c)}  Z^\Spin(w_2(c)) e^{2\pi i \int \frac12 B w_2(c) } 
+	 \propto \delta(B)
+\end{equation} and therefore both $Z^{\SO_+}(B)$ 
+and $Z^{\SO_+}(B) e^{2\pi i \frac14 \int \fP(B)}$ 
+are proportional to a delta function $\delta(B)$ of the background field $B$.
+
+
+\section*{Acknowledgements}
+Y.L.~is partially supported by the Programs for Leading Graduate Schools, MEXT, Japan, via the Leading Graduate Course for Frontiers of Mathematical Sciences and Physics. 
+Y.T.~is partially supported  by JSPS KAKENHI Grant-in-Aid (Wakate-A), No.17H04837 
+and JSPS KAKENHI Grant-in-Aid (Kiban-S), No.16H06335,
+and also by WPI Initiative, MEXT, Japan at IPMU, the University of Tokyo.
+
+\bibliographystyle{ytphys}
+\baselineskip=.95\baselineskip
+\bibliography{ref}
+
+\end{document}
