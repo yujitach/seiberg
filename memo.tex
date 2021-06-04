@@ -654,7 +654,7 @@ According to \cite[Appendix C.3]{Clement2002} and \cite[Eq.\,(6.3)]{Wan:2018bns}
 			\hline
 			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
 		\end{array}
-		& \longrightarrow & 
+		& \quad\longrightarrow & 
 		\begin{array}{c|c}
 			6  & \ast\\
 			5  & \cellcolor{lightyellow}\\
@@ -667,6 +667,45 @@ According to \cite[Appendix C.3]{Clement2002} and \cite[Eq.\,(6.3)]{Wan:2018bns}
 		\end{array}
 	\end{array}
 \end{equation}
+
+\subsection{$\bZ_2\times \bZ_2$ 1-form symmetry}
+Exploiting the fact that $K(\bZ_2\times \bZ_2, 2) = K(\bZ_2, 2) \times K(\bZ_2, 2)$,
+it seems that we have
+\begin{equation}
+	\begin{array}{ccc}
+		E^2_{p,q}=H_p\big(K(\bZ_2\times \bZ_2,2);\Omega_q^{\text{spin}}\big)
+		&& \widetilde\Omega_{p+q}^{\text{spin}}(K(\bZ_2\times \bZ_2,2))\vspace{4mm}\\
+		\begin{array}{c|c:cccccccccccc}
+			6  &&&&&& \\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  & \bZ_2 &  & \red{\fbox{\black{$\bZ_2^{\oplus 2}$}}} & \Blue{\fbox{\black{$\bZ_2^{\oplus 2}$}}}\cellcolor{lightyellow} & \ast & \ast & \ast\\
+			1  & \bZ_2 && \red{\dbox{\black{$\bZ_2^{\oplus 2}$}}} & \Blue{\dbox{\black{$\bZ_2^{\oplus 2}$}}} & \green{\fbox{\red{\fbox{\black{$\bZ_2^{\oplus 3}$}}}}}\cellcolor{lightyellow} & \Blue{\fbox{\black{$\bZ_2^{\oplus 6}$}}} & \ast\\
+			0 & \bZ &  & \bZ_2^{\oplus 2} &  & \red{\dbox{\black{$\bZ_4^{\oplus 2}\oplus \bZ_2$}}} & \Blue{\dbox{\black{$\bZ_2^{\oplus 3}$}}} \cellcolor{lightyellow} & \green{\fbox{\black{$\ast$}}}\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+		& \quad\longrightarrow & 
+		\begin{array}{c|c}
+			6  & \ast\\
+			5  & \bZ_2\cellcolor{lightyellow}\\
+			4  & \bZ_2^{\oplus 3}\\
+			3  & \\
+			2  & \bZ_2^{\oplus 2}\\
+			1  & \\
+			0 & \\
+			\hline\\
+		\end{array}
+	\end{array}
+\end{equation}
+The $\bZ$ homology of $K(\bZ_2, 2)$ is again read off from \cite{Clement2002},
+while the $\bZ_2$ (co)homology is known \cite{Serre1953} to be
+\begin{equation*}
+	H^\ast(K(\bZ_2,2);\bZ_2)
+	=
+	\bZ_2[x_2, Sq^1 x_2, Sq^2Sq^1 x_2, \cdots].
+\end{equation*}
 
 \newpage
 
