@@ -268,12 +268,22 @@ For this purpose, we make the following deformations which do not change the sym
 \end{itemize}
 The 't Hooft line of the original $SO(2n_c)$ theory is in the `vector' class
 $(1,0,\ldots,0)$ under $so(2)^{n_c}$,
-and therefore the dynamical monopole we need to analyze has the charge $(2,0,\ldots,0)$.
+and therefore the dynamical monopole we need to analyze has the charge in the `adjoint' class.
+
+The monopoles associated to the breaking of $G$ to its Cartan were analyzed in many places, see e.g.~\cite{Gauntlett:1996cw}.\footnote{%
+There were many competing papers from the same period concerning the application to Seiberg-Witten;
+the analysis of the monopoles itself is much older and I should find proper original references for it too.
+}
+The upshot is that you can embed the standard spherically-symmetric 't Hooft-Polyakov monopole using any simple root into $G$ and have a monopole solution without additional bosonic moduli. 
+
+So we consider a monopole with the charge $(1,1,0,\ldots,0)$.
+This uses $su(2)_1$ within $so(4)\simeq su(2)_1\times su(2)_2$ within $so(2n_c)\subset so(4)\times so(4n_c-4)$.
 
 Since the fermions are in the vector representation of $so(2n_c)$,
-they are charge 2 under the $so(2)$, and should give rise to fermionic zero modes transforming in \begin{equation}
+the charged part under $su(2)_1$ is of charge 1 and in the doublet of $su(2)_2$.
+Therefore it gives rise to fermionic zero modes transforming in \begin{equation}
 V_{2} \otimes R_{2n_f} 
-\end{equation} where $V_2$ is the doublet of spacetime $so(3)$, 
+\end{equation} where $V_2$ is the doublet of $su(2)_2$, 
 $R_{2n_f}$ is the fundamental of $usp(2n_f)$,
 and we need to impose the reality condition using the pseudoreality of both factors,
 so that there are $4n_f$ Majorana fermion in total.
@@ -283,18 +293,20 @@ When $n_f=1$, there are $4$ Majorana fermions.
 Quantizing them, we find the monopoles in \begin{equation}
 V_2 \otimes \mathbf{1} \oplus \mathbf{1}\otimes R_2.
 \end{equation}
-I think we should take the spacetime scalar as indicative, (which needs to be justified)
-so it has the `vector' charge under $usp(2)$ flavor symmetry.
-Therefore the 1-form symmetry is extended.
+%I think we should take the spacetime scalar as indicative, (which needs to be justified)
+It has the `vector' charge under $usp(2)$ flavor symmetry or is a doublet under $su(2)_2$.
+In either case, the $-1$ in $SO(2n_c)\times USp(2n_f)$ acts nontrivially,
+and the 1-form symmetry is extended.
 
 When $n_f=2$, there are $8$ Majorana fermions, 
-and spatial $su(2)$ and flavor $usp(4)$ are embedded into $so(8)$ via \begin{equation}
+and  $su(2)_2$ and flavor $usp(4)$ are embedded into $so(8)$ via \begin{equation}
 su(2)\times usp(4) \simeq so(3)\times so(5) \subset so(8).
 \end{equation}
 Therefore, the monopoles are easily seen to be in \begin{equation}
 V_3\otimes \mathbf{1} \oplus V_2\otimes R_2 \oplus V_1\otimes R_5.
 \end{equation}
-Again taking the spacetime scalar part, it is in the `adjoint' charge under the $usp(4)$ flavor symmetry.
+Again,
+it is in the `adjoint' charge under the $usp(4)$ flavor symmetry.
 Therefore the 1-form symmetry is not extended.
 
 So far we considered $SO_+$ theories. 
