@@ -436,7 +436,7 @@ Having obtained (co)homology groups,
 one can fill in the $E^2$-page of the AHSS:
 \begin{equation}
 	\begin{array}{ccc}
-		E^2_{p,q}=H_p\big(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\Omega_q^{\text{spin}}\big) && \widetilde\Omega_{p+q}^{\text{spin}}(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right))\vspace{4mm}\\
+		E^2_{p,q}=H_p\big(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\Omega_q^{\text{spin}}\big)\vspace{2mm}\\
 		\begin{array}{c|c:cccccccccccc}
 			6  &&&&&& \\
 			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
@@ -447,17 +447,6 @@ one can fill in the $E^2$-page of the AHSS:
 			0 & \bZ &  & \bZ_2^{\oplus 2} &  & \red{\fbox{\black{$\bZ^{\oplus 3}$}}} & \Blue{\fbox{\black{$\bZ_2^{\oplus 3}$}}} \cellcolor{lightyellow} & \green{\fbox{\black{$\ast$}}}\\
 			\hline
 			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
-		\end{array}
-		& \longrightarrow & 
-		\begin{array}{c|c}
-			6  & ?\\
-			5  & ?\cellcolor{lightyellow}\\
-			4  & ?\\
-			3  & ?\\
-			2  & \bZ_2^{\oplus 2}\\
-			1  & \\
-			0 & \\
-			\hline\\
 		\end{array}
 	\end{array}
 \end{equation}
@@ -654,6 +643,195 @@ Its spin bordism is known, and the relevant group turns out to be trivial:
 \end{equation}
 This means there is no anomaly for fermions on the dual side,
 and thus the $B\beta E$ anomaly cannot be canceled by fermions.
+
+\newpage
+
+\section{Computation of $\Omega_5^{\mathrm{spin}}\big(
+	B\big(
+		\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}
+	\big)
+\big)$}
+
+\subsection{Cohomology of $BPSO(4n'_c+2)$}
+Recalling that the $\bZ_2$ cohomology read off from \cite{KonoMimura1974}
+allowed us to determine the $\bZ$ cohomology by using Bockstein SS
+(see \texttt{wzw-memo.pdf}, copy later), we had
+\begin{equation}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{array}{c|cccccccccccccccc}
+		d & 0 & 1 & 2 & 3 & 4 & 5 & 6 & \cdots \\
+		\hline
+		\multicolumn{1}{l|}{H^d(BPSO(4n'_c+2);\bZ)} & \bZ & 0 & 0 & \bZ_4 & \bZ & 0 & \bZ_2 & \cdots\\
+		\multicolumn{1}{l|}{H^d(BPSO(4n'_c+2);\bZ_2)} & \bZ_2 & 0 & \bZ_2 & \bZ_2 & \bZ_2 & \bZ_2 & \bZ_2^{\oplus 2} & \cdots\\
+		\hline
+		\text{generator} \,(\bZ_2) & 1 & - & a_2 & y'(1) & (a_2)^2 & y'(2) & (a_2)^3 & \cdots\\
+		&&&&&&& y'(1)^2\\
+	\end{array}
+\end{equation}
+and if we assume the suspension $\bar\theta: H^\ast(PSO(4n'_c+2);\bZ_2) \to H^\ast(BPSO(4n'_c+2);\bZ_2)$
+to commute with Steenrod squares (which seems to be true according to Nishimoto-san's notes),
+then these elements are supposed to be related as
+\begin{equation*}
+	\begin{array}{ccl}
+		\beta_2 a_2 & = & y'(1)\\
+		Sq^2 y'(1) & = & y'(2)\\
+		Sq^1 y'(2) & = & y'(1)^2\\
+	\end{array}
+\end{equation*}
+where $\beta_f$ is a higher Bockstein operator, whose image corresponds to $\bZ_{2^f}$ in integral cohomology.
+
+\subsection{Leray-Serre SS (preparatory)}
+For the fibration
+\begin{equation}
+	BSU(2n_f)
+	\ \to\ 
+	B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right)
+	\ \to\ 
+	BPSO(4n'_c+2)
+\end{equation}
+we have
+\begin{equation}
+	\begin{array}{ccc}
+		E_2^{p,q}=H^p\big(BPSO(4n'_c+2);H^q(BSU(2n_f);\bZ)\big) && H^{p+q}(B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right);\bZ)\vspace{4mm}\\
+		\begin{array}{c|ccccccccccccc}
+			6  & \bZ &&& \ast & \ast && \ast\\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} && \ast & \ast & & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  &&  && \cellcolor{lightyellow} &&\\
+			1  &  &&  && \cellcolor{lightyellow} &&\\
+			0 & \bZ &  && \bZ_4 & \bZ & \cellcolor{lightyellow} & \bZ_2^{\oplus 2}\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+		& \longrightarrow & 
+		\begin{array}{c|c}
+			6  & \bZ\oplus \bZ_2^{\oplus 2}\\
+			5  & \cellcolor{lightyellow}\\
+			4  & \bZ^{\oplus 2}\\
+			3  & \bZ_4\\
+			2  & \\
+			1  & \\
+			0 & \bZ\\
+			\hline\\
+		\end{array}
+	\end{array}
+\end{equation}
+
+
+\subsection{Atiyah-Hirzebruch SS}
+Having obtained (co)homology groups,
+one can fill in the $E^2$-page of the AHSS:
+\begin{equation}
+	\begin{array}{c}
+		E^2_{p,q}=H_p\big(B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right);\Omega_q^{\text{spin}}\big)\vspace{2mm}\\
+		\begin{array}{c|c:cccccccccccc}
+			6  &&&&&& \\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  & \bZ_2 &  & \red{\dbox{\black{$\bZ_2$}}} & \Blue{\dbox{\black{$\bZ_2$}}}\cellcolor{lightyellow} & \ast & \ast & \ast\\
+			1  & \bZ_2 && \red{\fbox{\black{$\bZ_2$}}} & \Blue{\fbox{\black{$\bZ_2$}}} & \green{\fbox{\black{\red{\dbox{\black{$\bZ_2^{\oplus 2}$}}}}}}\cellcolor{lightyellow} & \Blue{\dbox{\black{$\ast$}}} & \ast\\
+			0 & \bZ &  & \bZ_4 &  & \red{\fbox{\black{$\bZ^{\oplus 2}$}}} & \Blue{\fbox{\black{$\bZ_2^{\oplus 2}$}}}\cellcolor{lightyellow} & \green{\fbox{\black{$\ast$}}}\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+	\end{array}
+\end{equation}
+Based on our belief, 
+\red{\fbox{\black{$d^2 : E^2_{4,0} \to E^2_{2,1}$}}} and
+\red{\dbox{\black{$d^2 : E^2_{4,1} \to E^2_{2,2}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 a_2 & = & (a_2)^2
+	\end{array}
+\end{equation}
+and also
+\Blue{\fbox{\black{$d^2 : E^2_{5,0} \to E^2_{3,1}$}}} and
+\Blue{\dbox{\black{$d^2 : E^2_{5,1} \to E^2_{3,2}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 y'(1) & = & y'(2)\\
+	\end{array}
+\end{equation}
+and finally
+\green{\fbox{\black{$d^2 : E^2_{6,0} \to E^2_{4,1}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 c_2 & = & c_3
+	\end{array}
+\end{equation}
+then %one can proceed, and 
+the would-be-$E_3$-page is given by
+\begin{equation}
+	\begin{array}{c|c:cccccccccccc}
+		6  &&&&&& \\
+		5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+		4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+		3  &  && \cellcolor{lightyellow} &&&& \hphantom{\bZ_2}\\
+		2  & \bZ_2 &&& \cellcolor{lightyellow} & \ast & \ast & \ast\\
+		1  & \bZ_2 &&&& \cellcolor{lightyellow} & \ast & \ast\\
+		0 & \bZ &  & \bZ_4 &  & \bZ^{\oplus 2} & \bZ_2\cellcolor{lightyellow} & \ast\\
+		\hline
+		& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+	\end{array}
+\end{equation}
+
+%\subsection{Adams SS}
+%The above analysis might be complemented by Adams SS.
+%According to our naive guess,
+%the module $\widetilde H^\ast(B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right);\bZ_2)_{\leq 5}$ consists of
+%\begin{equation}
+%	\begin{tikzpicture}[thick,baseline=(m-2-4.south)]
+%		\matrix (m) [
+%			matrix of math nodes,
+%			row sep= 1em,
+%			column sep=6em,
+%		]{
+%			& \colorB{\bullet} \\
+%			& \colorB{\bullet} & \colorC{\bullet}\\
+%		    & \colorB{\bullet} & \\
+%			\colorA{\bullet} && \colorC{\bullet}\\
+%			& \colorB{\bullet} & \\
+%			\colorA{\bullet} &&\\
+%		};
+%		\draw[colorA] (m-4-1.center) to [out=200, in=160] (m-6-1.center);
+%		%
+%		\node[colorA, right=4pt] at (m-6-1) {$a_2$};
+%		\node[colorA, right=4pt] at (m-4-1) {$(a_2)^2$};
+%		%
+%		\draw[colorB] (m-5-2.center) to [out=160, in=200] (m-3-2.center);
+%		\draw[colorB] (m-3-2.center) to (m-2-2.center);
+%		\draw[colorB] (m-3-2.center) to [out=160, in=200] (m-1-2.center);
+%		%
+%		\node[colorB, right=4pt] at (m-5-2) {$y'(1)$};
+%		\node[colorB, right=4pt] at (m-3-2) {$y'(2)$};
+%		\node[colorB, right=4pt] at (m-2-2) {$y'(1)^2$};
+%		\node[colorB, right=4pt] at (m-1-2) {$y'(3)$};
+%		%
+%		\draw[colorC] (m-2-3.center) to [out=200, in=160] (m-4-3.center);
+%		%
+%		\node[colorC, right=4pt] at (m-4-3) {$c_2$};
+%		\node[colorC, right=4pt] at (m-2-3) {$c_3$};
+%	\end{tikzpicture}
+%\end{equation}
+%This leads to the following Adams chart:
+%\begin{center}
+%	\begin{sseqdata}[
+%		name=M2,
+%		Adams grading,
+%		classes = fill,
+%		xrange = {0}{5},
+%		yrange = {0}{3},
+%		%,x label = {$t-s$}, y label = {$s$}
+%	]
+%		\tower[colorA](2,0)
+%		\tower[colorA](4,1)
+%		\class[white](4,0)
+%		\tower[colorC](4,0)
+%	\end{sseqdata}
+%	\printpage[name = M2,page = 2]
+%\end{center}
 
 \newpage
 
