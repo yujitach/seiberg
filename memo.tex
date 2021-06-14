@@ -77,6 +77,7 @@
 %%list SeibergDual
 
 \def\bZ{\mathbb{Z}}
+\def\fP{\mathfrak{P}}
 \def\diag{\mathop{\mathrm{diag}}}
 
 \begin{document}
@@ -351,6 +352,7 @@ In $SO_-$ theories, we need to add electric charges coming from the discrete the
 This is trivial if $n_c$ is even, but is the `vector' charge if $n_c$ is odd.
 
 
+\newpage
 
 \appendix
 
@@ -715,7 +717,8 @@ then these elements are supposed to be related as
 		Sq^1 y'(2) & = & y'(1)^2\\
 	\end{array}
 \end{equation*}
-where $\beta_f$ is a higher Bockstein operator, whose image corresponds to $\bZ_{2^f}$ in integral cohomology.
+where $\beta_f$ is a higher Bockstein operator (reduced to $\bZ_2$ cohomology as a whole),
+whose image corresponds to $\bZ_{2^f}$ in integral cohomology.
 
 \subsection{Leray-Serre SS (preparatory)}
 For the fibration
@@ -814,61 +817,106 @@ the would-be-$E_3$-page is given by
 	\end{array}
 \end{equation}
 
-%\subsection{Adams SS}
-%The above analysis might be complemented by Adams SS.
-%According to our naive guess,
-%the module $\widetilde H^\ast(B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right);\bZ_2)_{\leq 5}$ consists of
-%\begin{equation}
-%	\begin{tikzpicture}[thick,baseline=(m-2-4.south)]
-%		\matrix (m) [
-%			matrix of math nodes,
-%			row sep= 1em,
-%			column sep=6em,
-%		]{
-%			& \colorB{\bullet} \\
-%			& \colorB{\bullet} & \colorC{\bullet}\\
-%		    & \colorB{\bullet} & \\
-%			\colorA{\bullet} && \colorC{\bullet}\\
-%			& \colorB{\bullet} & \\
-%			\colorA{\bullet} &&\\
-%		};
-%		\draw[colorA] (m-4-1.center) to [out=200, in=160] (m-6-1.center);
-%		%
-%		\node[colorA, right=4pt] at (m-6-1) {$a_2$};
-%		\node[colorA, right=4pt] at (m-4-1) {$(a_2)^2$};
-%		%
-%		\draw[colorB] (m-5-2.center) to [out=160, in=200] (m-3-2.center);
-%		\draw[colorB] (m-3-2.center) to (m-2-2.center);
-%		\draw[colorB] (m-3-2.center) to [out=160, in=200] (m-1-2.center);
-%		%
-%		\node[colorB, right=4pt] at (m-5-2) {$y'(1)$};
-%		\node[colorB, right=4pt] at (m-3-2) {$y'(2)$};
-%		\node[colorB, right=4pt] at (m-2-2) {$y'(1)^2$};
-%		\node[colorB, right=4pt] at (m-1-2) {$y'(3)$};
-%		%
-%		\draw[colorC] (m-2-3.center) to [out=200, in=160] (m-4-3.center);
-%		%
-%		\node[colorC, right=4pt] at (m-4-3) {$c_2$};
-%		\node[colorC, right=4pt] at (m-2-3) {$c_3$};
-%	\end{tikzpicture}
-%\end{equation}
-%This leads to the following Adams chart:
-%\begin{center}
-%	\begin{sseqdata}[
-%		name=M2,
-%		Adams grading,
-%		classes = fill,
-%		xrange = {0}{5},
-%		yrange = {0}{3},
-%		%,x label = {$t-s$}, y label = {$s$}
-%	]
-%		\tower[colorA](2,0)
-%		\tower[colorA](4,1)
-%		\class[white](4,0)
-%		\tower[colorC](4,0)
-%	\end{sseqdata}
-%	\printpage[name = M2,page = 2]
-%\end{center}
+
+\newpage
+
+\section{Bockstein square for non-closed cochains}
+By definition, the variation of the Pontrjagin square $\fP : H^\bullet(-;\bZ_{2m}) \to H^{2\bullet}(-;\bZ_{4m})$ term is
+\begin{equation}
+	\label{deltaBockstein}
+	\begin{array}{ccl}
+		\delta \left(\dfrac{1}{4m}\fP(x)\right)
+		& = & \dfrac{1}{4m}\cdot \delta \Big(\widetilde x \cup \widetilde x - \widetilde x \cup_1 \delta \widetilde x\Big)\\
+		& = & \dfrac{1}{4m}\cdot\left[\Big(\delta \widetilde x \cup \widetilde x + \widetilde x \cup \delta \widetilde x\Big)
+				- \Big(\widetilde x \cup \delta \widetilde x - \delta \widetilde x \cup \widetilde x + \delta \widetilde x \cup_1 \delta \widetilde x\Big)\right]\vspace{2mm}\\
+		& = & \dfrac{1}{4m}\cdot\Big[2\cdot \delta \widetilde x \cup \widetilde x - \delta \widetilde x \cup_1 \delta \widetilde x\Big],\\
+	\end{array}
+\end{equation}
+and thus if $x$ were a $\bZ_{2m}$-cocycle $\delta x = 0$ (mod $2m$)
+and its lift $\widetilde x$ were $\delta \widetilde x = 0$ or $2m$ (mod $4m$),
+then the right hand side would be zero (mod 1) and $\fP(x)$ would be a $\bZ_{4m}$-cocycle (i.e.~$0$ mod 4) as desired.
+However, when $x$ is not a cocycle but merely a cochain, this term cannot be defined in the first place.
+
+This can be saved somewhat miraculously as follows.
+A short exact sequence
+\begin{equation*}
+	0
+	\to
+	\bZ_{2^f}
+	\overset{\times 2^{f}}{\longrightarrow}
+	\bZ_{2^{2f}}
+	\overset{p}{\longrightarrow}
+	\bZ_{2^f}
+	\to
+	0
+\end{equation*}
+buys us cohomology operations called higher Bockstein $\beta_f: H^{\bullet}(-;\bZ_{2^f}) \to H^{\bullet+1}(-;\bZ_{2^f})$,
+and for the element $x \in C^{\bullet}(-;\bZ_{2^f})$ one has
+\begin{equation*}
+	\delta\widetilde x
+	=
+	2^f \beta_f (x).
+\end{equation*}
+Now, let us consider the case of odd $n_c$.
+Here, the cochain $w_2(c) \in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_2)$
+can be thought of as a mod-2 reduction of $\widetilde w_2(c)\in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_4)$.
+Dividing the $SO\times SU$ by $\bZ_2$, these become non-closed
+\begin{equation*}
+	\delta \widetilde w_2(c) = 2 \beta v_2(c)
+\end{equation*}
+where $v_2(c)=a_2\in C^2\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}; \bZ_2\right)$.
+%\begin{equation*}
+%	\begin{array}{ccccccccc}
+%		&& w_2 && \widetilde w_2 & \longmapsto & v_2\\
+%		&& \rotatebox[]{270}{$\in$} && \rotatebox[]{270}{$\in$} && \rotatebox[]{270}{$\in$}\\
+%		0
+%		& \longrightarrow &
+%		C^2(-;\bZ_2)
+%		& \overset{i^\ast}{\longrightarrow} &
+%		C^2(-;\bZ_4)
+%		& \overset{p^\ast}{\longrightarrow} &
+%		C^2(-;\bZ_2)
+%		& \longrightarrow &
+%		0\vspace{1mm}\\
+%		&& \downarrow\,\delta && \downarrow\,\delta && \downarrow\vspace{1mm}\\
+%		0
+%		& \longrightarrow  &
+%		C^3(-;\bZ_2)
+%		& \longrightarrow &
+%		C^3(-;\bZ_4)
+%		& \longrightarrow &
+%		C^3(-;\bZ_2)
+%		& \longrightarrow &
+%		0\\
+%		&& \rotatebox[]{90}{$\in$} && \rotatebox[]{90}{$\in$}\\
+%		&& \delta w_2 && \delta \widetilde w_2
+%	\end{array}
+%\end{equation*}
+Since this implies $\delta \widetilde w_2(c) = 0$ or $2$ mod 4
+and furthermore $\delta (2\widetilde w_2(c)) = 0$ mod 4,
+one can safely define the Pontrjagin square $\tfrac{1}{8}\fP\big(2\widetilde w_2(c)\big)$.\footnote{
+	Be careful that this factor $2$ here is not the usual map sending $\{0,1\}=\bZ_2$ to $\{0,2\}\subset \bZ_4$.
+	This time we are \textit{really} multiplying by $2$.
+}
+Note that this can naively be regarded as $\tfrac{1}{2}\fP\big(w_2(c)\big)$ at the integral cochain level.
+While the second term in the last line of \eqref{deltaBockstein} together with the overall factor takes value in
+$\tfrac{(2m)^2}{4m}\bZ = m\bZ = 2\bZ$ and dividing by two does not cause any trouble,
+the first term does as it takes value in $\tfrac{2\cdot 2m}{4m}\bZ = \bZ$.
+
+Let us take a closer look at the latter.
+The long exact sequence of cochain groups implies that $2\widetilde w_2(c) = v_2(c) = a_2$ [YL:make it more precise later].
+Then the term of interest is
+\begin{equation*}
+	\dfrac{1}{8}\cdot 2\cdot 4\beta_2(a_2) \cup a_2.
+\end{equation*}
+Therefore, the anomalous variation of the Pontrjagin square term seems to result in
+\begin{equation*}
+	\delta\left(
+		\dfrac{1}{4}\fP(w_2(c))
+	\right)
+	=
+	\dfrac{1}{2}a_2 \beta_2 a_2.
+\end{equation*}
 
 \newpage
 
