@@ -820,10 +820,10 @@ the would-be-$E_3$-page is given by
 
 \newpage
 
-\section{Bockstein square for non-closed cochains}
+\section{Pontrjagin square for non-closed cochains}
 By definition, the variation of the Pontrjagin square $\fP : H^\bullet(-;\bZ_{2m}) \to H^{2\bullet}(-;\bZ_{4m})$ term is
 \begin{equation}
-	\label{deltaBockstein}
+	\label{deltaPontrjagin}
 	\begin{array}{ccl}
 		\delta \left(\dfrac{1}{4m}\fP(x)\right)
 		& = & \dfrac{1}{4m}\cdot \delta \Big(\widetilde x \cup \widetilde x - \widetilde x \cup_1 \delta \widetilde x\Big)\\
@@ -835,7 +835,8 @@ By definition, the variation of the Pontrjagin square $\fP : H^\bullet(-;\bZ_{2m
 and thus if $x$ were a $\bZ_{2m}$-cocycle $\delta x = 0$ (mod $2m$)
 and its lift $\widetilde x$ were $\delta \widetilde x = 0$ or $2m$ (mod $4m$),
 then the right hand side would be zero (mod 1) and $\fP(x)$ would be a $\bZ_{4m}$-cocycle (i.e.~$0$ mod 4) as desired.
-However, when $x$ is not a cocycle but merely a cochain, this term cannot be defined in the first place.
+However, when $x$ is not a cocycle but merely a cochain,
+$\fP(x)$ is also not a cocycle and it is not clear whether this term is well-defined in the first place.
 
 This can be saved somewhat miraculously as follows.
 A short exact sequence
@@ -853,9 +854,9 @@ A short exact sequence
 buys us cohomology operations called higher Bockstein $\beta_f: H^{\bullet}(-;\bZ_{2^f}) \to H^{\bullet+1}(-;\bZ_{2^f})$,
 and for the element $x \in C^{\bullet}(-;\bZ_{2^f})$ one has
 \begin{equation*}
-	\delta\widetilde x
+	\delta (p^\ast x)
 	=
-	2^f \beta_f (x).
+	2^f \beta_f (x) \in C^\bullet(-;\bZ_{2^{2f}}).
 \end{equation*}
 Now, let us consider the case of odd $n_c$.
 Here, the cochain $w_2(c) \in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_2)$
@@ -899,7 +900,7 @@ one can safely define the Pontrjagin square $\tfrac{1}{8}\fP\big(2\widetilde w_2
 	This time we are \textit{really} multiplying by $2$.
 }
 Note that this can naively be regarded as $\tfrac{1}{2}\fP\big(w_2(c)\big)$ at the integral cochain level.
-While the second term in the last line of \eqref{deltaBockstein} together with the overall factor takes value in
+While the second term in the last line of \eqref{deltaPontrjagin} together with the overall factor takes value in
 $\tfrac{(2m)^2}{4m}\bZ = m\bZ = 2\bZ$ and dividing by two does not cause any trouble,
 the first term does as it takes value in $\tfrac{2\cdot 2m}{4m}\bZ = \bZ$.
 
