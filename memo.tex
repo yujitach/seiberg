@@ -821,25 +821,27 @@ the would-be-$E_3$-page is given by
 \newpage
 
 \section{Pontrjagin square for non-closed cochains}
-By definition, the variation of the Pontrjagin square $\fP : H^\bullet(-;\bZ_{2m}) \to H^{2\bullet}(-;\bZ_{4m})$ term is
+By definition, the variation of the Pontrjagin square $\fP : H^\bullet(-;\bZ_{2^m}) \to H^{2\bullet}(-;\bZ_{2^{m+1}})$ term is
 \begin{equation}
 	\label{deltaPontrjagin}
 	\begin{array}{ccl}
-		\delta \left(\dfrac{1}{4m}\fP(x)\right)
-		& = & \dfrac{1}{4m}\cdot \delta \Big(\widetilde x \cup \widetilde x - \widetilde x \cup_1 \delta \widetilde x\Big)\\
-		& = & \dfrac{1}{4m}\cdot\left[\Big(\delta \widetilde x \cup \widetilde x + \widetilde x \cup \delta \widetilde x\Big)
+		\delta \left(\dfrac{1}{2^{m+1}}\fP(x)\right)
+		& = & \dfrac{1}{2^{m+1}}\cdot \delta \Big(\widetilde x \cup \widetilde x - \widetilde x \cup_1 \delta \widetilde x\Big)\\
+		& = & \dfrac{1}{2^{m+1}}\cdot\left[\Big(\delta \widetilde x \cup \widetilde x + \widetilde x \cup \delta \widetilde x\Big)
 				- \Big(\widetilde x \cup \delta \widetilde x - \delta \widetilde x \cup \widetilde x + \delta \widetilde x \cup_1 \delta \widetilde x\Big)\right]\vspace{2mm}\\
-		& = & \dfrac{1}{4m}\cdot\Big[2\cdot \delta \widetilde x \cup \widetilde x - \delta \widetilde x \cup_1 \delta \widetilde x\Big],\\
+		& = & \dfrac{1}{2^{m+1}}\cdot\Big[2\cdot \delta \widetilde x \cup \widetilde x - \delta \widetilde x \cup_1 \delta \widetilde x\Big],\\
 	\end{array}
 \end{equation}
-and thus if $x$ were a $\bZ_{2m}$-cocycle $\delta x = 0$ (mod $2m$)
-and its lift $\widetilde x$ were $\delta \widetilde x = 0$ or $2m$ (mod $4m$),
-then the right hand side would be zero (mod 1) and $\fP(x)$ would be a $\bZ_{4m}$-cocycle (i.e.~$0$ mod 4) as desired.
+and thus if $x$ were a $\bZ_{2^m}$-cocycle, 
+its integral lift $\widetilde x \in C^\bullet(-;\bZ)$ would be a cocycle mod $2^m$ \textit{i.e.}~$\delta \widetilde x = 0$ (mod $2^m$),
+and the right hand side would be $0$ mod 1,
+which then means that $\fP(x)$ would be a $\bZ_{2^{m+1}}$-cocycle as desired.
 However, when $x$ is not a cocycle but merely a cochain,
 $\fP(x)$ is also not a cocycle and it is not clear whether this term is well-defined in the first place.
 
-This can be saved somewhat miraculously as follows.
-A short exact sequence
+This problem arises when we consider $SO(2n_c)$ QCD,
+but it turns out that this can be saved somewhat miraculously as follows.
+First, a short exact sequence
 \begin{equation*}
 	0
 	\to
@@ -851,17 +853,17 @@ A short exact sequence
 	\to
 	0
 \end{equation*}
-buys us cohomology operations called higher Bockstein $\beta_f: H^{\bullet}(-;\bZ_{2^f}) \to H^{\bullet+1}(-;\bZ_{2^f})$,
-and for the element $x \in C^{\bullet}(-;\bZ_{2^f})$ one has
+buys us cohomology operations called the higher Bockstein $\beta_f: H^{\bullet}(-;\bZ_{2^f}) \to H^{\bullet+1}(-;\bZ_{2^f})$,
+and for the element $y \in C^{\bullet}(-;\bZ_{2^f})$ one has
 \begin{equation*}
-	\delta (p^\ast x)
+	\delta (p^\ast y)
 	=
-	2^f \beta_f (x) \in C^\bullet(-;\bZ_{2^{2f}}).
+	2^f \beta_f (y) \in C^\bullet(-;\bZ_{2^{2f}}).
 \end{equation*}
 Now, let us consider the case of odd $n_c$.
 Here, the cochain $w_2(c) \in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_2)$
 can be thought of as a mod-2 reduction of $\widetilde w_2(c)\in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_4)$.
-Dividing the $SO\times SU$ by $\bZ_2$, these become non-closed
+Dividing the $SO\times SU$ by $\bZ_2$, these cochains become non-closed
 \begin{equation*}
 	\delta \widetilde w_2(c) = 2 \beta v_2(c)
 \end{equation*}
@@ -899,16 +901,17 @@ one can safely define the Pontrjagin square $\tfrac{1}{8}\fP\big(2\widetilde w_2
 	Be careful that this factor $2$ here is not the usual map sending $\{0,1\}=\bZ_2$ to $\{0,2\}\subset \bZ_4$.
 	This time we are \textit{really} multiplying by $2$.
 }
-Note that this can naively be regarded as $\tfrac{1}{2}\fP\big(w_2(c)\big)$ at the integral cochain level.
+Note that this can naively be regarded as $2\cdot \tfrac{1}{4}\fP\big(w_2(c)\big)$ at the integral cochain level.
 While the second term in the last line of \eqref{deltaPontrjagin} together with the overall factor takes value in
-$\tfrac{(2m)^2}{4m}\bZ = m\bZ = 2\bZ$ and dividing by two does not cause any trouble,
-the first term does as it takes value in $\tfrac{2\cdot 2m}{4m}\bZ = \bZ$.
+$\tfrac{(2^m)^2}{2^{m+1}}\bZ = 2^{m-1}\bZ = 2\bZ$ and dividing by two does not cause any trouble,
+the first term does as it takes value in $\tfrac{2\cdot 2^m}{2^{m+1}}\bZ = \bZ$.
 
 Let us take a closer look at the latter.
-The long exact sequence of cochain groups implies that $2\widetilde w_2(c) = v_2(c) = a_2$ [YL:make it more precise later].
+The long exact sequence of cochain groups implies that $2\widetilde w_2(c)$ can be replaced by
+$\widetilde v_2(c) = \widetilde a_2$, which is a cocycle mod 4.
 Then the term of interest is
 \begin{equation*}
-	\dfrac{1}{8}\cdot 2\cdot 4\beta_2(a_2) \cup a_2.
+	\dfrac{1}{8}\cdot 2\cdot 4\beta_2\widetilde a_2 \cup \widetilde a_2.
 \end{equation*}
 Therefore, the anomalous variation of the Pontrjagin square term seems to result in
 \begin{equation*}
