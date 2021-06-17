@@ -76,6 +76,7 @@
 %% Yuji's macros
 %%list SeibergDual
 
+\def\bR{\mathbb{R}}
 \def\bZ{\mathbb{Z}}
 \def\fP{\mathfrak{P}}
 \def\diag{\mathop{\mathrm{diag}}}
@@ -925,6 +926,7 @@ Therefore, the anomalous variation of the Pontrjagin square term seems to result
 \newpage
 
 \section{'t Hooft-Polyakov monopole argument}
+\subsection{Basics}
 For an $SU(2)$ gauge theory Higgssed by an adjoint ($\bm{3}$, spin-$1$, isovector) scalar,
 the gauge group is broken down to $U(1)$, and correspondingly it accommodates topological solitons (monopoles):
 \begin{equation*}
@@ -966,6 +968,8 @@ a monopole in the spinor representation this time of the $SO(4)_{\text{gauge}}$\
 Therefore by the same logic, one can deduce that there should be
 $w_2(SO(4)_{\text{gauge}})\beta w_2(SU(2)_{\text{flavor}})$ anomaly in the first place, as desired.
 
+\subsection{Generalization}
+\subsubsection{Breaking pattern 1}
 Also, one should be able to generalize this whole argument to the case of fermions charged under
 \begin{equation*}
 	\dfrac{SO(2n_c)_{\text{gauge}} \times SU(2n_f)_{\text{flavor}}}{\bZ_2}
@@ -984,6 +988,64 @@ where we have monopoles characterized by
 		\end{array}
 	\right..
 \end{equation*}
+
+\subsubsection{Breaking pattern 2}
+We can also consider $SO(2n_c) \times USp(2n_f)$ breaking to $SO(2n_c) \times U(n_f)$ 
+where the $2n_f$ dimensional irrep of $USp(2n_f)$ becomes 
+a fundamental plus an antifundamental of $U(n_f)$.
+
+The induced effective interaction is \begin{equation}
+\frac12 w_2(SO(2n_c)) c_1(U(n_f)).
+\end{equation} 
+(In the following we consider cochains valued in $\bR/\bZ$.)
+
+We now take the $\bZ_2$ quotient.
+Note that $\pi_1(U(n_f)/\bZ_2)$ is $\bZ\times \bZ_2$  or $\bZ$ depending on whether $n_f$ is even or odd.
+Furthermore, when $n_f$ is even, $c_1(U(n_f)) = c_1(U(n_f)/\bZ_2)$ and $v_2(U(n_f)/\bZ_2)=v_2(USp(2n_f))$/
+When $n_f$ is odd, $c_1(U(n_f)/\bZ_2)=2 c_1(U(n_f))$ when the latter is well-defined and $v_2(U(n_f)/\bZ_2)$ is the mod-2 reduction of $c_1(U(n_f)/\bZ_2)$.
+
+We now compute the anomaly cochains in the four cases separately:
+\paragraph{$(n_c,n_f)$=(even,even):}
+$w_2(SO(2n_c))$ and $c_1(U(n_f))$ can be generalized without problem,
+and therefore \begin{equation}
+\delta(\frac12 w_2(SO(2n_c)) c_1(U(n_f))) = 0.
+\end{equation}
+
+\paragraph{$(n_c,n_f)$=(odd,even):}
+$w_2(SO(2n_c))$ needs to be upgraded to a $\bZ_4$-valued cochain $a_2(SO(2n_c)/\bZ_2)$.
+The original interaction is then \begin{equation}
+\frac14 a_2(SO(2n_c)/\bZ_2) c_1(U(n_f))
+\end{equation}
+which is closed without problem.
+
+\paragraph{$(n_c,n_f)$=(even,odd):}
+Here we need to replace $c_1(U(n_f))$ by $c_1(U(n_f)/\bZ_2)/2$.
+The effective interaction is then \begin{equation}
+\frac14 w_2(SO(2n_c)/\bZ_2) c_1(U(n_f)/\bZ_2) 
+\end{equation} whose $\delta$ is \begin{align}
+\delta(\frac14 w_2(SO(2n_c)/\bZ_2) c_1(U(n_f)/\bZ_2) )
+&= \frac12 (\frac12\delta w_2(SO(2n_c)) c_1(U(n_f)/\bZ_2) ) \\
+&= \frac12 (\beta w_2(SO(2n_c)))c_1(U(n_f)/\bZ_2) 
+\end{align}
+which is the pull-back of the anomaly cochain
+\begin{equation}
+ \frac12 (\beta w_2(SO(2n_c)))v_2(USp(2n_f)/\bZ_2). 
+\end{equation}
+
+\paragraph{$(n_c,n_f)$=(odd,odd):}
+Now we make the replacement on both sides and the effective interaction is \begin{equation}
+\frac18 a_2(SO(2n_c)/\bZ_2) c_1(U(n_f)/\bZ_2) 
+\end{equation}
+whose $\delta$ is \begin{align}
+\delta(\frac18 a_2(SO(2n_c)/\bZ_2) c_1(U(n_f)/\bZ_2) )
+&= \frac12 (\frac14\delta a_2(SO(2n_c)/\bZ_2) c_1(U(n_f)/\bZ_2) ) \\
+&= \frac12 (\beta_2 a_2(SO(2n_c)/\bZ_2))c_1(U(n_f)/\bZ_2) 
+\end{align}
+which is the pull-back of \begin{equation}
+ \frac12 (\beta_2 a_2(SO(2n_c)))v_2(USp(2n_f)),
+\end{equation}
+which is more or less what we need, 
+since $a_2(SO(2n_c)=v_2(USp(2n_f)/\bZ_2)$ up to exact terms.
 
 \newpage
 
