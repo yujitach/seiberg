@@ -273,6 +273,7 @@ This means that we have the following extension of groups \begin{equation}
 \to \bZ_4 
 \to \underbrace{\bZ_2}_{\substack{\text{group of gauge Wilson lines }\\
 \text{up to screening}}} \to 0.
+\label{charge-extension}
 \end{equation}
 
 As the groups of charges of $\su(2n_f)$ 0-form symmetry and $\bZ_2$ 1-form symmetry are combined nontrivially, 
@@ -290,15 +291,23 @@ and $v_2$ can be considered as the background field for this $\bZ_2$ 1-form cent
 Now, without the flavor background,  the background $E\in H^2(X,\bZ_2)$ for the electric $\bZ_2$ one-form symmetry of the $\Spin(2n_c)$ theory sets the Stiefel-Whitney class $w_2\in H^2(X,\bZ_2)$ of the $\SO(2n_c)$ gauge bundle to be $E=w_2$, which controls whether it lifts to a $\Spin(2n_c)$ bundle.
 When the flavor background $v_2$ is nontrivial,
 the obstruction class $a_2$ controlling the lift from $\SO(2n_c)/\bZ_2$ to $\SO(2n_c)$ is nontrivial.
-In this situation when $n_c$ is odd, $w_2$ can no longer be defined as a closed cochain; rather it satisfies $\delta w_2 = \beta a_2$, where $\beta$ is the Bockstein operation.
+In this situation when $n_c$ is odd, $w_2$ can no longer be defined as a closed cochain; rather it satisfies $\delta w_2 = \beta a_2$, where $\beta$ is the Bockstein operation,
+since together they specify the obstruction class $x_2\in H^2(X,\bZ_4)$ 
+controlling the lift from $\SO(2n_c)/\bZ_2=\Spin(2n_c)/\bZ_4$ to $\Spin(2n_c)$.
 As $E=w_2$ and $a_2=v_2$, we conclude that the background fields satisfy \begin{equation}
 \delta E=\beta v_2.
+\label{ba}
 \end{equation}
 This means that the $\bZ_2$ 1-form symmetry and the $\SU(2n_f)/\bZ_2$ 0-form flavor symmetry form the 2-group $H$ fitting in the sequence \begin{equation}
 0\to \bZ_2[1]\to H \to \SU(2n_f)/\bZ_2 \to 0
+\label{group-extension}
 \end{equation} whose Postnikov class is $\beta v_2 \in H^3(B\SU(2n_f)/\bZ_2,\bZ_2)$.
 
-
+Before proceeding, we note that having the extension of groups of charges of line operators as in \eqref{charge-extension}
+is equivalent to having a nontrivial 2-group extension \eqref{group-extension} 
+whose background fields satisfy \eqref{ba}.
+Therefore, to find a nontrivial 2-group extension, we can simply study the group of charges of line operators,
+which we will carry out for $\SO_\pm$ gauge theories next.
 
 \def\arxivfont{\rm}
 \bibliographystyle{ytamsalpha}
