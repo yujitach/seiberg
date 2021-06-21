@@ -13,7 +13,7 @@
 \numberwithin{equation}{section}
 \usepackage{slashed}
 \usepackage{braket}
-\usepackage[svgnames]{xcolor}
+\usepackage[svgnames,psnames]{xcolor}
 \usepackage[colorlinks,citecolor=DarkGreen,linkcolor=FireBrick,urlcolor=FireBrick,linktocpage,unicode]{hyperref}
 \urlstyle{rm}
 %\usepackage[colorlinks,citecolor=black,linkcolor=black]{hyperref}
@@ -46,7 +46,16 @@
 \newcommand{\comment}[1]{\textcolor{red}{[#1]}}
 
 %% Yuji's macros
-%%list tmf
+%%list SeibergDual
+
+
+
+%% Color
+\usepackage{colortbl}
+\definecolor{lightyellow}{rgb}{1.0, 0.95, 0.7}
+\definecolor{lightblue}{rgb}{0.7, 0.9, 1.0}
+\definecolor{lightpink}{rgb}{1.0, 0.85, 0.95}
+\definecolor{lightgreen}{rgb}{0.7, 1.0, 0.4}
 
 \def\Nequals#1{$\mathcal{N}{=}#1$}
 \def\bZ{\mathbb{Z}}
@@ -55,6 +64,29 @@
 \def\Tmf{\mathrm{Tmf}}
 \def\tmf{\mathrm{tmf}}
 \def\tr{\mathop{\mathrm{tr}}}
+
+\def\SU{\mathrm{SU}}
+\def\SO{\mathrm{SO}}
+\def\so{\mathfrak{so}}
+\def\Spin{\mathrm{Spin}}
+\def\boo{0.0}
+\def\xlattice#1#2#3{
+\begin{tikzpicture}[scale=.5]
+\filldraw[color=black!5!white](-.5,-.5) rectangle (1.5,1.5);
+\draw[->] (-1,0) -- (2,0);
+\draw[->] (0,-1) -- (0,2);
+\foreach \x in {0,1} {
+	\foreach \y in {0,1}{
+		\pgfmathsetmacro\a{mod(#1 * \x - #2 * \y,2)}
+		\ifx\a\boo
+			\filldraw[color=#3] (\x,\y) circle (.5em);
+		\else
+			\filldraw[fill=white,draw=gray] (\x,\y) circle (.5em);
+		\fi
+	}
+}
+\end{tikzpicture}
+}
 
 \begin{document}
 
@@ -106,6 +138,46 @@ $\mathfrak{so}(2n_c)\leftrightarrow\mathfrak{so}(2n_f-n_c+4)$ of Intriligator an
 
 \section{Introduction and summary}
 \label{sec:introduction}
+Our understanding of the concept of symmetries in quantum field theories has been greatly improved in the last several years.
+We now have the concept of $p$-form symmetries acting on $p$-dimensional objects \cite{Gaiotto:2014kfa}.
+This concept  gives a unifying point of view to both
+ordinary symmetries acting on point operators for $p=0$
+and center symmetries of gauge theories acting on Wilson line operators for $p=1$.
+In addition, the 't Hooft magnetic flux \cite{tHooft:1979rtg} can now be thought of as a background gauge field for the 1-form center symmetry.
+It is also realized more recently that 0-form symmetries and 1-form symmetries can not only coexist in a direct product but also mix in a more intricate manner.
+They can have mixed anomalies between them.
+They can also combine to form a symmetry structure called 2-groups \cite{Cordova:2018cvg,Benini:2018reh}.
+
+In this paper we study these issues in the case of 4d $\so(N_c)$ gauge theories with 
+$N_f$ flavors of fermion fields in vector representation.
+Let us quickly recall the 0-form and 1-form symmetries these theories have.
+
+As for the 1-form symmetry, we first need to recall that 
+such theories come in three versions, $\Spin$, $\SO_+$ and $\SO_-$,
+distinguished by the global form of the gauge group ($\Spin$ vs.~$\SO$)
+and by the choice of a discrete theta angle ($\SO_+$ vs.~$\SO_-$) \cite{Aharony:2013hda}\footnote{%
+This is when the theories are considered on spin manifolds.
+On more general manifolds a further distinction needs to be made \cite{Ang:2019txy}.
+For simplicity we only consider spin manifolds in this paper.
+}.
+They also differ by the nontrivial line operator they possess: 
+the $\Spin$ theory has the Wilson line $W$ in the spinor representation,
+the $\SO_+$ theory has the 't Hooft line $H$ which is mutually non-local with respect to $W$,
+and the $\SO_-$ theory has the dyonic line $D=WH$. 
+Furthermore, these line operators are charged under corresponding $\bZ_2$ 1-form symmetries,
+which we can all electric, magnetic and dyonic 1-form symmetries.
+
+As for the 0-form symmetry, 
+we focus our attention on the $\SU(N_f)$ symmetry acting on $N_f$ flavors of matter fields 
+in the vector representation.
+There can be and definitely are other discrete symmetries, but we will not consider them in this paper for brevity.
+
+Our main question is then how the $\bZ_2$ 1-form symmetry and the $\SU(N_f)$ 0-form symmetry are related.\footnote{%
+A partial answer was given in \cite{Hsin:2020nts}, but the contribution from fermions was not taken into account in that reference.
+}
+We concentrate on the case when $N_c$ and $N_f$ are both even, $N_c=2n_c$ and $N_f=2n_f$.
+
+\section{Charges of line operators in $\so$ QCD}
 
 
 
