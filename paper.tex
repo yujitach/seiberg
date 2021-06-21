@@ -46,6 +46,41 @@
 %% Comment
 \newcommand{\comment}[1]{\textcolor{red}{[#1]}}
 
+\usepackage{ascmac}
+\usepackage{spectralsequences}
+\usepackage{dashbox}
+
+\DeclareSseqGroup\tower {} {
+	\class(0,0)\foreach \i in {1,...,8} {
+		\class(0,\i)
+		\structline(0,\i-1,-1)(0,\i,-1)
+	}
+}
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\definecolor{lightyellow}{rgb}{1.0, 0.95, 0.7}
+\definecolor{blue}{rgb}{0.0, 0.4, 1.0}
+\definecolor{Blue}{rgb}{0,0,1}
+\definecolor{darkgreen}{rgb}{0.,0.6,0.}
+\newcommand*{\red}[1]{\textcolor{red}{#1}}
+\newcommand*{\Blue}[1]{\textcolor{Blue}{#1}}
+\newcommand*{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand*{\green}[1]{\textcolor{darkgreen}{#1}}
+\newcommand*{\black}[1]{\textcolor{black}{#1}}
+
+\definecolor{colorA}{rgb}{1,0,0}
+\definecolor{colorB}{rgb}{0,0.3,1}
+\definecolor{colorC}{rgb}{0.9,0.8,0.2}
+\definecolor{colorD}{rgb}{0,0.65,0}
+
+\newcommand*{\colorA}[1]{\textcolor{colorA}{#1}}
+\newcommand*{\colorB}[1]{\textcolor{colorB}{#1}}
+\newcommand*{\colorC}[1]{\textcolor{colorC}{#1}}
+\newcommand*{\colorD}[1]{\textcolor{colorD}{#1}}
+
+
 %% Yuji's macros
 %%list SeibergDual
 
@@ -75,6 +110,7 @@
 \def\so{\mathfrak{so}}
 \def\usp{\mathfrak{usp}}
 \def\Spin{\mathrm{Spin}}
+\def\SL{\mathrm{SL}}
 \def\boo{0.0}
 \def\xlattice#1#2#3{
 \begin{tikzpicture}[scale=.5]
@@ -233,7 +269,7 @@ in $\so(2n_c)$ QCD.
 and `extension' is when they combine into a nontrivial 2-group. 
 The orange lines show how the duality of Intriligator and Seiberg acts on this set of theories.
 \label{table:main}}
-\end{table}
+
 \tikz[overlay,remember picture]{%
 \draw[<->,bend left,color=Orange,line width=1.5] (A.north) to (C.north);
 \draw[<->,color=Orange,line width=1.5] (B.north west) .. controls +(80:0.5) ..  (B.north east);
@@ -243,6 +279,7 @@ The orange lines show how the duality of Intriligator and Seiberg acts on this s
 \draw[<->,color=Orange,line width=1.5] (T.south) to (M.north);
 \draw[<->,color=Orange,line width=1.5] (U.south) to (L.north);
 }
+\end{table}
 
 Our result is equally applicable in the case of \Nequals1 supersymmetric QCD, for which
 Intriligator and Seiberg found in \cite{Intriligator:1995id} a duality exchanging $\so(N_c)$ and $\so(N_f-N_c+4)$,
@@ -442,6 +479,211 @@ in $\so(2n_c)$ QCD.
 and `extended' means that they form a nontrivial 2-group.
 \label{table:2group}}
 \end{table}
+
+\section{$\SL(2,\bZ_2)$ action and the anomalies}
+
+In the last section we determined the 2-group structure of the $\so(2n_c)$ gauge theories with $2n_f$ flavors, by studying the group of the charges of line operators. 
+In a quantum field theory, any symmetry comes with its (possibly trivial) 't Hooft anomaly.
+Here we determine the anomalies of these theories using the $\SL(2,\bZ_2)$ action on the set of quantum field theories (QFTs) with $\bZ_2$ 1-form symmetry.
+
+\subsection{$\SL(2,\bZ_2)$ action}
+Let us say that  a four-dimensional spin QFT $Q$ with $\bZ_2$ 1-form symmetry is given.
+We denote its partition function on a manifold $X$ by $Z_Q[E]$, 
+where we suppress the dependence on $X$ in the notation and $E\in H^2(X,\bZ_2)$ is the background field for the 1-form symmetry.
+We then define $SQ$ and $TQ$ to be given by the formula \begin{equation}
+Z_{SQ}[B] \propto \sum_{E} (-1)^{\int_X B\cup E} Z_Q{B},\qquad
+Z_{TQ}[E]= (-1)^{\int_X \tfrac12 \mathfrak{P}(E)} Z_Q[E].
+\end{equation}
+We can show that $S^2=T^2=1$ and $(ST)^3=1$, meaning that they generate $\SL(2,\bZ_2)$.
+This operation was considered in  \cite{Gaiotto:2014kfa} as an analogue of the $\SL(2,\bZ)$ action on 3d theories with $\U(1)$ symmetry of  \cite{Witten:2003ya} and then further studied in \cite{Bhardwaj:2020ymp}.
+
+\subsection{$\SL(2,\bZ_2)$ action and $\so$ gauge theories}
+
+Importantly, $\Spin(2n_c)$ and $\SO(2n_c)_\pm$  gauge theories with $2n_f$ flavors with the same $n_c$ and $n_f$ form a single orbit under this $\SL(2,\bZ)$ action.
+More precisely, we need to make the distinction between $\Spin(2n_c)$ and $T(\Spin(2n_c))$ and  similarly between $\SO(2n_c)_\pm$ and $T\SO(2n_c)_\pm$, respectively.
+Here the theories with $T$ prepended are different from the original ones only by its coupling to the background.
+Then we have the following chain of actions: \begin{equation}
+T\Spin \stackrel{T}{\longleftrightarrow} 
+\Spin \stackrel{S}{\longleftrightarrow} 
+\SO_+ \stackrel{T}{\longleftrightarrow} 
+T\SO_+ \stackrel{S}{\longleftrightarrow} 
+T\SO_- \stackrel{T}{\longleftrightarrow} 
+\SO_- \stackrel{S}{\longleftrightarrow} .
+\end{equation}
+
+Let us now study what happens if we perform this $\SL(2,\bZ_2)$ action when the $\bZ_2$ 1-form symmetry in question is part of a larger symmetry group.
+So far we have been considering the effect of $\SU(2n_f)/\bZ_2$ flavor symmetry,
+but the discussions in the last section shows that at a formal level only the background field $v_2 \in H^2(X,\bZ_2)$ matters, which controls the lift from $\SU(2n_f)/\bZ_2$ to $\SU(2n_f)$.
+Let us regard $v_2$ as the background field for a flavor $\bZ_2$ 1-form symmetry.
+
+The combined 1-form symmetry is either $\bZ_2\times \bZ_2$ or $\bZ_4$,
+and we perform the $\SL(2,\bZ_2)$ action  by picking a $\bZ_2$ subgroup.
+The symmetry and the anomaly of the resulting theory can be determined by a formal argument once the symmetry and the anomaly of the original theory 
+and the action of the anomaly-free subgroup to be gauged is given \cite{Tachikawa:2017gyf}.
+
+As detailed in the Appendix~\ref{sec:bordism}, the only possible anomaly of $\bZ_2\times \bZ_2$ 1-form symmetry of 4d spin QFTs is \begin{equation}
+2\pi i \tfrac12 \int_Y B\beta E  \label{anom}
+\end{equation} where $Y$ is the 5d spin manifold and $B,E\in H^2(Y,\bZ_2)$ are the background fields,
+there is no anomaly for $\bZ_4$ 1-form symmetry.
+
+\subsection{$\SL(2,\bZ_2)$ actions with extra background }
+
+Let us now determine how the $\SL(2,\bZ_2)$ action affects these data.
+The case $\bZ_2\times \bZ_2$ with no anomaly is very easy.
+The additional $\bZ_2$ factor plays no role, and we find the chain of actions given by \begin{equation}
+\text{none} \stackrel{T}{\longleftrightarrow} 
+\text{none} \stackrel{S}{\longleftrightarrow} 
+\text{none} \stackrel{T}{\longleftrightarrow} 
+\text{none} \stackrel{S}{\longleftrightarrow} 
+\text{none} \stackrel{T}{\longleftrightarrow} 
+\text{none} \stackrel{S}{\longleftrightarrow} 
+\label{trivial-chain}
+\end{equation} where `none' stands for $\bZ_2\times \bZ_2$ with no anomaly.
+
+Let us now consider $\bZ_4$ 1-form symmetry and gauge its $\bZ_2$ subgroup,
+without the background term $\frac12\mathfrak{P}(E)$.
+As described in \cite{Tachikawa:2017gyf},
+the resulting theory has $\bZ_2\times \bZ_2$ 1-form symmetry with the anomaly \eqref{anom}.
+
+When we gauge the $\bZ_2$ subgroup  of $\bZ_4$ 1-form symmetry 
+with the background term $\frac12\mathfrak{P}(E)$,
+the resulting theory instead have $\bZ_4$ symmetry
+with the background term $\frac12\mathfrak{P}(E)$.
+This can be seen as follows:
+the gauging process involves the term
+ \begin{equation}
+\exp\left(2\pi i\int_X ( \frac14 \mathfrak{P}(E) +\frac12 B E)\right)
+\label{boo}
+\end{equation}
+where $E$ is the variable to be gauged and $B$ is the newly introduced background field.
+When $\bZ_2$ to be gauged is the $\bZ_2$ subgroup of a $\bZ_4$ symmetry,
+$E$ is not necessarily closed, but satisfies rather the relation \begin{equation}
+\delta E = \beta v_2
+\end{equation}
+where $v_2$ is the background field for the quotient $\bZ_4/\bZ_2$ 1-form symmetry.
+Then the second term in \eqref{boo} is not closed, 
+and to even talk about the first term in \eqref{boo}, one first needs to extend the definition of the Pontryagin square $\mathfrak{P}$ to non-closed cochains.
+
+To make  the coupling \eqref{boo}  well-defined, we consider adding a background term to \eqref{boo} so that we have \begin{equation}
+\exp\left(2\pi i\int_X ( \frac14 \mathfrak{P}(E) +\frac12 B E + \frac14 \mathfrak{P}(B) )\right)
+= 
+\exp \left(2\pi i \frac14 \int_X \mathfrak{P}(E+B)\right) .
+\end{equation}
+This is perfectly well-defined if the newly-introduced background field $B$  also satisfies \begin{equation}
+\delta B=\beta v_2.
+\end{equation}
+This means that the 1-form symmetry after the gauging is still extended, with a background coupling.
+
+Combined, the preceding arguments allows us to  see the chain of actions \begin{equation}
+\text{extended} \stackrel{S}{\longleftrightarrow} 
+\text{anomaly} \stackrel{T}{\longleftrightarrow} 
+\text{anomaly} \stackrel{S}{\longleftrightarrow} 
+\text{extended} \stackrel{T}{\longleftrightarrow} 
+\begin{array}{c}
+\text{extended}\\
+\text{and with $\mathfrak{P}$} 
+\end{array} 
+\stackrel{S}{\longleftrightarrow} 
+\begin{array}{c}
+\text{extended }\\
+\text{and with $\mathfrak{P}$} 
+\end{array} 
+\stackrel{T}{\longleftrightarrow} 
+\label{nontrivial-chain}
+\end{equation}
+where `extended' stands for $\bZ_4$ without the background term $\frac12\mathfrak{P}(E)$,
+`extended with $\mathfrak{P}$' is for $\bZ_4$ with the background term,
+and `anomaly' is $\bZ_2\times \bZ_2$ with the anomaly \eqref{anom}.
+
+
+\subsection{Anomalies from $\SL(2,\bZ_2)$ action} 
+Comparing the chains of actions \eqref{trivial-chain} and \eqref{nontrivial-chain} we determined above 
+and Table~\ref{table:2group},
+we see that the anomaly is automatically determined and 
+we obtain the result already presented in Table~\ref{table:main}.
+There is a small puzzle to be resolved, but it's already 1pm. I am going to sleep...
+
+\appendix
+\section{Bordism group computations}
+\label{sec:bordism}
+\subsection{$\bZ_4$ 1-form symmetry}
+According to \cite[Appendix C.3]{Clement2002} and \cite[Eq.\,(6.3)]{Wan:2018bns}, it seems that we have
+\begin{equation}
+	\begin{array}{ccc}
+		E^2_{p,q}=H_p\big(K(\bZ_4,2);\Omega_q^{\text{spin}}\big) && \widetilde\Omega_{p+q}^{\text{spin}}(K(\bZ_4,2))\vspace{4mm}\\
+		\begin{array}{c|c:cccccccccccc}
+			6  &&&&&& \\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  & \bZ_2 &  & \red{\fbox{\black{$\bZ_2$}}} & \Blue{\fbox{\black{$\bZ_2$}}}\cellcolor{lightyellow} & \ast & \ast & \ast\\
+			1  & \bZ_2 && \red{\dbox{\black{$\bZ_2$}}} & \Blue{\dbox{\black{$\bZ_2$}}} & \red{\fbox{\black{$\bZ_2$}}}\cellcolor{lightyellow} & \Blue{\fbox{\black{$\bZ_2$}}} & \ast\\
+			0 & \bZ &  & \bZ_4 &  & \red{\dbox{\black{$\bZ_8$}}} & \Blue{\dbox{\black{$\bZ_2$}}} \cellcolor{lightyellow} & \ast\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+		& \quad\longrightarrow & 
+		\begin{array}{c|c}
+			6  & \ast\\
+			5  & \cellcolor{lightyellow}\\
+			4  & \bZ_4\\
+			3  & \\
+			2  & \bZ_4\\
+			1  & \\
+			0 & \\
+			\hline\\
+		\end{array}
+	\end{array}
+\end{equation}
+
+The corresponding invariant in 4d is simply \begin{equation}
+\exp(2\pi i \frac{p}{4} \int \frac12\mathfrak{P}(a) )
+\end{equation}
+where $\mathfrak{P}:H^2(-,\bZ_4)\to H^4(-,\bZ_8)$ is the Pontryagin square,
+which is even mod 8 on a spin manifold.
+
+\subsection{$\bZ_2\times \bZ_2$ 1-form symmetry}
+Exploiting the fact that $K(\bZ_2\times \bZ_2, 2) = K(\bZ_2, 2) \times K(\bZ_2, 2)$,
+it seems that we have
+\begin{equation}
+	\begin{array}{ccc}
+		E^2_{p,q}=H_p\big(K(\bZ_2\times \bZ_2,2);\Omega_q^{\text{spin}}\big)
+		&& \widetilde\Omega_{p+q}^{\text{spin}}(K(\bZ_2\times \bZ_2,2))\vspace{4mm}\\
+		\begin{array}{c|c:cccccccccccc}
+			6  &&&&&& \\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  & \bZ_2 &  & \red{\fbox{\black{$\bZ_2^{\oplus 2}$}}} & \Blue{\fbox{\black{$\bZ_2^{\oplus 2}$}}}\cellcolor{lightyellow} & \ast & \ast & \ast\\
+			1  & \bZ_2 && \red{\dbox{\black{$\bZ_2^{\oplus 2}$}}} & \Blue{\dbox{\black{$\bZ_2^{\oplus 2}$}}} & \green{\fbox{\red{\fbox{\black{$\bZ_2^{\oplus 3}$}}}}}\cellcolor{lightyellow} & \Blue{\fbox{\black{$\bZ_2^{\oplus 6}$}}} & \ast\\
+			0 & \bZ &  & \bZ_2^{\oplus 2} &  & \red{\dbox{\black{$\bZ_4^{\oplus 2}\oplus \bZ_2$}}} & \Blue{\dbox{\black{$\bZ_2^{\oplus 3}$}}} \cellcolor{lightyellow} & \green{\fbox{\black{$\ast$}}}\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+		& \quad\longrightarrow & 
+		\begin{array}{c|c}
+			6  & \ast\\
+			5  & \bZ_2\cellcolor{lightyellow}\\
+			4  & \bZ_2^{\oplus 3}\\
+			3  & \\
+			2  & \bZ_2^{\oplus 2}\\
+			1  & \\
+			0 & \\
+			\hline\\
+		\end{array}
+	\end{array}
+\end{equation}
+The $\bZ$ homology of $K(\bZ_2, 2)$ is again read off from \cite{Clement2002},
+while the $\bZ_2$ (co)homology is known \cite{Serre1953} to be
+\begin{equation*}
+	H^\ast(K(\bZ_2,2);\bZ_2)
+	=
+	\bZ_2[x_2, Sq^1 x_2, Sq^2Sq^1 x_2, \cdots].
+\end{equation*}
+
+The corresponding bordism invariants in 4d are $\mathfrak{P}(a)/2$, $ab$, $\mathfrak{P}(b)/2$, 
+and the one in 5d is $a\beta b$.
+
 
 
 
