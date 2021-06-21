@@ -574,21 +574,25 @@ This is perfectly well-defined if the newly-introduced background field $B$  als
 \end{equation}
 This means that the 1-form symmetry after the gauging is still extended, with a background coupling.
 
-Combined, the preceding arguments allows us to  see the chain of actions \begin{equation}
-\text{extended} \stackrel{S}{\longleftrightarrow} 
-\text{anomaly} \stackrel{T}{\longleftrightarrow} 
-\text{anomaly} \stackrel{S}{\longleftrightarrow} 
-\text{extended} \stackrel{T}{\longleftrightarrow} 
+\def\ewith{
 \begin{array}{c}
 \text{extended}\\
-\text{and with $\mathfrak{P}$} 
+\text{with $\mathfrak{P}$} 
 \end{array} 
-\stackrel{S}{\longleftrightarrow} 
+}
+\def\ewithout{
 \begin{array}{c}
-\text{extended }\\
-\text{and with $\mathfrak{P}$} 
+\text{extended}\\
+\text{without $\mathfrak{P}$} 
 \end{array} 
-\stackrel{T}{\longleftrightarrow} 
+}
+Combined, the preceding arguments allows us to  see the chain of actions \begin{equation}
+\ewith \stackrel{T}{\longleftrightarrow} 
+\ewithout \stackrel{S}{\longleftrightarrow} 
+\text{anomaly} \stackrel{T}{\longleftrightarrow} 
+\text{anomaly} \stackrel{S}{\longleftrightarrow} 
+\ewithout \stackrel{T}{\longleftrightarrow} 
+\ewith \stackrel{S}{\longleftrightarrow} 
 \label{nontrivial-chain}
 \end{equation}
 where `extended' stands for $\bZ_4$ without the background term $\frac12\mathfrak{P}(E)$,
@@ -601,7 +605,19 @@ Comparing the chains of actions \eqref{trivial-chain} and \eqref{nontrivial-chai
 and Table~\ref{table:2group},
 we see that the anomaly is automatically determined and 
 we obtain the result already presented in Table~\ref{table:main}.
-There is a small puzzle to be resolved, but it's already 1pm. I am going to sleep...
+
+More precisely, when `extended' or `anomaly' is involved, 
+we should better distinguish $\Spin(2n_c)$ and $T\Spin$, etc.
+We find the following:{\small \begin{equation}
+\begin{array}{r@{\,}l|cccccc}
+(n_c,&n_f)  & T\Spin & \Spin & \SO_+ & T\SO_+& T\SO_- & \SO_- \\
+\hline
+(\text{odd},&\text{even}) & \text{e.with} &\text{e.without} & \text{anom} & \text{anom} & \text{e.without } & \text{e.with} \\
+(\text{even},&\text{odd}) & \text{anom} & \text{anom} & \text{e.without } & \text{e.with}  & \text{e.with} & \text{e.without} \\
+(\text{odd},&\text{odd}) & \text{e.without } & \text{e.with} & \text{e.with} & \text{e.without}
+ &  \text{anom} & \text{anom}   \end{array} 
+\end{equation}}
+
 
 \appendix
 \section{Bordism group computations}
