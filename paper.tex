@@ -21,6 +21,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 %\usepackage{tikz-cd}
+\newcommand{\tikzmark}[1]{\tikz[remember picture,overlay]\node (#1){};}
 \tikzset{>=stealth}
 
 \usepackage{times}
@@ -67,6 +68,7 @@
 
 \def\SU{\mathrm{SU}}
 \def\SO{\mathrm{SO}}
+\def\su{\mathfrak{su}}
 \def\so{\mathfrak{so}}
 \def\Spin{\mathrm{Spin}}
 \def\boo{0.0}
@@ -103,7 +105,7 @@
 \begin{center}
 
 {\Large \bfseries Higher symmetries and anomalies \\[1em]
-in $\mathfrak{so}$ QCD  and \Nequals1 duality}
+in $\so$ QCD  and \Nequals1 duality}
 
 \vskip 1cm
 Yasunori Lee$^1$, Kantaro Ohmori$^2$, and Yuji Tachikawa$^1$
@@ -122,13 +124,13 @@ $^2$ & Department of Physics, Faculty of Science, \\
 
 
 \noindent
-We study higher symmetries and anomalies of 4d  $\mathfrak{so}(2n_c)$ gauge theory with $N_f=2n_f$ flavors.
+We study higher symmetries and anomalies of 4d  $\so(2n_c)$ gauge theory with $N_f=2n_f$ flavors.
 We find that they depend on the parity of $n_c$ and $n_f$,
 on the global form of the gauge group, and the discrete theta angle.
 The contribution from the fermions plays a central role in our analysis.
 Furthermore, our conclusion applies to \Nequals1 supersymmetric cases as well, and
 we see that higher symmetries and anomalies match across the duality 
-$\mathfrak{so}(2n_c)\leftrightarrow\mathfrak{so}(2n_f-n_c+4)$ of Intriligator and Seiberg.
+$\so(2n_c)\leftrightarrow\so(2n_f-n_c+4)$ of Intriligator and Seiberg.
 
 
 \end{titlepage}
@@ -168,14 +170,86 @@ Furthermore, these line operators are charged under corresponding $\bZ_2$ 1-form
 which we can all electric, magnetic and dyonic 1-form symmetries.
 
 As for the 0-form symmetry, 
-we focus our attention on the $\SU(N_f)$ symmetry acting on $N_f$ flavors of matter fields 
+we focus our attention on the $\su(N_f)$ symmetry acting on $N_f$ flavors of matter fields 
 in the vector representation.
 There can be and definitely are other discrete symmetries, but we will not consider them in this paper for brevity.
 
-Our main question is then how the $\bZ_2$ 1-form symmetry and the $\SU(N_f)$ 0-form symmetry are related.\footnote{%
+The main question is then how the $\bZ_2$ 1-form symmetry and the $\su(N_f)$ 0-form symmetry are related.\footnote{%
 A partial answer was given in \cite{Hsin:2020nts}, but the contribution from fermions was not taken into account in that reference.
+Our conclusion is therefore somewhat different from theirs.
 }
 We concentrate on the case when $N_c$ and $N_f$ are both even, $N_c=2n_c$ and $N_f=2n_f$.
+
+Take for example the $Spin(2n_c)$ gauge theory with $2n_f$ flavors,
+when $n_c$ is odd.
+Take two copies of  the Wilson line $W$ in the spinor representation. 
+They form a Wilson line in the vector representation.
+This can be screened by a dynamical fermion, which was why $W^2=1$ 
+as far as the 1-form symmetry charge was concerned.
+Now let us recall that this dynamical fermion transforms nontrivially under $-1\in \SU(2n_f)$.
+Therefore, when we take the flavor symmetry into account, $W^2$ is still nontrivial.
+As we will recall below,  formally this means that the $\bZ_2$ 1-form symmetry extends the $\SU(2n_f)/\bZ_2$ 0-form symmetry in a nontrivial manner, forming a nontrivial 2-group  $H$\begin{equation}
+0\to \bZ_2[1] \to H\to \SU(2n_f)/\bZ_2\to 0,\label{2-group}
+\end{equation}
+whose Postnikov class is specified by \begin{equation}
+\beta v_2 \in H^3(\SU(2n_f)/\bZ_2,\bZ_2),\label{postnikov}
+\end{equation}
+where $a_2$ is the generator of $H^2(\SU(2n_f)/\bZ_2,\bZ_2)=\bZ_2$ and $\beta$ is the Bockstein.
+
+The $\SO_+$ gauge theory is then obtained by gauging the $\bZ_2$ 1-form symmetry \cite{Kapustin:2014gua}.
+The presence of the fermions significantly complicates the analysis.
+For the moment let us suppose that we have $N_f$ scalars instead of fermions in the vector representation.
+Then, the argument of \cite{Tachikawa:2017gyf} immediately applies, and 
+we see that the $\bZ_2$ 1-form symmetry of the $\SO(2n_f)$ theory and the $\SU(2n_f)/\bZ_2$ 0-form flavor symmetry remains a direct product but with a mixed anomaly given by \begin{equation}
+2\pi i \frac12 \int B\beta v_2.\label{mixed}
+\end{equation}
+
+
+In the rest of the paper, we will carefully analyze how the $\bZ_2$ 1-form symmetry and the $\SU(2n_f)/\bZ_2$ 0-form symmetry are combined.
+The derivation will be detailed in the following, and here we simply summarize the result  in Table~\ref{table:main}.
+There, `none' specifies that they remain a direct product without mixed anomaly;
+`anomaly' implies that they remain a direct product but with mixed anomaly of the form \eqref{mixed};
+and `extension' means that they combine into a 2-group given by \eqref{2-group} with the Postnikov class \eqref{postnikov}.
+
+
+\begin{table}
+\centering
+\begin{tabular}{r@{\vphantom{$\Bigm|$}\,}l|ccc}
+$(n_c,$&$n_f)$ & $\Spin$ & $\SO_+$ & $\SO_-$\\
+\hline
+(even,&even) & no\tikzmark{A}ne & no\tikzmark{B}ne & no\tikzmark{C}ne \\
+(odd,&even) & exte\tikzmark{P}nsion & ano\tikzmark{Q}maly & exte\tikzmark{R}nsion \\
+(even,&odd) & ano\tikzmark{S}maly & exte\tikzmark{T}nsion & exte\tikzmark{U}nsion \\
+(odd,&odd) & exte\tikzmark{L}nsion & exte\tikzmark{M}nsion & ano\tikzmark{N}maly 
+\end{tabular}
+\caption{How the $\bZ_2$ 1-form symmetry and the $\SU(2n_f)/\bZ_2$ 0-form symmetry are combined
+in $\so(2n_c)$ QCD.
+`none' implies that they remain a direct product without mixed anomaly;
+`anomaly' means that they remain a direct product but with mixed anomaly;
+and `extension' is when they combine into a nontrivial 2-group. 
+The orange lines show how the duality of Intriligator and Seiberg acts on this set of theories.
+\label{table:main}}
+\end{table}
+\tikz[overlay,remember picture]{%
+\draw[<->,bend left,color=Orange,line width=1.5] (A.north) to (C.north);
+\draw[<->,color=Orange,line width=1.5] (B.north west) .. controls +(80:0.5) ..  (B.north east);
+\draw[<->,bend left,color=Orange,line width=1.5] (P.north) to (R.north);
+\draw[<->,color=Orange,line width=1.5] (Q.north west) .. controls +(80:0.5) ..  (Q.north east);
+\draw[<->,color=Orange,line width=1.5] (S.south) to (N.north);
+\draw[<->,color=Orange,line width=1.5] (T.south) to (M.north);
+\draw[<->,color=Orange,line width=1.5] (U.south) to (L.north);
+}
+
+Our result is equally applicable in the case of \Nequals1 supersymmetric QCD, for which
+Intriligator and Seiberg found in \cite{Intriligator:1995id} a duality exchanging $\so(N_c)$ and $\so(N_f-N_c+4)$,
+which in our notation sends $n_c$ to $n_c'=n_f-n_c+2$.
+In \cite{Aharony:2013hda}, this duality was refined to account for the global form of the gauge group and the discrete theta angle, and it was concluded that $\Spin$ is exchanged with $\SO_-$ while $\SO_+$ maps to itself.
+This mapping was checked using supersymmetric localization on $S^3/\bZ_n \times S^1$ in \cite{Razamat:2013opa}.
+Our analysis allows us to check this duality by comparing how the 1-form symmetry and the 0-form symmetry are combined in the dual pairs.
+We superimposed the action of the duality on our main Table~\ref{table:main}.
+It is satisfying to see that the duality action correctly preserves the labels `none', `anomaly' and `extension'.
+
+The rest of the paper is organized as follows ...
 
 \section{Charges of line operators in $\so$ QCD}
 
