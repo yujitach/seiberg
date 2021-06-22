@@ -20,7 +20,7 @@
 \usepackage{cite}
 \usepackage{graphicx}
 \usepackage{tikz}
-%\usepackage{tikz-cd}
+\usepackage{tikz-cd}
 \newcommand{\tikzmark}[1]{\tikz[remember picture,overlay]\node (#1){};}
 \tikzset{>=stealth}
 
@@ -177,7 +177,7 @@ $\so(2n_c)\leftrightarrow\so(2n_f-n_c+4)$ of Intriligator and Seiberg.
 
 \end{titlepage}
 
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 \tableofcontents
 
 \section{Introduction and summary}
@@ -484,12 +484,13 @@ and `extended' means that they form a nontrivial 2-group.
 \end{table}
 
 \section{$\SL(2,\bZ_2)$ action and the anomalies}
-
+\label{sec:sl2z}
 In the last section we determined the 2-group structure of the $\so(2n_c)$ gauge theories with $2n_f$ flavors, by studying the group of the charges of line operators. 
 In a quantum field theory, any symmetry comes with its (possibly trivial) 't Hooft anomaly.
 Here we determine the anomalies of these theories using the $\SL(2,\bZ_2)$ action on the set of quantum field theories (QFTs) with $\bZ_2$ 1-form symmetry.
 
-\subsection{$\SL(2,\bZ_2)$ action}
+\subsection{$\SL(2,\bZ_2)$ action and $\so$ gauge theories}
+
 Let us say that  a four-dimensional spin QFT $Q$ with $\bZ_2$ 1-form symmetry is given.
 We denote its partition function on a manifold $X$ by $Z_Q[E]$, 
 where we suppress the dependence on $X$ in the notation and $E\in H^2(X,\bZ_2)$ is the background field for the 1-form symmetry.
@@ -500,7 +501,6 @@ Z_{TQ}[E]= (-1)^{\int_X \tfrac12 \fP(E)} Z_Q[E].
 We can show that $S^2=T^2=1$ and $(ST)^3=1$, meaning that they generate $\SL(2,\bZ_2)$.
 This operation was considered in  \cite{Gaiotto:2014kfa} as an analogue of the $\SL(2,\bZ)$ action on 3d theories with $\U(1)$ symmetry of  \cite{Witten:2003ya} and then further studied in \cite{Bhardwaj:2020ymp}.
 
-\subsection{$\SL(2,\bZ_2)$ action and $\so$ gauge theories}
 
 Importantly, $\Spin(2n_c)$ and $\SO(2n_c)_\pm$  gauge theories with $2n_f$ flavors with the same $n_c$ and $n_f$ form a single orbit under this $\SL(2,\bZ)$ action.
 More precisely, we need to make the distinction between $\Spin(2n_c)$ and $T(\Spin(2n_c))$ and  similarly between $\SO(2n_c)_\pm$ and $T\SO(2n_c)_\pm$, respectively.
@@ -556,7 +556,7 @@ One difference here is that the discrete theta angle \eqref{P} cannot be extende
 As discussed in the Appendix~\ref{sec:nonclosedP}, with $\delta E=\beta a_2$,
 where $a_2\in H^2(X,\bZ_4/\bZ_2)$,
 one finds \begin{equation}
-\alpha':=\delta \mu = 2\pi i \tfrac12 a_2 \beta_2 a_2.
+\alpha':=\delta \mu = 2\pi i \tfrac12 a_2 \beta_2 a_2.\label{anom'}
 \end{equation}
 Therefore, the pairs we need to consider are $(0,0)$ and $(\mu,0)\sim (0,\alpha')$. 
 
@@ -657,6 +657,135 @@ we confirm the symmetry structures of the $\Spin$ case in the next section
 in a different means.
 
 \section{Fermion contribution to anomalies}
+So far, we first determined the 2-group structure in Sec.~\ref{sec:2-group} by studying the charges of line operators,
+and then determined the anomalies in Sec.~\ref{sec:sl2z} by matching it to the action of $\SL(2,\bZ_2)$.
+Going over  the entries on the column $\Spin$ of Table~\ref{table:refined},
+we find that the anomaly is trivial when $(n_c,n_f)$ is (even,even) or (odd,even),
+while it is $\alpha$ when $(n_c,n_f)$ is (odd,even) and $\alpha'$ when (odd,odd).
+Since the 1-form symmetry background in the $\Spin$ theory is simply the class $w_2$ of the $\SO(2n_c)$ gauge bundle, 
+these anomalies should simply come from the anomalies of fermions under $[\SO(2n_c)\times \USp(2n_f)]/\bZ_2$.
+Here we use $\USp(2n_f)$ instead of $\SU(2n_f)$, because under the latter we also have perturbative anomalies, which could potentially complicate the analysis.
+
+More explicitly, for $n_c$ even, the anomaly should be given by  \begin{equation}
+\alpha= 2\pi i \frac12 w_2 \beta v_2
+\end{equation} when $n_c$ is even,
+where $w_2,v_2$ are the classes in $H^2(X,\bZ_2)$ controlling the lift from $\SO(2n_c)/\bZ_2$ to $\SO(2n_c)$
+and from $\USp(2n_f)/\bZ_2$ to $\USp(2n_f)$, respectively,
+and for $n_c$ odd, the anomaly cochain should be given by 
+ \begin{equation}
+\alpha'=2\pi i \frac12 a_2 \beta_2 a_2
+\end{equation} where $a_2$ is the class in $H^2(X,\bZ_2)$ which is the mod-2 reduction of
+the class in $H^2(X,\bZ_4)$ controlling the lift from $\SO(2n_c)/\bZ_2=\Spin(2n_c)/\bZ_4$ to $\bZ_4$.
+We note that $\alpha'$ is exact, but as explained in the previous section, this still affects the gauging process.
+
+
+The aim of this last section is to give a check of these anomalies from a different point of view.
+We will proceed as follows. 
+We add scalar fields, adjoint under $\USp(2n_f)$ in the system, and break it a subgroup.
+We then determine the effective interaction induced by the fermion zero modes.
+The next step is to see what happens when the symmetry group is further changed from $\SO(2n_c)\times \USp(2n_f)$ to its $\bZ_2$ quotient.
+We will see that the effective interaction will have the required anomalies.
+
+Before proceeding, we have two remarks.
+First, this method was first used in \cite[Sec.~4]{Witten:1995gf} under the name of `a curious minus sign', and recognized as determining an anomaly in \cite[Sec.~2.4.3]{Cordova:2018acb}.
+It was also used in \cite[Sec.~3.1 and Sec.~5.1.2]{Wang:2018qoy}.
+Second, in this section we can only say that the effective interaction we find is compatible with the anomalies
+as found in Sec.~\ref{sec:sl2z},
+and will not be able to determine it completely.
+This is mostly due to the fact that the computation of the spin bordism group $\Omega^\text{spin}_d([\SO(2n_c)\times \USp(2n_f)]/\bZ_2)$ which governs the anomaly is quite hard, 
+because even the integral cohomology of the group in question is hard to obtain.
+In only a couple of cases we can say more, as we comment along the way.
+
+\subsection{Effective interaction}
+We break $\USp(2n_f)$ down to $\U(n_f)$, using a scalar field,
+such that the fundamental representation of $\USp(2n_f)$ splits to the fundamental plus the antifundamental of $\U(n_f)$.
+The monopole charge is given by the first Chern class $c_1$ of the low-energy $\U(n_f)$.
+
+Take a standard 't Hooft-Polyakov monopole associated to $\U(1)\subset \USp(2)$
+and embed it into  $\U(n_f)\subset \USp(2n_f)$.
+The fermion zero modes form a vector representation of $\SO(2n_c)$,
+whose quantization leads to the spinor representation.
+This means that there is an effective interaction \begin{equation}
+2\pi i \frac12 \int_X w_2 c_1
+\end{equation} where $w_2$ is the Stiefel-Whitney class of the $\SO(2n_c)$ bundle
+and $c_1$ is the first Chern class of $\U(n_f)$.
+
+\subsection{Anomalies}
+We now take the $\bZ_2$ quotient, changing the symmetry group from 
+$\SO(2n_c)\times \USp(2n_f)$ to $[\SO(2n_c)\times \USp(2n_f)]/\bZ_2$.
+Note that $\pi_1(U(n_f)/\bZ_2)$ is $\bZ\times \bZ_2$  or $\bZ$ depending on whether $n_f$ is even or odd.
+
+Furthermore, when $n_f$ is even, $c_1(\U(n_f)) = c_1(\U(n_f)/\bZ_2)$ and $v_2(\U(n_f)/\bZ_2)=v_2(\USp(2n_f))$.
+When $n_f$ is odd, $c_1(\U(n_f)/\bZ_2)=2 c_1(\U(n_f))$ when the latter is well-defined and $v_2(\U(n_f)/\bZ_2)$ is the mod-2 reduction of $c_1(\U(n_f)/\bZ_2)$.
+We now compute the anomaly cochains in the four cases separately:
+\paragraph{$(n_c,n_f)$=(even,even):}
+$w_2(\SO(2n_c))$ and $c_1(\U(n_f))$ can be generalized without problem,
+and therefore \begin{equation}
+\delta(\frac12 w_2(\SO(2n_c)) c_1(\U(n_f))) = 0.
+\end{equation}
+
+\paragraph{$(n_c,n_f)$=(odd,even):}
+$w_2(\SO(2n_c))$ needs to be upgraded to a $\bZ_4$-valued cochain $a_2(\SO(2n_c)/\bZ_2)$.
+The original interaction is then \begin{equation}
+\frac14 a_2(\SO(2n_c)/\bZ_2) c_1(\U(n_f))
+\end{equation}
+which is closed without problem,
+and therefore its $\delta$ is zero.
+
+\paragraph{$(n_c,n_f)$=(even,odd):}
+Here we need to replace $c_1(\U(n_f))$ by $c_1(\U(n_f)/\bZ_2)/2$.
+The effective interaction is then \begin{equation}
+\frac14 w_2(\SO(2n_c)/\bZ_2) c_1(\U(n_f)/\bZ_2) 
+\end{equation} whose $\delta$ is \begin{align}
+\delta(\frac14 w_2(\SO(2n_c)/\bZ_2) c_1(\U(n_f)/\bZ_2) )
+&= \frac12 (\frac12\delta w_2(\SO(2n_c)) c_1(\U(n_f)/\bZ_2) ) \\
+&= \frac12 (\beta w_2(\SO(2n_c)))c_1(\U(n_f)/\bZ_2) 
+\end{align}
+which is the pull-back of the anomaly cochain
+\begin{equation}
+ \frac12 (\beta w_2(\SO(2n_c)))v_2(\USp(2n_f)/\bZ_2). 
+\end{equation}
+When $n_c=2$ and $n_f=1$, we can confirm this is indeed the entire anomaly,
+since we can compute $\mathrm{Hom}(\Omega^\text{spin}_5([\SO(4)\times \USp(2)]/\bZ_2),\U(1))$
+and show that this is the only nontrivial element there.
+For details, see Appendix~\ref{sec:so4su2}.
+
+\paragraph{$(n_c,n_f)$=(odd,odd):}
+Now we make the replacement on both sides and the effective interaction is \begin{equation}
+\frac18 a_2(\SO(2n_c)/\bZ_2) c_1(\U(n_f)/\bZ_2) 
+\end{equation}
+whose $\delta$ is \begin{align}
+\delta(\frac18 a_2(\SO(2n_c)/\bZ_2) c_1(\U(n_f)/\bZ_2) )
+&= \frac12 (\frac14\delta a_2(\SO(2n_c)/\bZ_2) c_1(\U(n_f)/\bZ_2) ) \\
+&= \frac12 (\beta_2 a_2(\SO(2n_c)/\bZ_2))c_1(\U(n_f)/\bZ_2) 
+\end{align}
+which is the pull-back of \begin{equation}
+ \frac12 (\beta_2 a_2(\SO(2n_c)))v_2(\USp(2n_f)).
+\end{equation}
+We now recall that the symmetry we are considering now is $[\SO(2n_c)\times \USp(2n_f)]/\bZ_2$,
+and therefore there is a single degree-2 obstruction cochain which equals both $a_2$ and $v_2$,
+and therefore the anomaly cochain is \begin{equation}
+ \frac12 (\beta_2 a_2(\SO(2n_c)))a_2(\USp(2n_f)).
+\end{equation}
+This is what we wanted to show.
+Recall that this anomaly cochain is exact as we repeatedly mentioned.
+This is consistent with our computation of the bordism group in Appendix~\ref{sec:so(2odd)},
+where we show that $\Omega^\text{spin}_5([\SO(2n_c)\times \USp(2n_f)]/\bZ_2=0$ when $n_c$ is odd.
+
+\section*{Acknowledgments}
+The authors thank discussions with 
+Lakshya Bhardwaj,
+Clay C\'ordova,
+Po-shen Hsin,
+Ho Tat Lam,
+Sakura Sch\"afer-Nameki,
+Nati Seiberg,
+and Yunqin Zheng.
+
+Y.L.~is partially supported by the Programs for Leading Graduate Schools, MEXT, Japan, via the Leading Graduate Course for Frontiers of Mathematical Sciences and Physics
+and also by JSPS Research Fellowship for Young Scientists.
+Y.T.~is partially supported  by JSPS KAKENHI Grant-in-Aid (Wakate-A), No.17H04837 
+and also by WPI Initiative, MEXT, Japan at IPMU, the University of Tokyo.
 
 
 \appendix
@@ -739,6 +868,443 @@ while the $\bZ_2$ (co)homology is known \cite{Serre1953} to be
 
 The corresponding bordism invariants in 4d are $\fP(a)/2$, $ab$, $\fP(b)/2$, 
 and the one in 5d is $a\beta b$.
+
+\subsection{$[\SO(4)\times \SU(2)]/\bZ_2$}
+\label{sec:so4su2}
+
+\subsubsection{Leray-Serre SS (preparatory)}
+For the various input of cohomology groups, see Appendix A of our WZW paper.
+For the fibration
+\begin{equation}
+	BSO(3)
+	\ \to\ 
+	B\left(SO(3)\times SO(3)\right)
+	=
+	B\left(\tfrac{SO(4)}{\bZ_2}\right)
+	\ \to\ 
+	BSO(3)
+\end{equation}
+one has
+\begin{equation}
+	\begin{array}{ccc}
+		E_2^{p,q}=H^p\big(BSO(3);H^q(BSO(3);\bZ)\big) && H^{p+q}(B\left(\tfrac{SO(4)}{\bZ_2}\right);\bZ)\vspace{4mm}\\
+		\begin{array}{c|ccccccccccccc}
+			6 & \bZ_2 && \ast & \ast & \ast & \ast & \ast \\
+			5  & \hphantom{\bZ_2}\cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} && \ast & \ast && \ast\\
+			3  & \bZ_2 && \bZ_2\cellcolor{lightyellow} & \bZ_2 & \ast & \ast & \ast \\
+			2  & &  && \cellcolor{lightyellow} &&\\
+			1  &  &&  && \cellcolor{lightyellow} &&\\
+			0 & \bZ &  && \bZ_2 & \bZ & \cellcolor{lightyellow} & \bZ_2\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+		& \longrightarrow & 
+		\begin{array}{c|c}
+			6  &\bZ_2^{\oplus 3}\\
+			5  & \bZ_2\cellcolor{lightyellow}\\
+			4  & \bZ^{\oplus 2}\\
+			3  & \bZ_2^{\oplus 2}\\
+			2  & \\
+			1  & \\
+			0 & \bZ\\
+			\hline\\
+		\end{array}
+	\end{array}
+\end{equation}
+Here we expect non-trivial differentials to be absent (for the region of interest)
+from the explicit consideration of generators (since there are $W_3$ and $W'_3$, there should be $(W_3)^2$, $(W'_3)^2$, and $W_3W'_3$)
+or by requiring proper reproduction of the $\bZ_2$ cohomology (which we expect to be generated by $w_2$, $w'_2$, $w_3$, and $w'_3$).
+Then, for the fibration
+\begin{equation}
+	BSU(2)
+	\ \to\ 
+	B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right)
+	\ \to\ 
+	B\left(\tfrac{SO(4)}{\bZ_2}\right)
+\end{equation}
+we can further plug it into
+\begin{equation}
+	\begin{array}{ccc}
+		E_2^{p,q}=H^p\big(B\left(\tfrac{SO(4)}{\bZ_2}\right);H^q(BSU(2);\bZ)\big) && H^{p+q}(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ)\vspace{4mm}\\
+		\begin{array}{c|ccccccccccccc}
+			6  &&&&&& \\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \red{\fbox{\black{$\bZ$}}} & \cellcolor{lightyellow} && \ast & \ast & \ast & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  &&  && \cellcolor{lightyellow} &&\\
+			1  &  &&  && \cellcolor{lightyellow} &&\\
+			0 & \bZ &  && \bZ_2^{\oplus 2} & \bZ^{\oplus 2} & \red{\fbox{\black{$\bZ_2$}}}\cellcolor{lightyellow} & \bZ_2^{\oplus 3}\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+		& \longrightarrow & 
+		\begin{array}{c|c}
+			6  & \bZ_2^{\oplus 3}\\
+			5  & \cellcolor{lightyellow}\\
+			4  & \bZ^{\oplus 3}\\
+			3  & \bZ_2^{\oplus 2}\\
+			2  & \\
+			1  & \\
+			0 & \bZ\\
+			\hline\\
+		\end{array}
+	\end{array}
+\end{equation}
+Taking the normalization of instanton number into account (see Ohmori-san's e-mail on 2020-08-19),
+the differential \red{\fbox{\black{$d_2 : E_{0,4} \to E_{5,0}$}}} seems to be non-trivial.
+
+So we believe the integral cohomology structure to be
+\begin{equation}
+	\label{case1}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{array}{c|cccccccccccccccc}
+		d & 0 & 1 & 2 & 3 & 4 & 5 & 6 & \cdots \\
+		\hline
+		H^d(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ) & \bZ & 0 & 0 & \bZ_2^{\oplus 2} & \bZ^{\oplus 3} & 0 & \bZ_2^{\oplus 3} & \cdots\\
+		\hline
+		\text{generator} & 1 & - & - & W_3 & p_1 & - & (W_3)^2 & \cdots\\
+		&&&& W'_3 & p'_1 && (W'_3)^2\\
+		&&&&& 2c_2 && W_3W'_3
+	\end{array}
+\end{equation}
+where the reduction to $\bZ_2$ cohomology are
+\begin{equation}
+	\begin{array}{ccc}
+		W_3 & \to & w_3\\
+		p_1 & \to & (w_2)^2\\
+%		y_5 & \to & w_2w'_3 + w_3w'_2 \,(?)\\
+	\end{array}
+\end{equation}
+
+\subsubsection{Atiyah-Hirzebruch SS}
+%Turning cohomology groups into homology groups via the universal coefficient theorem,
+Having obtained (co)homology groups,
+one can fill in the $E^2$-page of the AHSS:
+\begin{equation}
+	\begin{array}{ccc}
+		E^2_{p,q}=H_p\big(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\Omega_q^{\text{spin}}\big)\vspace{2mm}\\
+		\begin{array}{c|c:cccccccccccc}
+			6  &&&&&& \\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} & \bZ_2^{\oplus 2} && \ast & \ast & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  & \bZ_2 &  & \red{\dbox{\black{$\bZ_2^{\oplus 2}$}}} & \Blue{\dbox{\black{$\bZ_2^{\oplus 2}$}}}\cellcolor{lightyellow} & \bZ_2^{\oplus 3} & \ast & \ast\\
+			1  & \bZ_2 && \red{\fbox{\black{$\bZ_2^{\oplus 2}$}}} & \Blue{\fbox{\black{$\bZ_2^{\oplus 2}$}}} & \green{\fbox{\black{\red{\dbox{\black{$\bZ_2^{\oplus 3}$}}}}}}\cellcolor{lightyellow} & \Blue{\dbox{\black{$\bZ_2^{\oplus 3}$}}} & \ast\\
+			0 & \bZ &  & \bZ_2^{\oplus 2} &  & \red{\fbox{\black{$\bZ^{\oplus 3}$}}} & \Blue{\fbox{\black{$\bZ_2^{\oplus 3}$}}} \cellcolor{lightyellow} & \green{\fbox{\black{$\ast$}}}\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+	\end{array}
+\end{equation}
+Based on our belief, 
+\red{\fbox{\black{$d^2 : E^2_{4,0} \to E^2_{2,1}$}}} and
+\red{\dbox{\black{$d^2 : E^2_{4,1} \to E^2_{2,2}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 w_2 & = & (w_2)^2 \\
+		Sq^2 w'_2 & = & (w'_2)^2
+	\end{array}
+\end{equation}
+and also
+\Blue{\fbox{\black{$d^2 : E^2_{5,0} \to E^2_{3,1}$}}} and
+\Blue{\dbox{\black{$d^2 : E^2_{5,1} \to E^2_{3,2}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 w_3 & = & w_2w_3\\
+		Sq^2 w'_3 & = & w'_2w'_3
+	\end{array}
+\end{equation}
+and finally \green{\fbox{\black{$d^2 : E^2_{6,0} \to E^2_{4,1}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 (w_2w'_2) & = & w_3w'_3 + (w_2)^2w'_2 + w_2(w'_2)^2
+	\end{array}
+\end{equation}
+then %one can proceed, and 
+the would-be-$E_3$-page is given by
+\begin{equation}
+	\label{e3page1}
+	\begin{array}{c|c:cccccccccccc}
+		6  &&&&&& \\
+		5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+		4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+		3  &  && \cellcolor{lightyellow} &&&& \hphantom{\bZ_2}\\
+		2  & \bZ_2 &  && \cellcolor{lightyellow} & \ast & \ast & \ast\\
+		1  & \bZ_2 &&  && \cellcolor{lightyellow} & \ast & \ast\\
+		0 & \bZ &  & \bZ_2^{\oplus 2} &  & \bZ^{\oplus 3} & \bZ_2\cellcolor{lightyellow} & \ast\\
+		\hline
+		& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+	\end{array}
+\end{equation}
+
+
+\subsubsection{Adams SS}
+According to our naive guess, the module $\widetilde H^\ast(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ_2)_{\leq 5}$ consists of
+\begin{equation}
+	\begin{tikzpicture}[thick,baseline=(m-2-4.south)]
+		\matrix (m) [
+			matrix of math nodes,
+			row sep= 1em,
+			column sep=6em,
+		]{
+			&&& \colorB{\bullet}\\
+			&&& \colorB{\bullet}\\
+			&&& \colorB{\bullet}\\
+			&& \colorB{\bullet} & \colorB{\bullet}\\
+			\colorA{\bullet} && \colorB{\bullet} && \colorC{\bullet}\\
+		    \colorA{\bullet} && \colorB{\bullet} && \colorC{\bullet} & \colorD{\bullet}\\
+			\colorA{\bullet} && \colorB{\bullet} && \colorC{\bullet}\\
+			\colorA{\bullet} &&&& \colorC{\bullet}\\
+			\colorA{\bullet} &&&& \colorC{\bullet}\\
+		};
+		\draw[colorA] (m-7-1.center) to [out=200, in=160] (m-9-1.center);
+		\draw[colorA] (m-9-1.center) to (m-8-1.center);
+		\draw[colorA] (m-5-1.center) to [out=200, in=160] (m-7-1.center);
+		\draw[colorA] (m-6-1.center) to (m-5-1.center);
+		\draw[colorA] (m-6-1.center) to [out=340, in=20] (m-8-1.center);
+		%
+		\node[colorA, right=4pt] at (m-9-1) {$w_2$};
+		\node[colorA, right=6pt] at (m-8-1) {$w_3$};
+		\node[colorA, left=6pt] at (m-7-1) {$(w_2)^2$};
+		\node[colorA, right=6pt] at (m-6-1) {$w_2w_3$};
+		\node[colorA, left=4pt] at (m-5-1) {$(w_3)^2$};
+		%
+		\draw[colorB] (m-7-3.center) to [out=160, in=200] (m-5-3.center);
+		\draw[colorB, dotted] (m-7-3.center) to (m-6-3.center);
+		\draw[colorB, dotted] (m-6-3.center) to [out=5, in=185] (m-4-4.center);
+		\draw[colorB] (m-5-3.center) to (m-4-3.center);
+		\draw[colorB, dotted] (m-5-3.center) to [out=5, in=185] (m-3-4.center);
+		\draw[colorB, dotted] (m-4-4.center) to (m-3-4.center);
+		\draw[colorB] (m-4-3.center) to [out=5, in=185] (m-2-4.center);
+		\draw[colorB, dotted] (m-2-4.center) to (m-1-4.center);
+		\draw[colorB, dotted] (m-3-4.center) to [out=5, in=355] (m-1-4.center);
+		%
+		\node[colorB, right=4pt] at (m-7-3) {$w_2w'_2$};
+		\node[colorB, right=4pt] at (m-6-3) {$w_3w'_2 + w_2w'_3$};
+		\node[colorB, left=4pt] at (m-5-3) {$w_3w'_3 + (w_2)^2w'_2 + w_2(w'_2)^2$};
+		\node[colorB, left=4pt] at (m-4-3) {$(w_2)^2w'_3 + w_3(w'_2)^2$};
+		%
+		\node[colorB, right=4pt] at (m-4-4) {$\begin{array}{r}
+			w_2w_3w'_2 + w_3(w'_2)^2
+			+ (w_2)^2w'_3 + w_2w'_2w'_3
+		\end{array}$};
+		\node[colorB, right=4pt] at (m-3-4) {$\begin{array}{r}
+			(w_3)^2w'_2 + w_2w_3w'_3
+			+ w_3w'_2w'_3 + w_2(w'_3)^2
+		\end{array}$};
+		\node[colorB, left=4pt] at (m-2-4) {$\begin{array}{r}
+			(w_3)^2w'_3 + (w_2)^2w'_2w'_3
+			+ w_2w_3(w'_2)^2 + w_3(w'_3)^2
+		\end{array}$};
+		\node[colorB, right=4pt] at (m-1-4) {$\begin{array}{r}
+			(w_2)^2(w'_3)^2 + (w_3)^2(w'_2)^2
+		\end{array}$};
+		%
+		\draw[colorC] (m-7-5.center) to [out=200, in=160] (m-9-5.center);
+		\draw[colorC] (m-9-5.center) to (m-8-5.center);
+		\draw[colorC] (m-5-5.center) to [out=200, in=160] (m-7-5.center);
+		\draw[colorC] (m-6-5.center) to (m-5-5.center);
+		\draw[colorC] (m-6-5.center) to [out=340, in=20] (m-8-5.center);
+		%
+		\node[colorC, right=4pt] at (m-9-5) {$w'_2$};
+		\node[colorC, right=6pt] at (m-8-5) {$w'_3$};
+		\node[colorC, left=6pt] at (m-7-5) {$(w'_2)^2$};
+		\node[colorC, right=6pt] at (m-6-5) {$w'_2w'_3$};
+		\node[colorC, left=4pt] at (m-5-5) {$(w'_3)^2$};
+		%
+		\node[colorD, right=4pt] at (m-6-6) {(*)};
+	\end{tikzpicture}
+\end{equation}
+To be consistent with the AHSS computation,
+it seems that $w_3w_2' + w_2w'_3$ should be modded out
+(is it an obvious consequence of the transgression in LSSS...?)
+and the remaing part \colorD{(*)} turns out to be
+\begin{equation}
+	\begin{tikzpicture}[colorD, thick,baseline=(m-2-1.south)]
+		\matrix (m) [
+			matrix of math nodes,
+			row sep= 1em,
+			column sep=6em,
+		]{
+			\bullet\\
+		    \bullet\\
+			\bullet\\
+			\bullet\\
+			\bullet\\
+		};
+		\draw (m-3-1.center) to [out=200, in=160] (m-5-1.center);
+		\draw (m-5-1.center) to (m-4-1.center);
+		\draw (m-1-1.center) to [out=200, in=160] (m-3-1.center);
+		\draw (m-2-1.center) to (m-1-1.center);
+		\draw (m-2-1.center) to [out=340, in=20] (m-4-1.center);
+		%
+		\node[right=4pt] at (m-5-1) {$w_2w'_3 = w_3w'_2$};
+		\node[right=6pt] at (m-4-1) {$w_3w'_3$};
+		\node[left=6pt] at (m-3-1) {$(w_2)^2w'_3 + w_2w'_2w'_3$};
+		\node[right=6pt] at (m-2-1) {$w_2w_3w'_3 + w_3w'_2w'_3$};
+		\node[left=4pt] at (m-1-1) {$(w_3)^2w'_3 + w_3(w'_3)^2$};
+	\end{tikzpicture}
+\end{equation}
+and therefore one concludes
+\begin{equation}
+	\widetilde H^\ast(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ_2)_{\leq 5} = \colorA{J[2]} \oplus \colorC{J[2]} \oplus \colorB{\mathcal{A}_1/\!\!/\mathcal{E}_0[4]} \oplus \colorD{J[5]}.
+\end{equation}
+This leads to the following Adams chart:
+\begin{center}
+	\begin{sseqdata}[
+		name=M,
+		Adams grading,
+		classes = fill,
+		xrange = {0}{5},
+		yrange = {0}{3},
+		%,x label = {$t-s$}, y label = {$s$}
+	]
+		\tower[colorB](4,0)
+		\class[white](4,0)
+		\class[white](4,0)
+		\class[colorA](2,0)
+		\class[colorC](2,0)
+		\tower[colorA](4,1)
+		\tower[colorC](4,1)
+		\class[colorD](5,0)
+	\end{sseqdata}
+	\printpage[name = M,page = 2]
+\end{center}
+and it indeed seems to be compatible with the AHSS computation.
+If the above argument (and beliefs) is correct, then the anomaly should be captured by
+\begin{equation}
+	w_2w'_3\ (= w_3w'_2).
+\end{equation}
+
+\subsection{$[SO(4n'_c+2)\times SU(2n_f)]/\bZ_2$}
+\label{sec:so(2odd)}
+
+\subsubsection{Cohomology of $BPSO(4n'_c+2)$}
+Recalling that the $\bZ_2$ cohomology read off from \cite{KonoMimura1974}
+allowed us to determine the $\bZ$ cohomology by using Bockstein SS
+(see \texttt{wzw-memo.pdf}, copy later), we had
+\begin{equation}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{array}{c|cccccccccccccccc}
+		d & 0 & 1 & 2 & 3 & 4 & 5 & 6 & \cdots \\
+		\hline
+		\multicolumn{1}{l|}{H^d(BPSO(4n'_c+2);\bZ)} & \bZ & 0 & 0 & \bZ_4 & \bZ & 0 & \bZ_2 & \cdots\\
+		\multicolumn{1}{l|}{H^d(BPSO(4n'_c+2);\bZ_2)} & \bZ_2 & 0 & \bZ_2 & \bZ_2 & \bZ_2 & \bZ_2 & \bZ_2^{\oplus 2} & \cdots\\
+		\hline
+		\text{generator} \,(\bZ_2) & 1 & - & a_2 & y'(1) & (a_2)^2 & y'(2) & (a_2)^3 & \cdots\\
+		&&&&&&& y'(1)^2\\
+	\end{array}
+\end{equation}
+and if we assume the suspension $\bar\theta: H^\ast(PSO(4n'_c+2);\bZ_2) \to H^\ast(BPSO(4n'_c+2);\bZ_2)$
+to commute with Steenrod squares (which seems to be true according to Nishimoto-san's notes),
+then these elements are supposed to be related as
+\begin{equation*}
+	\begin{array}{ccl}
+		\beta_2 a_2 & = & y'(1)\\
+		Sq^2 y'(1) & = & y'(2)\\
+		Sq^1 y'(2) & = & y'(1)^2\\
+	\end{array}
+\end{equation*}
+where $\beta_f$ is a higher Bockstein operator (reduced to $\bZ_2$ cohomology as a whole),
+whose image corresponds to $\bZ_{2^f}$ in integral cohomology.
+
+\subsubsection{Leray-Serre SS (preparatory)}
+For the fibration
+\begin{equation}
+	BSU(2n_f)
+	\ \to\ 
+	B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right)
+	\ \to\ 
+	BPSO(4n'_c+2)
+\end{equation}
+we have
+\begin{equation}
+	\begin{array}{ccc}
+		E_2^{p,q}=H^p\big(BPSO(4n'_c+2);H^q(BSU(2n_f);\bZ)\big) && H^{p+q}(B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right);\bZ)\vspace{4mm}\\
+		\begin{array}{c|ccccccccccccc}
+			6  & \bZ &&& \ast & \ast && \ast\\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} && \ast & \ast & & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  &&  && \cellcolor{lightyellow} &&\\
+			1  &  &&  && \cellcolor{lightyellow} &&\\
+			0 & \bZ &  && \bZ_4 & \bZ & \cellcolor{lightyellow} & \bZ_2\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+		& \longrightarrow & 
+		\begin{array}{c|c}
+			6  & \bZ\oplus \bZ_2\\
+			5  & \cellcolor{lightyellow}\\
+			4  & \bZ^{\oplus 2}\\
+			3  & \bZ_4\\
+			2  & \\
+			1  & \\
+			0 & \bZ\\
+			\hline\\
+		\end{array}
+	\end{array}
+\end{equation}
+
+
+\subsubsection{Atiyah-Hirzebruch SS}
+Having obtained (co)homology groups,
+one can fill in the $E^2$-page of the AHSS:
+\begin{equation}
+	\begin{array}{c}
+		E^2_{p,q}=H_p\big(B\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}\right);\Omega_q^{\text{spin}}\big)\vspace{2mm}\\
+		\begin{array}{c|c:cccccccccccc}
+			6  &&&&&& \\
+			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+			4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+			3  &  && \cellcolor{lightyellow} &&&\\
+			2  & \bZ_2 &  & \red{\dbox{\black{$\bZ_2$}}} & \Blue{\dbox{\black{$\bZ_2$}}}\cellcolor{lightyellow} & \ast & \ast & \ast\\
+			1  & \bZ_2 && \red{\fbox{\black{$\bZ_2$}}} & \Blue{\fbox{\black{$\bZ_2$}}} & \green{\fbox{\black{\red{\dbox{\black{$\bZ_2^{\oplus 2}$}}}}}}\cellcolor{lightyellow} & \Blue{\dbox{\black{$\ast$}}} & \ast\\
+			0 & \bZ &  & \bZ_4 &  & \red{\fbox{\black{$\bZ^{\oplus 2}$}}} & \Blue{\fbox{\black{$\bZ_2$}}}\cellcolor{lightyellow} & \green{\fbox{\black{$\ast$}}}\\
+			\hline
+			& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\end{array}
+	\end{array}
+\end{equation}
+Based on our belief, 
+\red{\fbox{\black{$d^2 : E^2_{4,0} \to E^2_{2,1}$}}} and
+\red{\dbox{\black{$d^2 : E^2_{4,1} \to E^2_{2,2}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 a_2 & = & (a_2)^2
+	\end{array}
+\end{equation}
+and also
+\Blue{\fbox{\black{$d^2 : E^2_{5,0} \to E^2_{3,1}$}}} and
+\Blue{\dbox{\black{$d^2 : E^2_{5,1} \to E^2_{3,2}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 y'(1) & = & y'(2)\\
+	\end{array}
+\end{equation}
+and finally
+\green{\fbox{\black{$d^2 : E^2_{6,0} \to E^2_{4,1}$}}} should be a dual of
+\begin{equation}
+	\begin{array}{ccccc}
+		Sq^2 c_2 & = & c_3
+	\end{array}
+\end{equation}
+then %one can proceed, and 
+the would-be-$E_3$-page is given by
+\begin{equation}
+	\begin{array}{c|c:cccccccccccc}
+		6  &&&&&& \\
+		5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
+		4  & \bZ & \cellcolor{lightyellow} & \ast && \ast & \ast & \ast\\
+		3  &  && \cellcolor{lightyellow} &&&& \hphantom{\bZ_2}\\
+		2  & \bZ_2 &&& \cellcolor{lightyellow} & \ast & \ast & \ast\\
+		1  & \bZ_2 &&&& \cellcolor{lightyellow} & \ast & \ast\\
+		0 & \bZ &  & \bZ_4 &  & \bZ^{\oplus 2} & \cellcolor{lightyellow} & \ast\\
+		\hline
+		& 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+	\end{array}
+\end{equation}
 
 
 \section{Pontrjagin square for non-closed cochains}
