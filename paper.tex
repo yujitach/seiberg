@@ -101,6 +101,8 @@
 \def\tmf{\mathrm{tmf}}
 \def\tr{\mathop{\mathrm{tr}}}
 
+\def\fP{\mathfrak{P}}
+
 \def\U{\mathrm{U}}
 \def\SU{\mathrm{SU}}
 \def\SO{\mathrm{SO}}
@@ -293,6 +295,7 @@ It is satisfying to see that the duality action correctly preserves the labels `
 The rest of the paper is organized as follows ...
 
 \section{2-group structure}
+\label{sec:2-group}
 Let us first study whether the $\bZ_2$ 1-form symmetry and the $\SU(2n_f)/\bZ_2$ flavor symmetry form a nontrivial 2-group or not. 
 This can be found rather physically by studying the line operators. 
 
@@ -492,7 +495,7 @@ We denote its partition function on a manifold $X$ by $Z_Q[E]$,
 where we suppress the dependence on $X$ in the notation and $E\in H^2(X,\bZ_2)$ is the background field for the 1-form symmetry.
 We then define $SQ$ and $TQ$ to be given by the formula \begin{equation}
 Z_{SQ}[B] \propto \sum_{E} (-1)^{\int_X B\cup E} Z_Q{B},\qquad
-Z_{TQ}[E]= (-1)^{\int_X \tfrac12 \mathfrak{P}(E)} Z_Q[E].
+Z_{TQ}[E]= (-1)^{\int_X \tfrac12 \fP(E)} Z_Q[E].
 \end{equation}
 We can show that $S^2=T^2=1$ and $(ST)^3=1$, meaning that they generate $\SL(2,\bZ_2)$.
 This operation was considered in  \cite{Gaiotto:2014kfa} as an analogue of the $\SL(2,\bZ)$ action on 3d theories with $\U(1)$ symmetry of  \cite{Witten:2003ya} and then further studied in \cite{Bhardwaj:2020ymp}.
@@ -511,6 +514,8 @@ T\SO_- \stackrel{T}{\longleftrightarrow}
 \SO_- \stackrel{S}{\longleftrightarrow} .
 \end{equation}
 
+\subsection{$\SL(2,\bZ_2)$ actions with extra background}
+
 Let us now study what happens if we perform this $\SL(2,\bZ_2)$ action when the $\bZ_2$ 1-form symmetry in question is part of a larger symmetry group.
 So far we have been considering the effect of $\SU(2n_f)/\bZ_2$ flavor symmetry,
 but the discussions in the last section shows that at a formal level only the background field $v_2 \in H^2(X,\bZ_2)$ matters, which controls the lift from $\SU(2n_f)/\bZ_2$ to $\SU(2n_f)$.
@@ -521,15 +526,50 @@ and we perform the $\SL(2,\bZ_2)$ action  by picking a $\bZ_2$ subgroup.
 The symmetry and the anomaly of the resulting theory can be determined by a formal argument once the symmetry and the anomaly of the original theory 
 and the action of the anomaly-free subgroup to be gauged is given \cite{Tachikawa:2017gyf}.
 
-As detailed in the Appendix~\ref{sec:bordism}, the only possible anomaly of $\bZ_2\times \bZ_2$ 1-form symmetry of 4d spin QFTs is \begin{equation}
-2\pi i \tfrac12 \int_Y B\beta E  \label{anom}
-\end{equation} where $Y$ is the 5d spin manifold and $B,E\in H^2(Y,\bZ_2)$ are the background fields,
-there is no anomaly for $\bZ_4$ 1-form symmetry.
+Let us work at the level of anomalies described at the level of cohomology, since we do not need to deal with anomalies more general than that.
+We consider a $d$-dimensional QFT with a symmetry group $G$ with an anomaly specified by a cochain $\alpha\in C^{d+1}(G,\U(1))$. 
+We pick a subgroup $H\subset G$ such that $\alpha$ trivializes in it, so that one can find $\mu \in C^d(H,\U(1))$ such that $\delta \mu = \alpha|_H$. 
+We then gauge $H$, using $\mu$ as the action.
+What determines the symmetry and the anomaly of the gauged theory is the data $(\mu,\alpha)$
+Clearly, given $\beta\in C^d(G,\U(1))$, the pair $(\mu,\alpha)$ and the pair $(\mu-\beta,\alpha-\delta\beta)$ should give the same result, since we merely added the countertem $\beta$ as the action.
+This allows us to always choose the pair of the form $(0,\alpha')$ equivalent to a given $(\mu,\alpha)$, 
+by using $\beta$ to be an arbitrary extension of $\mu$ from $H$ to $G$.
+This is convenient in discussing the $\SL(2,\bZ_2)$ action,
+since our $S$ operation is defined in the convention that $\mu=0$.
 
-\subsection{$\SL(2,\bZ_2)$ actions with extra background }
+Now, what are the possible choices of $(\mu,\alpha)$ or $(0,\alpha')$ we need to discuss?
+Let us first consider $\bZ_2\times \bZ_2$ 1-form symmetry.
+As detailed in the Appendix~\ref{sec:bordism}, the only possible anomaly for 4d spin QFTs with this symmetry is \begin{equation}
+\alpha=2\pi i \tfrac12  B\beta E  \label{anom}
+\end{equation} where $Y$ is the 5d spin manifold and $B,E\in H^2(Y,\bZ_2)$ are the background fields.
+Its restriction to $\bZ_2$ 1-form symmetry subgroup is trivially zero,
+and then the possible choice of $\mu$ is simply the discrete theta angle \begin{equation}
+\mu = 2\pi i \tfrac12  \tfrac12\fP(E).\label{P}
+\end{equation}
+This $\mu$ can be extended from the $\bZ_2$ subgroup to the entire $\bZ_2\times \bZ_2$ subgroup as a closed cochain.
+Therefore, we only have to consider pairs $(0,0)$ and $(0,\alpha)$.
+
+Next, we consider $\bZ_4$ 1-form symmetry.
+Again in the Appendix~\ref{sec:bordism}, we show that there is no anomaly for $\bZ_4$ 1-form symmetry.
+Therefore we can pick $\alpha=0$. Then the possible choice of $\mu$ for the $\bZ_2$ 1-form subgroup is again the discrete theta angle \eqref{P}.
+One difference here is that the discrete theta angle \eqref{P} cannot be extended as a closed cochain to the entire $\bZ_4$ 1-form subgroup.
+As discussed in the Appendix~\ref{sec:nonclosedP}, with $\delta E=\beta a_2$,
+where $a_2\in H^2(X,\bZ_4/\bZ_2)$,
+one finds \begin{equation}
+\alpha':=\delta \mu = 2\pi i \tfrac12 a_2 \beta_2 a_2.
+\end{equation}
+Therefore, the pairs we need to consider are $(0,0)$ and $(\mu,0)\sim (0,\alpha')$. 
+
+\def\Textended{extended$_T$}
+Summarizing,  we need to consider the following four choices, namely:
+\begin{itemize}
+\item For $\bZ_2\times \bZ_2$, the pairs $(0,0)$ and $(0,\alpha)$, which we call `none' and `anomaly'
+\item For $\bZ_4$, the pairs $(0,0)$ and $(\mu,0)\sim (0,\alpha')$, which we call `extended' and `\Textended'.
+\end{itemize}
+
 
 Let us now determine how the $\SL(2,\bZ_2)$ action affects these data.
-The case $\bZ_2\times \bZ_2$ with no anomaly is very easy.
+The case `none' is very easy.
 The additional $\bZ_2$ factor plays no role, and we find the chain of actions given by \begin{equation}
 \text{none} \stackrel{T}{\longleftrightarrow} 
 \text{none} \stackrel{S}{\longleftrightarrow} 
@@ -537,22 +577,20 @@ The additional $\bZ_2$ factor plays no role, and we find the chain of actions gi
 \text{none} \stackrel{S}{\longleftrightarrow} 
 \text{none} \stackrel{T}{\longleftrightarrow} 
 \text{none} \stackrel{S}{\longleftrightarrow} 
-\label{trivial-chain}
-\end{equation} where `none' stands for $\bZ_2\times \bZ_2$ with no anomaly.
+\label{trivial-chain}.
+\end{equation} 
 
-Let us now consider $\bZ_4$ 1-form symmetry and gauge its $\bZ_2$ subgroup,
-without the background term $\frac12\mathfrak{P}(E)$.
-As described in \cite{Tachikawa:2017gyf},
-the resulting theory has $\bZ_2\times \bZ_2$ 1-form symmetry with the anomaly \eqref{anom}.
+Let us now consider $\bZ_4$ 1-form symmetry and gauge its $\bZ_2$ subgroup.
+The case  `extended' was analyzed in \cite{Tachikawa:2017gyf},
+the resulting theory has $\bZ_2\times \bZ_2$ 1-form symmetry with the anomaly \eqref{anom}, 
+which we decided to call `anomaly'.
 
-When we gauge the $\bZ_2$ subgroup  of $\bZ_4$ 1-form symmetry 
-with the background term $\frac12\mathfrak{P}(E)$,
-the resulting theory instead have $\bZ_4$ symmetry
-with the background term $\frac12\mathfrak{P}(E)$.
-This can be seen as follows:
-the gauging process involves the term
+The case `\Textended' was analyzed in \cite{Hsin:2020nts},
+where it was shown that the gauged theory has again `\Textended'.
+Let us quickly recall why this is the case. 
+The gauging process involves the term
  \begin{equation}
-\exp\left(2\pi i\int_X ( \frac14 \mathfrak{P}(E) +\frac12 B E)\right)
+\exp\left(2\pi i\int_X ( \frac14 \fP(E) +\frac12 B E)\right)
 \label{boo}
 \end{equation}
 where $E$ is the variable to be gauged and $B$ is the newly introduced background field.
@@ -562,61 +600,63 @@ $E$ is not necessarily closed, but satisfies rather the relation \begin{equation
 \end{equation}
 where $v_2$ is the background field for the quotient $\bZ_4/\bZ_2$ 1-form symmetry.
 Then the second term in \eqref{boo} is not closed, 
-and to even talk about the first term in \eqref{boo}, one first needs to extend the definition of the Pontryagin square $\mathfrak{P}$ to non-closed cochains.
+and to even talk about the first term in \eqref{boo}, one first needs to extend the definition of the Pontryagin square $\fP$ to non-closed cochains.
 
 To make  the coupling \eqref{boo}  well-defined, we consider adding a background term to \eqref{boo} so that we have \begin{equation}
-\exp\left(2\pi i\int_X ( \frac14 \mathfrak{P}(E) +\frac12 B E + \frac14 \mathfrak{P}(B) )\right)
+\exp\left(2\pi i\int_X ( \frac14 \fP(E) +\frac12 B E + \frac14 \fP(B) )\right)
 = 
-\exp \left(2\pi i \frac14 \int_X \mathfrak{P}(E+B)\right) .
+\exp \left(2\pi i \frac14 \int_X \fP(E+B)\right) .
 \end{equation}
 This is perfectly well-defined if the newly-introduced background field $B$  also satisfies \begin{equation}
 \delta B=\beta v_2.
 \end{equation}
-This means that the 1-form symmetry after the gauging is still extended, with a background coupling.
+This means that, starting from `\Textended', performing $S$ and then $T$, we find a theory with the data `extended'.
+Therefore, simply performing $S$ for the theory of the type `\Textended',  one  finds `\Textended'.
 
-\def\ewith{
-\begin{array}{c}
-\text{extended}\\
-\text{with $\mathfrak{P}$} 
-\end{array} 
-}
-\def\ewithout{
-\begin{array}{c}
-\text{extended}\\
-\text{without $\mathfrak{P}$} 
-\end{array} 
-}
 Combined, the preceding arguments allows us to  see the chain of actions \begin{equation}
-\ewith \stackrel{T}{\longleftrightarrow} 
-\ewithout \stackrel{S}{\longleftrightarrow} 
+\text{\Textended} \stackrel{T}{\longleftrightarrow} 
+\text{extended} \stackrel{S}{\longleftrightarrow} 
 \text{anomaly} \stackrel{T}{\longleftrightarrow} 
 \text{anomaly} \stackrel{S}{\longleftrightarrow} 
-\ewithout \stackrel{T}{\longleftrightarrow} 
-\ewith \stackrel{S}{\longleftrightarrow} 
+\text{extended}\stackrel{T}{\longleftrightarrow} 
+\text{\Textended}\stackrel{S}{\longleftrightarrow}.
 \label{nontrivial-chain}
 \end{equation}
-where `extended' stands for $\bZ_4$ without the background term $\frac12\mathfrak{P}(E)$,
-`extended with $\mathfrak{P}$' is for $\bZ_4$ with the background term,
-and `anomaly' is $\bZ_2\times \bZ_2$ with the anomaly \eqref{anom}.
 
 
 \subsection{Anomalies from $\SL(2,\bZ_2)$ action} 
+
+\begin{table}
+\centering
+\[
+\begin{array}{r@{\,}l|cccccc}
+(n_c,&n_f)  & T\Spin & \Spin & \SO_+ & T\SO_+& T\SO_- & \SO_- \\
+\hline
+(\text{even},&\text{even}) & \text{none}& \color{Purple}\text{none}& \text{none}& \text{none}& \text{none}& \text{none}\\
+(\text{odd},&\text{even}) & \text{\Textended} &\color{Purple}\text{extended} & \text{anomaly} & \text{anomaly} & \text{extended } & \text{\Textended} \\
+(\text{even},&\text{odd}) & \text{anomaly} & \color{Purple}\text{anomaly} & \text{extended } & \text{\Textended}  & \text{\Textended} & \text{extended} \\
+(\text{odd},&\text{odd}) & \text{extended } & \color{Purple}\text{\Textended} & \text{\Textended} & \text{extended}
+ &  \text{anomaly} & \text{anomaly}   \end{array} 
+\]
+\caption{The symmetry structure of $\so(2n_c)$ QCD with $2n_f$ flavors,
+as deduced from the 2-group structures found in Sec.~\ref{sec:2-group}
+and from the $\SL(2,\bZ_2)$ action discussed in this section.
+The symmetry structure of the $\Spin$ case will be checked independently in the next section.
+\label{table:refined}}
+\end{table}
+
+
 Comparing the chains of actions \eqref{trivial-chain} and \eqref{nontrivial-chain} we determined above 
 and Table~\ref{table:2group},
 we see that the anomaly is automatically determined and 
 we obtain the result already presented in Table~\ref{table:main}.
+More precisely, we should better distinguish $\Spin(2n_c)$ and $T\Spin$, etc.,
+and we find the assignment given in Table~\ref{table:refined}.
+As the way we determined the symmetry structures were somewhat indirect,
+we confirm the symmetry structures of the $\Spin$ case in the next section
+in a different means.
 
-More precisely, when `extended' or `anomaly' is involved, 
-we should better distinguish $\Spin(2n_c)$ and $T\Spin$, etc.
-We find the following:{\small \begin{equation}
-\begin{array}{r@{\,}l|cccccc}
-(n_c,&n_f)  & T\Spin & \Spin & \SO_+ & T\SO_+& T\SO_- & \SO_- \\
-\hline
-(\text{odd},&\text{even}) & \text{e.with} &\text{e.without} & \text{anom} & \text{anom} & \text{e.without } & \text{e.with} \\
-(\text{even},&\text{odd}) & \text{anom} & \text{anom} & \text{e.without } & \text{e.with}  & \text{e.with} & \text{e.without} \\
-(\text{odd},&\text{odd}) & \text{e.without } & \text{e.with} & \text{e.with} & \text{e.without}
- &  \text{anom} & \text{anom}   \end{array} 
-\end{equation}}
+\section{Fermion contribution to anomalies}
 
 
 \appendix
@@ -653,9 +693,9 @@ According to \cite[Appendix C.3]{Clement2002} and \cite[Eq.\,(6.3)]{Wan:2018bns}
 \end{equation}
 
 The corresponding invariant in 4d is simply \begin{equation}
-\exp(2\pi i \frac{p}{4} \int \frac12\mathfrak{P}(a) )
+\exp(2\pi i \frac{p}{4} \int \frac12\fP(a) )
 \end{equation}
-where $\mathfrak{P}:H^2(-,\bZ_4)\to H^4(-,\bZ_8)$ is the Pontryagin square,
+where $\fP:H^2(-,\bZ_4)\to H^4(-,\bZ_8)$ is the Pontryagin square,
 which is even mod 8 on a spin manifold.
 
 \subsection{$\bZ_2\times \bZ_2$ 1-form symmetry}
@@ -697,10 +737,112 @@ while the $\bZ_2$ (co)homology is known \cite{Serre1953} to be
 	\bZ_2[x_2, Sq^1 x_2, Sq^2Sq^1 x_2, \cdots].
 \end{equation*}
 
-The corresponding bordism invariants in 4d are $\mathfrak{P}(a)/2$, $ab$, $\mathfrak{P}(b)/2$, 
+The corresponding bordism invariants in 4d are $\fP(a)/2$, $ab$, $\fP(b)/2$, 
 and the one in 5d is $a\beta b$.
 
 
+\section{Pontrjagin square for non-closed cochains}
+\label{sec:nonclosedP}
+By definition, the variation of the Pontrjagin square $\fP : H^\bullet(-;\bZ_{2^m}) \to H^{2\bullet}(-;\bZ_{2^{m+1}})$ term is
+\begin{equation}
+	\label{deltaPontrjagin}
+	\begin{array}{ccl}
+		\delta \left(\dfrac{1}{2^{m+1}}\fP(x)\right)
+		& = & \dfrac{1}{2^{m+1}}\cdot \delta \Big(\widetilde x \cup \widetilde x - \widetilde x \cup_1 \delta \widetilde x\Big)\\
+		& = & \dfrac{1}{2^{m+1}}\cdot\left[\Big(\delta \widetilde x \cup \widetilde x + \widetilde x \cup \delta \widetilde x\Big)
+				- \Big(\widetilde x \cup \delta \widetilde x - \delta \widetilde x \cup \widetilde x + \delta \widetilde x \cup_1 \delta \widetilde x\Big)\right]\vspace{2mm}\\
+		& = & \dfrac{1}{2^{m+1}}\cdot\Big[2\cdot \delta \widetilde x \cup \widetilde x - \delta \widetilde x \cup_1 \delta \widetilde x\Big],\\
+	\end{array}
+\end{equation}
+and thus if $x$ were a $\bZ_{2^m}$-cocycle, 
+its integral lift $\widetilde x \in C^\bullet(-;\bZ)$ would be a cocycle mod $2^m$ \textit{i.e.}~$\delta \widetilde x = 0$ (mod $2^m$),
+and the right hand side would be $0$ mod 1,
+which then means that $\fP(x)$ would be a $\bZ_{2^{m+1}}$-cocycle as desired.
+However, when $x$ is not a cocycle but merely a cochain,
+$\fP(x)$ is also not a cocycle and it is not clear whether this term is well-defined in the first place.
+
+This problem arises when we consider $SO(2n_c)$ QCD,
+but it turns out that this can be saved somewhat miraculously as follows.
+First, a short exact sequence
+\begin{equation*}
+	0
+	\to
+	\bZ_{2^f}
+	\overset{\times 2^{f}}{\longrightarrow}
+	\bZ_{2^{2f}}
+	\overset{p}{\longrightarrow}
+	\bZ_{2^f}
+	\to
+	0
+\end{equation*}
+buys us cohomology operations called the higher Bockstein $\beta_f: H^{\bullet}(-;\bZ_{2^f}) \to H^{\bullet+1}(-;\bZ_{2^f})$,
+and for the element $y \in C^{\bullet}(-;\bZ_{2^f})$ one has
+\begin{equation*}
+	\delta (p^\ast y)
+	=
+	2^f \beta_f (y) \in C^\bullet(-;\bZ_{2^{2f}}).
+\end{equation*}
+Now, let us consider the case of odd $n_c$.
+Here, the cochain $w_2(c) \in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_2)$
+can be thought of as a mod-2 reduction of $\widetilde w_2(c)\in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_4)$.
+Dividing the $SO\times SU$ by $\bZ_2$, these cochains become non-closed
+\begin{equation*}
+	\delta \widetilde w_2(c) = 2 \beta v_2(c)
+\end{equation*}
+where $v_2(c)=a_2\in C^2\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}; \bZ_2\right)$.
+%\begin{equation*}
+%	\begin{array}{ccccccccc}
+%		&& w_2 && \widetilde w_2 & \longmapsto & v_2\\
+%		&& \rotatebox[]{270}{$\in$} && \rotatebox[]{270}{$\in$} && \rotatebox[]{270}{$\in$}\\
+%		0
+%		& \longrightarrow &
+%		C^2(-;\bZ_2)
+%		& \overset{i^\ast}{\longrightarrow} &
+%		C^2(-;\bZ_4)
+%		& \overset{p^\ast}{\longrightarrow} &
+%		C^2(-;\bZ_2)
+%		& \longrightarrow &
+%		0\vspace{1mm}\\
+%		&& \downarrow\,\delta && \downarrow\,\delta && \downarrow\vspace{1mm}\\
+%		0
+%		& \longrightarrow  &
+%		C^3(-;\bZ_2)
+%		& \longrightarrow &
+%		C^3(-;\bZ_4)
+%		& \longrightarrow &
+%		C^3(-;\bZ_2)
+%		& \longrightarrow &
+%		0\\
+%		&& \rotatebox[]{90}{$\in$} && \rotatebox[]{90}{$\in$}\\
+%		&& \delta w_2 && \delta \widetilde w_2
+%	\end{array}
+%\end{equation*}
+Since this implies $\delta \widetilde w_2(c) = 0$ or $2$ mod 4
+and furthermore $\delta (2\widetilde w_2(c)) = 0$ mod 4,
+one can safely define the Pontrjagin square $\tfrac{1}{8}\fP\big(2\widetilde w_2(c)\big)$.\footnote{
+	Be careful that this factor $2$ here is not the usual map sending $\{0,1\}=\bZ_2$ to $\{0,2\}\subset \bZ_4$.
+	This time we are \textit{really} multiplying by $2$.
+}
+Note that this can naively be regarded as $2\cdot \tfrac{1}{4}\fP\big(w_2(c)\big)$ at the integral cochain level.
+While the second term in the last line of \eqref{deltaPontrjagin} together with the overall factor takes value in
+$\tfrac{(2^m)^2}{2^{m+1}}\bZ = 2^{m-1}\bZ = 2\bZ$ and dividing by two does not cause any trouble,
+the first term does as it takes value in $\tfrac{2\cdot 2^m}{2^{m+1}}\bZ = \bZ$.
+
+Let us take a closer look at the latter.
+The long exact sequence of cochain groups implies that $2\widetilde w_2(c)$ can be replaced by
+$\widetilde v_2(c) = \widetilde a_2$, which is a cocycle mod 4.
+Then the term of interest is
+\begin{equation*}
+	\dfrac{1}{8}\cdot 2\cdot 4\beta_2\widetilde a_2 \cup \widetilde a_2.
+\end{equation*}
+Therefore, the anomalous variation of the Pontrjagin square term seems to result in
+\begin{equation*}
+	\delta\left(
+		\dfrac{1}{4}\fP(w_2(c))
+	\right)
+	=
+	\dfrac{1}{2}a_2 \beta_2 a_2.
+\end{equation*}
 
 
 \def\arxivfont{\rm}
