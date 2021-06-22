@@ -146,8 +146,8 @@
 
 \begin{center}
 
-{\Large \bfseries Higher symmetries and anomalies \\[1em]
-in $\so$ QCD  and \Nequals1 duality}
+{\Large \bfseries Matching higher symmetries \\[1em]
+across Intiligator-Seiberg duality}
 
 \vskip 1cm
 Yasunori Lee$^1$, Kantaro Ohmori$^2$, and Yuji Tachikawa$^1$
@@ -632,12 +632,26 @@ Combined, the preceding arguments allows us to  see the chain of actions \begin{
 \begin{array}{r@{\,}l|cccccc}
 (n_c,&n_f)  & T\Spin & \Spin & \SO_+ & T\SO_+& T\SO_- & \SO_- \\
 \hline
-(\text{even},&\text{even}) & \text{none}& \color{Purple}\text{none}& \text{none}& \text{none}& \text{none}& \text{none}\\
-(\text{odd},&\text{even}) & \text{\Textended} &\color{Purple}\text{extended} & \text{anomaly} & \text{anomaly} & \text{extended } & \text{\Textended} \\
-(\text{even},&\text{odd}) & \text{anomaly} & \color{Purple}\text{anomaly} & \text{extended } & \text{\Textended}  & \text{\Textended} & \text{extended} \\
-(\text{odd},&\text{odd}) & \text{extended } & \color{Purple}\text{\Textended} & \text{\Textended} & \text{extended}
- &  \text{anomaly} & \text{anomaly}   \end{array} 
+\vphantom{\Bigm|}(\text{even},&\text{even}) & \text{none}\tikzmark{a1}& \color{Purple}\text{none}\tikzmark{a2}& \text{none}\tikzmark{a3}& \tikzmark{a4}\text{none}& \tikzmark{a5}\text{none}& \tikzmark{a6}\text{none}\\
+\vphantom{\Bigm|}(\text{odd},&\text{even}) & \text{\Textended}\tikzmark{b1} &\color{Purple}\text{extended}\tikzmark{b2} & \text{anomaly}\tikzmark{b3} & \tikzmark{b4}\text{anomaly} & \tikzmark{b5}\text{extended } & \tikzmark{b6}\text{\Textended} \\
+\vphantom{\Bigm|}(\text{even},&\text{odd}) & \text{anomaly}\tikzmark{c1} & \color{Purple}\text{anomaly}\tikzmark{c2} & \text{extended}\tikzmark{c3} & \tikzmark{c4}\text{\Textended}  & \tikzmark{c5}\text{\Textended} & \tikzmark{c6}\text{extended} \\
+\vphantom{\Bigm|}(\text{odd},&\text{odd}) & \text{extended}\tikzmark{d1} & \color{Purple}\text{\Textended}\tikzmark{d2} & \text{\Textended}\tikzmark{d3} & \tikzmark{d4}\text{extended}
+ &  \tikzmark{d5}\text{anomaly} & \tikzmark{d6}\text{anomaly}   \end{array} 
 \]
+\tikz[overlay,remember picture]{%
+\draw[<->,bend left,color=Orange,line width=1.5] (a1.north) to (a6.north);
+\draw[<->,bend left,color=Orange,line width=1.5] (a2.north) to (a5.north);
+\draw[<->,color=Orange,line width=1.5] (a3) to (a4);
+\draw[<->,bend right,color=Orange,line width=1.5] (b1.south) to (b6.south);
+\draw[<->,bend right,color=Orange,line width=1.5] (b2.south) to (b5.south);
+\draw[<->,color=Orange,line width=1.5] (b3.south) to (b4.south);
+\draw[<->,color=Orange,line width=1.5] (c1.south) to (d6.north);
+\draw[<->,color=Orange,line width=1.5] (c2.south) to (d5.north);
+\draw[<->,color=Orange,line width=1.5] (c3.south) to (d4.north);
+\draw[<->,color=Orange,line width=1.5] (c4.south) to (d3.north);
+\draw[<->,color=Orange,line width=1.5] (c5.south) to (d2.north);
+\draw[<->,color=Orange,line width=1.5] (c6.south) to (d1.north);
+}
 \caption{The symmetry structure of $\so(2n_c)$ QCD with $2n_f$ flavors,
 as deduced from the 2-group structures found in Sec.~\ref{sec:2-group}
 and from the $\SL(2,\bZ_2)$ action discussed in this section.
@@ -655,6 +669,21 @@ and we find the assignment given in Table~\ref{table:refined}.
 As the way we determined the symmetry structures were somewhat indirect,
 we confirm the symmetry structures of the $\Spin$ case in the next section
 in a different means.
+
+We can also use this Table~\ref{table:refined}
+to give a further check of the Intriligator-Seiberg duality,
+which is known to act as follows:
+\begin{equation}
+\begin{array}{ccc}
+	\Spin(2n_c) & \leftrightarrow & T(\SO_-(2n_f-2n_c+4)),\\
+	\SO_+(2n_c) & \leftrightarrow & T(\SO_+(2n_f-2n_c+4)),\\ 
+	\SO_-(2n_c) & \leftrightarrow & T(\Spin(2n_f-2n_c+4)).
+\end{array}
+\end{equation} 
+We see that the symmetry structure is indeed preserved across the duality.
+This duality action  taking  the finer distinction of $Q$ and $TQ$ into account was
+first discussed in \cite[Sec.~6]{Gaiotto:2014kfa} and further discussed in \cite{Bhardwaj:2020ymp}.
+
 
 \section{Fermion contribution to anomalies}
 So far, we first determined the 2-group structure in Sec.~\ref{sec:2-group} by studying the charges of line operators,
