@@ -146,7 +146,7 @@
 
 \begin{center}
 
-{\Large \bfseries Matching higher symmetries \\[1em]
+{\Large \bfseries Matching higher symmetries\\[.8em]
 across Intriligator-Seiberg duality}
 
 \vskip 1cm
@@ -168,11 +168,11 @@ $^2$ & Department of Physics, Faculty of Science, \\
 \noindent
 We study higher symmetries and anomalies of 4d  $\so(2n_c)$ gauge theory with $N_f=2n_f$ flavors.
 We find that they depend on the parity of $n_c$ and $n_f$,
-on the global form of the gauge group, and the discrete theta angle.
+the global form of the gauge group, and the discrete theta angle.
 The contribution from the fermions plays a central role in our analysis.
 Furthermore, our conclusion applies to \Nequals1 supersymmetric cases as well, and
-we see that higher symmetries and anomalies match across the duality 
-$\so(2n_c)\leftrightarrow\so(2n_f-n_c+4)$ of Intriligator and Seiberg.
+we see that higher symmetries and anomalies match across the duality between
+$\so(2n_c)\leftrightarrow\so(2n_f-2n_c+4)$ of Intriligator and Seiberg.
 
 
 \end{titlepage}
@@ -182,15 +182,15 @@ $\so(2n_c)\leftrightarrow\so(2n_f-n_c+4)$ of Intriligator and Seiberg.
 
 \section{Introduction and summary}
 \label{sec:introduction}
-Our understanding of the concept of symmetries in quantum field theories has been greatly improved in the last several years.
+Our understanding of the concept of symmetries in quantum field theories (QFT) has been greatly improved in the last several years.
 We now have the concept of $p$-form symmetries acting on $p$-dimensional objects \cite{Gaiotto:2014kfa}.
 This concept  gives a unifying point of view to both
 ordinary symmetries acting on point operators for $p=0$
 and center symmetries of gauge theories acting on Wilson line operators for $p=1$.
 In addition, the 't Hooft magnetic flux \cite{tHooft:1979rtg} can now be thought of as a background gauge field for the 1-form center symmetry.
 It is also realized more recently that 0-form symmetries and 1-form symmetries can not only coexist in a direct product but also mix in a more intricate manner.
-They can have mixed anomalies between them.
-They can also combine to form a symmetry structure called 2-groups \cite{Cordova:2018cvg,Benini:2018reh}.
+They can have mixed anomalies between them,
+or they can also combine to form a symmetry structure called 2-groups \cite{Cordova:2018cvg,Benini:2018reh}.
 
 In this paper we study these issues in the case of 4d $\so(N_c)$ gauge theories with 
 $N_f$ flavors of fermion fields in vector representation.
@@ -199,17 +199,17 @@ Let us quickly recall the 0-form and 1-form symmetries these theories have.
 As for the 1-form symmetry, we first need to recall that 
 such theories come in three versions, $\Spin$, $\SO_+$ and $\SO_-$,
 distinguished by the global form of the gauge group ($\Spin$ vs.~$\SO$)
-and by the choice of a discrete theta angle ($\SO_+$ vs.~$\SO_-$) \cite{Aharony:2013hda}\footnote{%
+and further by the choice of a discrete theta angle ($\SO_+$ vs.~$\SO_-$) \cite{Aharony:2013hda}\footnote{%
 This is when the theories are considered on spin manifolds.
-On more general manifolds a further distinction needs to be made \cite{Ang:2019txy}.
-For simplicity we only consider spin manifolds in this paper.
+On more general manifolds, a further distinction needs to be made \cite{Ang:2019txy}.
+For simplicity, we only consider spin manifolds in this paper.
 }.
 They also differ by the nontrivial line operator they possess: 
 the $\Spin$ theory has the Wilson line $W$ in the spinor representation,
 the $\SO_+$ theory has the 't Hooft line $H$ which is mutually non-local with respect to $W$,
 and the $\SO_-$ theory has the dyonic line $D=WH$. 
 Furthermore, these line operators are charged under corresponding $\bZ_2$ 1-form symmetries,
-which we can all electric, magnetic and dyonic 1-form symmetries.
+which we respectively call electric, magnetic and dyonic 1-form symmetries.
 
 As for the 0-form symmetry, 
 we focus our attention on the $\su(N_f)$ symmetry acting on $N_f$ flavors of matter fields 
@@ -220,7 +220,7 @@ The main question is then how the $\bZ_2$ 1-form symmetry and the $\su(N_f)$ 0-f
 A partial answer was given in \cite{Hsin:2020nts}, but the contribution from fermions was not taken into account in that reference.
 Our conclusion is therefore somewhat different from theirs.
 }
-We concentrate on the case when $N_c$ and $N_f$ are both even, $N_c=2n_c$ and $N_f=2n_f$.
+We concentrate on the case when $N_c$ and $N_f$ are both even: $N_c=2n_c$ and $N_f=2n_f$.
 
 Take for example the $Spin(2n_c)$ gauge theory with $2n_f$ flavors,
 when $n_c$ is odd.
@@ -234,16 +234,16 @@ As we will recall below,  formally this means that the $\bZ_2$ 1-form symmetry e
 0\to \bZ_2[1] \to H\to \SU(2n_f)/\bZ_2\to 0,\label{2-group}
 \end{equation}
 whose Postnikov class is specified by \begin{equation}
-\beta v_2 \in H^3(\SU(2n_f)/\bZ_2,\bZ_2),\label{postnikov}
+\beta v_2 \in H^3(B(\SU(2n_f)/\bZ_2);\bZ_2),\label{postnikov}
 \end{equation}
-where $a_2$ is the generator of $H^2(\SU(2n_f)/\bZ_2,\bZ_2)=\bZ_2$ and $\beta$ is the Bockstein.
+where $v_2$ is the generator of $H^2(\SU(2n_f)/\bZ_2;\bZ_2)=\bZ_2$ and $\beta$ is the Bockstein.
 
 The $\SO_+$ gauge theory is then obtained by gauging the $\bZ_2$ 1-form symmetry \cite{Kapustin:2014gua}.
 The presence of the fermions significantly complicates the analysis.
 For the moment let us suppose that we have $N_f$ scalars instead of fermions in the vector representation.
 Then, the argument of \cite{Tachikawa:2017gyf} immediately applies, and 
 we see that the $\bZ_2$ 1-form symmetry of the $\SO(2n_f)$ theory and the $\SU(2n_f)/\bZ_2$ 0-form flavor symmetry remains a direct product but with a mixed anomaly given by \begin{equation}
-2\pi i \frac12 \int B\beta v_2.\label{mixed}
+2\pi i \cdot \frac12 \int B\beta v_2.\label{mixed}
 \end{equation}
 
 
@@ -327,16 +327,16 @@ This can be seen most clearly by considering background fields for the symmetry 
 The fermion fields are in the vector of $\SO(2n_c)$ and in the fundamental of $\SU(2n_f)$, and therefore is a representation of $G=[\SO(2n_c)\times \SU(2n_f)]/\bZ_2$.
 Given a $G$-bundle on a manifold $X$,
 there is an $\SO(2n_c)/\bZ_2$ bundle and an $\SU(2n_f)/\bZ_2$ bundle associated to it.
-Let us denote by $a_2,v_2\in H^2(X,\bZ_2)$ the obstruction classes controlling whether they lift to $\SO(2n_c)$ and $\SU(2n_f)$ respectively. 
+Let us denote by $a_2,v_2\in H^2(X;\bZ_2)$ the obstruction classes controlling whether they lift to $\SO(2n_c)$ and $\SU(2n_f)$ respectively. 
 Then we have $a_2=v_2$ for a $G$-bundle.
 The flavor Wilson line in the fundamental representation is charged under $-1\in \SU(2n_f)$ in the center,
 and $v_2$ can be considered as the background field for this $\bZ_2$ 1-form center symmetry.
 
-Now, without the flavor background,  the background $E\in H^2(X,\bZ_2)$ for the electric $\bZ_2$ one-form symmetry of the $\Spin(2n_c)$ theory sets the Stiefel-Whitney class $w_2\in H^2(X,\bZ_2)$ of the $\SO(2n_c)$ gauge bundle to be $E=w_2$, which controls whether it lifts to a $\Spin(2n_c)$ bundle.
+Now, without the flavor background,  the background $E\in H^2(X;\bZ_2)$ for the electric $\bZ_2$ one-form symmetry of the $\Spin(2n_c)$ theory sets the Stiefel-Whitney class $w_2\in H^2(X;\bZ_2)$ of the $\SO(2n_c)$ gauge bundle to be $E=w_2$, which controls whether it lifts to a $\Spin(2n_c)$ bundle.
 When the flavor background $v_2$ is nontrivial,
 the obstruction class $a_2$ controlling the lift from $\SO(2n_c)/\bZ_2$ to $\SO(2n_c)$ is nontrivial.
 In this situation when $n_c$ is odd, $w_2$ can no longer be defined as a closed cochain; rather it satisfies $\delta w_2 = \beta a_2$, where $\beta$ is the Bockstein operation,
-since together they specify the obstruction class $x_2\in H^2(X,\bZ_4)$ 
+since together they specify the obstruction class $x_2\in H^2(X;\bZ_4)$ 
 controlling the lift from $\SO(2n_c)/\bZ_2=\Spin(2n_c)/\bZ_4$ to $\Spin(2n_c)$.
 As $E=w_2$ and $a_2=v_2$, we conclude that the background fields satisfy \begin{equation}
 \delta E=\beta v_2.
@@ -345,7 +345,7 @@ As $E=w_2$ and $a_2=v_2$, we conclude that the background fields satisfy \begin{
 This means that the $\bZ_2$ 1-form symmetry and the $\SU(2n_f)/\bZ_2$ 0-form flavor symmetry form the 2-group $H$ fitting in the sequence \begin{equation}
 0\to \bZ_2[1]\to H \to \SU(2n_f)/\bZ_2 \to 0
 \label{group-extension}
-\end{equation} whose Postnikov class is $\beta v_2 \in H^3(B\SU(2n_f)/\bZ_2,\bZ_2)$.
+\end{equation} whose Postnikov class is $\beta v_2 \in H^3(B(\SU(2n_f)/\bZ_2);\bZ_2)$.
 
 Before proceeding, we note that having the extension of groups of charges of line operators as in \eqref{charge-extension}
 is equivalent to having a nontrivial 2-group extension \eqref{group-extension} 
@@ -370,7 +370,7 @@ The fundamental representation still transforms nontrivially under $-1\in \USp(2
 \item We give a vev to $\Phi_{ab}$ to break $\SO(2n_c)$ to $\SO(2)^{n_c}$.
 \end{itemize}
 
-The 't Hooft lines in the resulting $\SO(2)^{n_c}$ theory can be labeled by their magnetic charges $(m_1,\ldots,m_{n_c})\in \bZ^{n_c})$.
+The 't Hooft lines in the resulting $\SO(2)^{n_c}$ theory can be labeled by their magnetic charges $(m_1,\ldots,m_{n_c})\in \bZ^{n_c}$.
 The dynamical monopoles have the charges in the `adjoint class', which are
 in the root lattice $\Lambda$ of $\SO(2n_c)$. 
 
@@ -378,7 +378,7 @@ The group of the magnetic charges of 't Hooft lines up to screening by the dynam
 \bZ^{n_c}/\Lambda = \bZ_2,
 \end{equation}
 which agrees with the 1-form symmetry before the deformation.
-We now would like to study how this $\bZ_2$ is combined with the flavor/gauge center charge $\bZ_2$.
+We now would like to study how this $\bZ_2$ is combined with the flavor/gauge center $\bZ_2$ charge.
 
 For this purpose we need to know slightly more details of the dynamical monopoles.
 The dynamical monopoles associated to the breaking of $G$ to its Cartan were analyzed in many places, 
@@ -407,19 +407,19 @@ $
 into the form $
 (0,\ldots,0, m, m' ; q').
 $
-We then have to determine $q_{n-1}$ and $q_{n_c}$.
+We then have to determine $q_{n_c-1}$ and $q_{n_c}$.
 
 This reduces the study to the case of $\so(4)\simeq \su(2)_1 \times \su(2)_2$.
 The monopoles associated to the simple roots are just 't Hooft-Polyakov monopoles associated to the two factors of $\su(2)$'s.
 The vev of the adjoint scalar in this basis can be written as $(a_1,a_2)$, which we assume $a_1>a_2>0$.
-The fermion is in the vector representation of $so(4)$.
+The fermion is in the vector representation of $SO(4)$.
 Under the monopole in $\su(2)_1$, it is a doublet coupled to an adjoint vev of size $a_1$ with bare mass $a_2$,
 and similarly for the monopole in $\su(2)_2$.
 
 Now, the explicit analysis in \cite[Sec.~IV]{Callias:1977kg} concerning the number of zero modes in the 't Hooft-Polyakov monopole says that 
 a doublet coupled to an adjoint vev of size $a$ with bare mass $\mu$ has
- a zero mode if $|a|>|m|$ and 
- it has no zero mode if $|a|<|m|$.
+ a zero mode if $|a|>|\mu|$ and 
+ it has no zero mode if $|a|<|\mu|$.
  
 With our assumption $a_1>a_2>0$, this means that the monopole in $\su(2)_1$ has a zero mode while the one in $\su(2)_2$ does not have any.
 In our original basis, this means that the monopole with $(0,\ldots,1,-1;q_{n_c-1})$ does not have any zero modes and $q_{n_c-1}=0$,
@@ -486,15 +486,15 @@ and `extended' means that they form a nontrivial 2-group.
 \section{$\SL(2,\bZ_2)$ action and the anomalies}
 \label{sec:sl2z}
 In the last section we determined the 2-group structure of the $\so(2n_c)$ gauge theories with $2n_f$ flavors, by studying the group of the charges of line operators. 
-In a quantum field theory, any symmetry comes with its (possibly trivial) 't Hooft anomaly.
-Here we determine the anomalies of these theories using the $\SL(2,\bZ_2)$ action on the set of quantum field theories (QFTs) with $\bZ_2$ 1-form symmetry.
+In a QFT, any symmetry comes with its (possibly trivial) 't Hooft anomaly.
+Here we determine the anomalies of these theories using the $\SL(2,\bZ_2)$ action on the set of QFTs with $\bZ_2$ 1-form symmetry.
 
 \subsection{$\SL(2,\bZ_2)$ action and $\so$ gauge theories}
 
 Let us say that  a four-dimensional spin QFT $Q$ with $\bZ_2$ 1-form symmetry is given.
 We denote its partition function on a manifold $X$ by $Z_Q[E]$, 
-where we suppress the dependence on $X$ in the notation and $E\in H^2(X,\bZ_2)$ is the background field for the 1-form symmetry.
-We then define $SQ$ and $TQ$ to be given by the formula \begin{equation}
+where we suppress the dependence on $X$ in the notation and $E\in H^2(X;\bZ_2)$ is the background field for the 1-form symmetry.
+We then define $SQ$ and $TQ$ to be QFTs with partition functions given by the formula \begin{equation}
 Z_{SQ}[B] \propto \sum_{E} (-1)^{\int_X B\cup E} Z_Q{B},\qquad
 Z_{TQ}[E]= (-1)^{\int_X \tfrac12 \fP(E)} Z_Q[E].
 \end{equation}
@@ -503,48 +503,49 @@ This operation was considered in  \cite{Gaiotto:2014kfa} as an analogue of the $
 
 
 Importantly, $\Spin(2n_c)$ and $\SO(2n_c)_\pm$  gauge theories with $2n_f$ flavors with the same $n_c$ and $n_f$ form a single orbit under this $\SL(2,\bZ)$ action.
-More precisely, we need to make the distinction between $\Spin(2n_c)$ and $T(\Spin(2n_c))$ and  similarly between $\SO(2n_c)_\pm$ and $T\SO(2n_c)_\pm$, respectively.
+More precisely, we need to make the distinction between $\Spin(2n_c)$ and $T(\Spin(2n_c))$ and  similarly between $\SO(2n_c)_\pm$ and $T(\SO(2n_c)_\pm)$, respectively.
 Here the theories with $T$ prepended are different from the original ones only by its coupling to the background.
 Then we have the following chain of actions: \begin{equation}
+{\scriptstyle S} \ \rotatebox[]{-90}{$\circlearrowleft$}\hspace{2mm}
 T\Spin \stackrel{T}{\longleftrightarrow} 
 \Spin \stackrel{S}{\longleftrightarrow} 
 \SO_+ \stackrel{T}{\longleftrightarrow} 
 T\SO_+ \stackrel{S}{\longleftrightarrow} 
 T\SO_- \stackrel{T}{\longleftrightarrow} 
-\SO_- \stackrel{S}{\longleftrightarrow} .
+\SO_- \hspace{1mm}\rotatebox[]{90}{$\circlearrowleft$} \ {\scriptstyle S}.
 \end{equation}
 
 \subsection{$\SL(2,\bZ_2)$ actions with extra background}
 
 Let us now study what happens if we perform this $\SL(2,\bZ_2)$ action when the $\bZ_2$ 1-form symmetry in question is part of a larger symmetry group.
 So far we have been considering the effect of $\SU(2n_f)/\bZ_2$ flavor symmetry,
-but the discussions in the last section shows that at a formal level only the background field $v_2 \in H^2(X,\bZ_2)$ matters, which controls the lift from $\SU(2n_f)/\bZ_2$ to $\SU(2n_f)$.
+but the discussions in the last section shows that at a formal level only the background field $v_2 \in H^2(X;\bZ_2)$ matters, which controls the lift from $\SU(2n_f)/\bZ_2$ to $\SU(2n_f)$.
 Let us regard $v_2$ as the background field for a flavor $\bZ_2$ 1-form symmetry.
 
 The combined 1-form symmetry is either $\bZ_2\times \bZ_2$ or $\bZ_4$,
 and we perform the $\SL(2,\bZ_2)$ action  by picking a $\bZ_2$ subgroup.
-The symmetry and the anomaly of the resulting theory can be determined by a formal argument once the symmetry and the anomaly of the original theory 
-and the action of the anomaly-free subgroup to be gauged is given \cite{Tachikawa:2017gyf}.
+The symmetry and the anomaly of the resulting theory can be determined by a formal argument once those of the original theory 
+and the action of the anomaly-free subgroup to be gauged are given \cite{Tachikawa:2017gyf}.
 
 Let us work at the level of anomalies described at the level of cohomology, since we do not need to deal with anomalies more general than that.
-We consider a $d$-dimensional QFT with a symmetry group $G$ with an anomaly specified by a cochain $\alpha\in C^{d+1}(G,\U(1))$. 
-We pick a subgroup $H\subset G$ such that $\alpha$ trivializes in it, so that one can find $\mu \in C^d(H,\U(1))$ such that $\delta \mu = \alpha|_H$. 
+We consider a $d$-dimensional QFT with a symmetry group $G$ with an anomaly specified by a cochain $\alpha\in C^{d+1}(G;\U(1))$. 
+We pick a subgroup $H\subset G$ such that $\alpha$ trivializes in it, so that one can find $\mu \in C^d(H;\U(1))$ such that $\delta \mu = \alpha|_H$. 
 We then gauge $H$, using $\mu$ as the action.
-What determines the symmetry and the anomaly of the gauged theory is the data $(\mu,\alpha)$
-Clearly, given $\beta\in C^d(G,\U(1))$, the pair $(\mu,\alpha)$ and the pair $(\mu-\beta,\alpha-\delta\beta)$ should give the same result, since we merely added the countertem $\beta$ as the action.
+What determines the symmetry and the anomaly of the gauged theory is the data $(\mu,\alpha)$.
+Clearly, given $\nu\in C^d(G;\U(1))$, the pair $(\mu,\alpha)$ and the pair $(\mu-\nu,\alpha-\delta\nu)$ should give the same result, since we merely added the countertem $\nu$ as the action.
 This allows us to always choose the pair of the form $(0,\alpha')$ equivalent to a given $(\mu,\alpha)$, 
-by using $\beta$ to be an arbitrary extension of $\mu$ from $H$ to $G$.
+by using $\nu$ to be an arbitrary extension of $\mu$ from $H$ to $G$.
 This is convenient in discussing the $\SL(2,\bZ_2)$ action,
 since our $S$ operation is defined in the convention that $\mu=0$.
 
 Now, what are the possible choices of $(\mu,\alpha)$ or $(0,\alpha')$ we need to discuss?
 Let us first consider $\bZ_2\times \bZ_2$ 1-form symmetry.
 As detailed in the Appendix~\ref{sec:bordism}, the only possible anomaly for 4d spin QFTs with this symmetry is \begin{equation}
-\alpha=2\pi i \tfrac12  B\beta E  \label{anom}
-\end{equation} where $Y$ is the 5d spin manifold and $B,E\in H^2(Y,\bZ_2)$ are the background fields.
+\alpha=2\pi i \cdot \frac12  B\beta E  \label{anom}
+\end{equation} where $Y$ is the 5d spin manifold and $B,E\in H^2(Y;\bZ_2)$ are the background fields.
 Its restriction to $\bZ_2$ 1-form symmetry subgroup is trivially zero,
 and then the possible choice of $\mu$ is simply the discrete theta angle \begin{equation}
-\mu = 2\pi i \tfrac12  \tfrac12\fP(E).\label{P}
+\mu = 2\pi i \cdot \frac14 \fP(E).\label{P}
 \end{equation}
 This $\mu$ can be extended from the $\bZ_2$ subgroup to the entire $\bZ_2\times \bZ_2$ subgroup as a closed cochain.
 Therefore, we only have to consider pairs $(0,0)$ and $(0,\alpha)$.
@@ -554,9 +555,9 @@ Again in the Appendix~\ref{sec:bordism}, we show that there is no anomaly for $\
 Therefore we can pick $\alpha=0$. Then the possible choice of $\mu$ for the $\bZ_2$ 1-form subgroup is again the discrete theta angle \eqref{P}.
 One difference here is that the discrete theta angle \eqref{P} cannot be extended as a closed cochain to the entire $\bZ_4$ 1-form subgroup.
 As discussed in the Appendix~\ref{sec:nonclosedP}, with $\delta E=\beta a_2$,
-where $a_2\in H^2(X,\bZ_4/\bZ_2)$,
+where $a_2\in H^2(X;\bZ_4/\bZ_2)$,
 one finds \begin{equation}
-\alpha':=\delta \mu = 2\pi i \tfrac12 a_2 \beta_2 a_2.\label{anom'}
+\alpha':=\delta \mu = 2\pi i \cdot \frac12 a_2 \beta_2 a_2.\label{anom'}
 \end{equation}
 Therefore, the pairs we need to consider are $(0,0)$ and $(\mu,0)\sim (0,\alpha')$. 
 
@@ -576,7 +577,7 @@ The additional $\bZ_2$ factor plays no role, and we find the chain of actions gi
 \text{none} \stackrel{T}{\longleftrightarrow} 
 \text{none} \stackrel{S}{\longleftrightarrow} 
 \text{none} \stackrel{T}{\longleftrightarrow} 
-\text{none} \stackrel{S}{\longleftrightarrow} 
+\text{none} \hspace{1mm}\rotatebox[]{90}{$\circlearrowleft$} \ {\scriptstyle S}
 \label{trivial-chain}.
 \end{equation} 
 
@@ -619,7 +620,7 @@ Combined, the preceding arguments allows us to  see the chain of actions \begin{
 \text{anomaly} \stackrel{T}{\longleftrightarrow} 
 \text{anomaly} \stackrel{S}{\longleftrightarrow} 
 \text{extended}\stackrel{T}{\longleftrightarrow} 
-\text{\Textended}\stackrel{S}{\longleftrightarrow}.
+\text{\Textended}\hspace{1mm}\rotatebox[]{90}{$\circlearrowleft$} \ {\scriptstyle S}.
 \label{nontrivial-chain}
 \end{equation}
 
@@ -698,13 +699,13 @@ Here we use $\USp(2n_f)$ instead of $\SU(2n_f)$, because under the latter we als
 More explicitly, for $n_c$ even, the anomaly should be given by  \begin{equation}
 \alpha= 2\pi i \frac12 w_2 \beta v_2
 \end{equation} when $n_c$ is even,
-where $w_2,v_2$ are the classes in $H^2(X,\bZ_2)$ controlling the lift from $\SO(2n_c)/\bZ_2$ to $\SO(2n_c)$
+where $w_2,v_2$ are the classes in $H^2(X;\bZ_2)$ controlling the lift from $\SO(2n_c)/\bZ_2$ to $\SO(2n_c)$
 and from $\USp(2n_f)/\bZ_2$ to $\USp(2n_f)$, respectively,
 and for $n_c$ odd, the anomaly cochain should be given by 
  \begin{equation}
 \alpha'=2\pi i \frac12 a_2 \beta_2 a_2
-\end{equation} where $a_2$ is the class in $H^2(X,\bZ_2)$ which is the mod-2 reduction of
-the class in $H^2(X,\bZ_4)$ controlling the lift from $\SO(2n_c)/\bZ_2=\Spin(2n_c)/\bZ_4$ to $\bZ_4$.
+\end{equation} where $a_2$ is the class in $H^2(X;\bZ_2)$ which is the mod-2 reduction of
+the class in $H^2(X;\bZ_4)$ controlling the lift from $\SO(2n_c)/\bZ_2=\Spin(2n_c)/\bZ_4$ to $\bZ_4$.
 We note that $\alpha'$ is exact, but as explained in the previous section, this still affects the gauging process.
 
 
@@ -853,7 +854,7 @@ According to \cite[Appendix C.3]{Clement2002} and \cite[Eq.\,(6.3)]{Wan:2018bns}
 The corresponding invariant in 4d is simply \begin{equation}
 \exp(2\pi i \frac{p}{4} \int \frac12\fP(a) )
 \end{equation}
-where $\fP:H^2(-,\bZ_4)\to H^4(-,\bZ_8)$ is the Pontryagin square,
+where $\fP:H^2(-;\bZ_4)\to H^4(-;\bZ_8)$ is the Pontryagin square,
 which is even mod 8 on a spin manifold.
 
 \subsection{$\bZ_2\times \bZ_2$ 1-form symmetry}
