@@ -519,13 +519,19 @@ Importantly, $\Spin(2n_c)$ and $\SO(2n_c)_\pm$  gauge theories with $2n_f$ flavo
 More precisely, we need to make the distinction between $\Spin(2n_c)$ and $T(\Spin(2n_c))$ and  similarly between $\SO(2n_c)_\pm$ and $T(\SO(2n_c)_\pm)$, respectively.
 Here the theories with $T$ prepended are different from the original ones only by its coupling to the background.
 Then we have the following chain of actions: \begin{equation}
-{\scriptstyle S} \ \rotatebox[]{-90}{$\circlearrowleft$}\hspace{2mm}
-T(\Spin) \stackrel{T}{\longleftrightarrow} 
-\Spin \stackrel{S}{\longleftrightarrow} 
-\SO_+ \stackrel{T}{\longleftrightarrow} 
-T(\SO_+) \stackrel{S}{\longleftrightarrow} 
-T(\SO_-) \stackrel{T}{\longleftrightarrow} 
-\SO_- \hspace{1mm}\rotatebox[]{90}{$\circlearrowleft$} \ {\scriptstyle S}.
+\begin{tikzpicture}
+	\node at (0,0) {$
+		T(\Spin) \stackrel{T}{\longleftrightarrow} 
+		\Spin \stackrel{S}{\longleftrightarrow} 
+		\SO_+ \stackrel{T}{\longleftrightarrow} 
+		T(\SO_+) \stackrel{S}{\longleftrightarrow} 
+		T(\SO_-) \stackrel{T}{\longleftrightarrow} 
+		\SO_-.
+	$};
+	\draw[->] (-5,-1) -- (-5,-0.5);
+	\draw[->] (5.4,-1) -- (5.4,-0.5);
+	\draw (-5,-1) -- node[above] {\scriptsize $S$} (5.4,-1);
+\end{tikzpicture}
 \end{equation}
 
 \subsection{$\SL(2,\bZ_2)$ actions with extra background}
@@ -585,14 +591,21 @@ Summarizing,  we need to consider the following four choices, namely:
 Let us now determine how the $\SL(2,\bZ_2)$ action affects these data.
 The case `none' is very easy.
 The additional $\bZ_2$ factor plays no role, and we find the chain of actions given by \begin{equation}
-\text{none} \stackrel{T}{\longleftrightarrow} 
-\text{none} \stackrel{S}{\longleftrightarrow} 
-\text{none} \stackrel{T}{\longleftrightarrow} 
-\text{none} \stackrel{S}{\longleftrightarrow} 
-\text{none} \stackrel{T}{\longleftrightarrow} 
-\text{none} \hspace{1mm}\rotatebox[]{90}{$\circlearrowleft$} \ {\scriptstyle S}
-\label{trivial-chain}.
-\end{equation} 
+\begin{tikzpicture}
+	\node at (0,0) {$
+		\text{none} \stackrel{T}{\longleftrightarrow} 
+		\text{none} \stackrel{S}{\longleftrightarrow} 
+		\text{none} \stackrel{T}{\longleftrightarrow} 
+		\text{none} \stackrel{S}{\longleftrightarrow} 
+		\text{none} \stackrel{T}{\longleftrightarrow} 
+		\text{none}.
+	$};
+	\draw[->] (-4.6,-1) -- (-4.6,-0.5);
+	\draw[->] (4.5,-1) -- (4.5,-0.5);
+	\draw (-4.6,-1) -- node[above] {\scriptsize $S$} (4.5,-1);
+\end{tikzpicture}
+\label{trivial-chain}
+\end{equation}
 
 Let us now consider $\bZ_4$ 1-form symmetry and gauge its $\bZ_2$ subgroup.
 The case  `extended' was analyzed in \cite{Tachikawa:2017gyf},
@@ -629,12 +642,19 @@ This means that, starting from `\Textended', performing $S$ and then $T$, we fin
 Therefore, simply performing $S$ for the theory of the type `\Textended',  one  finds `\Textended'.
 
 Combined, the preceding arguments allow us to see the chain of actions \begin{equation}
-\text{\Textended} \stackrel{T}{\longleftrightarrow} 
-\text{extended} \stackrel{S}{\longleftrightarrow} 
-\text{anomaly} \stackrel{T}{\longleftrightarrow} 
-\text{anomaly} \stackrel{S}{\longleftrightarrow} 
-\text{extended}\stackrel{T}{\longleftrightarrow} 
-\text{\Textended}\hspace{1mm}\rotatebox[]{90}{$\circlearrowleft$} \ {\scriptstyle S}.
+\begin{tikzpicture}
+	\node at (0,0) {$
+		\text{\Textended} \stackrel{T}{\longleftrightarrow} 
+		\text{extended} \stackrel{S}{\longleftrightarrow} 
+		\text{anomaly} \stackrel{T}{\longleftrightarrow} 
+		\text{anomaly} \stackrel{S}{\longleftrightarrow} 
+		\text{extended}\stackrel{T}{\longleftrightarrow} 
+		\text{\Textended}.
+	$};
+	\draw[->] (-6.5,-1) -- (-6.5,-0.5);
+	\draw[->] (6.3,-1) -- (6.3,-0.5);
+	\draw (-6.5,-1) -- node[above] {\scriptsize $S$} (6.3,-1);
+\end{tikzpicture}
 \label{nontrivial-chain}
 \end{equation}
 
