@@ -94,6 +94,7 @@
 \definecolor{lightgreen}{rgb}{0.7, 1.0, 0.4}
 
 \def\Nequals#1{$\mathcal{N}{=}#1$}
+\def\bR{\mathbb{R}}
 \def\bQ{\mathbb{Q}}
 \def\bZ{\mathbb{Z}}
 \def\MF{\mathrm{MF}}
@@ -814,19 +815,22 @@ So far, we first determined the 2-group structure in Sec.~\ref{sec:2-group} by s
 and then determined the anomalies in Sec.~\ref{sec:sl2z} by matching it to the action of $\SL(2,\bZ_2)$.
 Going over  the entries on the column $\Spin$ of Table~\ref{table:refined},
 we find that the anomaly is trivial when $(n_c,n_f)$ is (even,even) or (odd,even),
-while it is $\alpha$ when $(n_c,n_f)$ is (odd,even) and $\alpha'$ when (odd,odd).
+while it is $\alpha$ given in \eqref{anom} when $(n_c,n_f)$ is (odd,even) 
+and $\alpha'$ given in \eqref{anom'} when (odd,odd).
 Since the 1-form symmetry background in the $\Spin$ theory is simply the Stiefel-Whitney class $w_2$ of the $\SO(2n_c)$ gauge bundle, 
 these anomalies should simply come from the anomalies of fermions charged under $[\SO(2n_c)\times \USp(2n_f)]/\bZ_2$.
-Here we use $\USp(2n_f)$ instead of $\SU(2n_f)$, because under the latter we also have perturbative anomalies, which might complicate the analysis.
+Here we use $\USp(2n_f)$ instead of $\SU(2n_f)$, because under the latter we also have perturbative anomalies, which would complicate the analysis.
 
 For even $n_c$, the anomaly should be given by  \begin{equation}
-\alpha= 2\pi i \cdot \frac12 w_2 \beta a_2
+\alpha=% 2\pi i \cdot 
+\frac12 w_2 \beta a_2
 \end{equation}
 where $w_2,a_2\in H^2(X;\bZ_2)$ controls the lift from $\SO(2n_c)$ to $\Spin(2n_c)$
 and from $\USp(2n_f)/\bZ_2$ to $\USp(2n_f)$, respectively.
 For odd $n_c$, the anomaly cochain should be given by 
  \begin{equation}
-\alpha'=2\pi i \cdot \frac12 v_2 \beta_2 v_2
+\alpha'=%2\pi i \cdot
+ \frac12 v_2 \beta_2 v_2
 \end{equation} where $v_2$ is the class in $H^2(X;\bZ_2)$ which is the mod-2 reduction of
 the class $x_2 \in H^2(X;\bZ_4)$ controlling the lift from $\SO(2n_c)/\bZ_2=\Spin(2n_c)/\bZ_4$ to $\Spin(2n_c)$.
 We note that $\alpha'$ is exact, but as explained in the previous section, this still affects the gauging process.
@@ -841,8 +845,11 @@ The next step is to see what happens when the symmetry group is changed from $\S
 we will see that the effective interaction will have the required anomalies.
 
 Before proceeding, we have two remarks.
-First, this method was first used in \cite[Sec.~4]{Witten:1995gf} under the name of `a curious minus sign', and recognized as determining an anomaly in \cite[Sec.~2.4.3]{Cordova:2018acb}.
-It was also used in \cite[Sec.~3.1 and Sec.~5.1.2]{Wang:2018qoy}.
+First, this method was first used in \cite[Sec.~4]{Witten:1995gf} to understand `a curious minus sign' 
+appearing in the topologically-twisted Seiberg-Witten theory, 
+which was more recently recognized as determining an anomaly in \cite[Sec.~2.4.3]{Cordova:2018acb}.
+It was also used in \cite[Sec.~3.1 and Sec.~5.1.2]{Wang:2018qoy} to relate the `new' $\SU(2)$ anomaly 
+with the effective interaction in the $\U(1)$ theory.
 Second, in this section we can only say that the effective interaction we find is compatible with the anomalies
 as found in Sec.~\ref{sec:sl2z},
 and will not be able to determine it completely.
@@ -852,28 +859,50 @@ Only in a couple of cases we can say more, as we comment along the way.
 
 \subsection{Effective interaction}
 We break $\USp(2n_f)$ down to $\U(n_f)$ using a scalar field,
-such that the fundamental representation of $\USp(2n_f)$ splits to the fundamental plus the anti-fundamental representation of $\U(n_f)$.
+such that the fundamental representation of $\USp(2n_f)$ splits into the fundamental plus the anti-fundamental representation of $\U(n_f)$.
 The monopole charge is given by the first Chern class $c_1$ of the low-energy $\U(n_f)$ flavor symmetry.
 
 Take a standard 't Hooft-Polyakov monopole associated to $\U(1)\subset \USp(2)$
 and embed it into  $\U(n_f)\subset \USp(2n_f)$.
 The fermion zero modes form a vector representation of $\SO(2n_c)$,
 whose quantization leads to the spinor representation.
-This means that there is an effective interaction \begin{equation}
-2\pi i \cdot \frac12 \int_X w_2 c_1.
+
+As first discussed in \cite{Thorngren:2014pza} and also used in \cite[Sec.~3.1]{Wang:2018qoy},
+this means that there is an effective interaction \begin{equation}
+%2\pi i \cdot
+ \frac12 \int_X w_2 c_1.
+ \label{bulk}
 \end{equation} %where $w_2$ is the Stiefel-Whitney class of the $\SO(2n_c)$ bundle
 %and $c_1$ is the first Chern class of $\U(n_f)$.
+One way to understand it is as follows.
+
+We started from a system which has $\SO(2n_c)$ symmetry,
+but the spinor representation is only a projective representation of this symmetry.
+This is an anomaly at the core of the monopole, which needs to flow in from the bulk.
+Indeed, take the spacetime  to be $X=\bR_{\ge 0} \times \bR_t \times S^2$ around the monopole.
+Reducing the bulk term \eqref{bulk} on $S^2$ with $\int_{S^2} c_1=1$, 
+we have the  effective interaction $\int_Y w_2$
+on the half-space $Y=\bR_{\ge 0}\times \bR_t$,
+and the monopole lives on the boundary. 
+Therefore, the degree of freedom on the boundary is in the projective representation characterized by 
+$w_2\in H^2(\SO(2n_c),\bZ_2)$.
 
 \subsection{Anomalies}
 We now take the $\bZ_2$ quotient, changing the symmetry group from 
 $\SO(2n_c)\times \USp(2n_f)$ to $[\SO(2n_c)\times \USp(2n_f)]/\bZ_2$.
-Note that $\pi_1(U(n_f)/\bZ_2)=\bZ\times \bZ_2$  or $\bZ$ depending on whether $n_f$ is even or odd.
-
-Furthermore, when $n_f$ is even, $c_1(\U(n_f)) = c_1(\U(n_f)/\bZ_2)$ and $a_2(\U(n_f)/\bZ_2)=a_2(\USp(2n_f))$.
-When $n_f$ is odd, $c_1(\U(n_f)/\bZ_2)=2 c_1(\U(n_f))$ when the latter is well-defined and $a_2(\U(n_f)/\bZ_2)$ is the mod-2 reduction of $c_1(\U(n_f)/\bZ_2)$.
+Note that $\pi_1(\U(n_f)/\bZ_2)=\bZ\times \bZ_2$  or $\bZ$ depending on whether $n_f$ is even or odd.
+We denote by $a_2$ the obstruction class to lift a $\U(n_f)/\bZ_2$ bundle to a $\U(n_f)$ bundle.
+This implies the following:
+\begin{itemize}
+\item When $n_f$ is even, $c_1(\U(n_f)) = c_1(\U(n_f)/\bZ_2)$ and $a_2(\U(n_f)/\bZ_2)=a_2(\USp(2n_f))$.
+\item When $n_f$ is odd, $c_1(\U(n_f)/\bZ_2)=2 c_1(\U(n_f))$ when the latter is well-defined.
+More generally, $a_2(\U(n_f)/\bZ_2)$ is the mod-2 reduction of $c_1(\U(n_f)/\bZ_2)$.
+\end{itemize}
 We now compute the anomaly cochains in the four cases separately:
 \paragraph{$(n_c,n_f)$=(even,even):}
-$w_2(\SO(2n_c))$ and $c_1(\U(n_f))$ can be generalized without any problem,
+$w_2(\SO(2n_c))$ and $c_1(\U(n_f))$ can be generalized to closed cochains of $\SO(2n_c)/\bZ_2$ 
+and of $\U(n_f)/\bZ_2$
+without any problem,
 and therefore \begin{equation}
 \delta\left(\frac12 w_2(\SO(2n_c)) c_1(\U(n_f))\right) = 0.
 \end{equation}
@@ -899,13 +928,13 @@ which is a pull-back of the anomaly cochain
 \begin{equation}
  \frac12 \Big(\beta w_2(\SO(2n_c))\Big)a_2(\USp(2n_f)/\bZ_2). 
 \end{equation}
-When $n_c=2$ and $n_f=1$, we can confirm this is indeed the entire anomaly,
+When $n_c=2$ and $n_f=1$, we can confirm that this is indeed the entire anomaly,
 since we can compute $\mathrm{Hom}(\Omega^\text{spin}_5([\SO(4)\times \USp(2)]/\bZ_2),\U(1))$
 and show that this is the only nontrivial element there.
 For details, see Appendix~\ref{sec:so4su2}.
 
 \paragraph{$(n_c,n_f)$=(odd,odd):}
-Now we make the replacement on both sides and the effective interaction is \begin{equation}
+Now we make the replacement on both sides and therefore the effective interaction is \begin{equation}
 \frac18 x_2(\SO(2n_c)/\bZ_2) c_1(\U(n_f)/\bZ_2) 
 \end{equation}
 and \begin{align}
