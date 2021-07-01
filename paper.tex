@@ -80,6 +80,7 @@
 \newcommand*{\colorC}[1]{\textcolor{colorC}{#1}}
 \newcommand*{\colorD}[1]{\textcolor{colorD}{#1}}
 
+\let\tilde\widetilde
 
 %% Yuji's macros
 %%list SeibergDual
@@ -978,7 +979,7 @@ and also by WPI Initiative, MEXT, Japan at IPMU, the University of Tokyo.
 According to \cite[Appendix C.3]{Clement2002} and \cite[Eq.\,(6.3)]{Wan:2018bns}, it seems that we have
 \begin{equation}
 	\begin{array}{ccc}
-		E^2_{p,q}=H_p\big(K(\bZ_4,2);\Omega_q^{\text{spin}}\big) && \widetilde\Omega_{p+q}^{\text{spin}}(K(\bZ_4,2))\vspace{4mm}\\
+		E^2_{p,q}=H_p\big(K(\bZ_4,2);\Omega_q^{\text{spin}}\big) && \tilde\Omega_{p+q}^{\text{spin}}(K(\bZ_4,2))\vspace{4mm}\\
 		\begin{array}{c|c:cccccccccccc}
 			6  &&&&&& \\
 			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
@@ -1016,7 +1017,7 @@ it seems that we have
 \begin{equation}
 	\begin{array}{ccc}
 		E^2_{p,q}=H_p\big(K(\bZ_2\times \bZ_2,2);\Omega_q^{\text{spin}}\big)
-		&& \widetilde\Omega_{p+q}^{\text{spin}}(K(\bZ_2\times \bZ_2,2))\vspace{4mm}\\
+		&& \tilde\Omega_{p+q}^{\text{spin}}(K(\bZ_2\times \bZ_2,2))\vspace{4mm}\\
 		\begin{array}{c|c:cccccccccccc}
 			6  &&&&&& \\
 			5  & \cellcolor{lightyellow} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} & \hphantom{\bZ_2} \\
@@ -1223,7 +1224,7 @@ the would-be-$E_3$-page is given by
 
 
 \subsubsection{Adams SS}
-According to our naive guess, the module $\widetilde H^\ast(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ_2)_{\leq 5}$ consists of
+According to our naive guess, the module $\tilde H^\ast(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ_2)_{\leq 5}$ consists of
 \begin{equation}
 	\begin{tikzpicture}[thick,baseline=(m-2-4.south)]
 		\matrix (m) [
@@ -1331,7 +1332,7 @@ and the remaing part \colorD{(*)} turns out to be
 \end{equation}
 and therefore one concludes
 \begin{equation}
-	\widetilde H^\ast(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ_2)_{\leq 5} = \colorA{J[2]} \oplus \colorC{J[2]} \oplus \colorB{\mathcal{A}_1/\!\!/\mathcal{E}_0[4]} \oplus \colorD{J[5]}.
+	\tilde H^\ast(B\left(\tfrac{SO(4)\times SU(2)}{\bZ_2}\right);\bZ_2)_{\leq 5} = \colorA{J[2]} \oplus \colorC{J[2]} \oplus \colorB{\mathcal{A}_1/\!\!/\mathcal{E}_0[4]} \oplus \colorD{J[5]}.
 \end{equation}
 This leads to the following Adams chart:
 \begin{center}
@@ -1492,56 +1493,93 @@ the would-be-$E_3$-page is given by
 
 \section{Pontrjagin square for non-closed cochains}
 \label{sec:nonclosedP}
-By definition, the variation of the Pontrjagin square $\fP : H^\bullet(-;\bZ_{2^m}) \to H^{2\bullet}(-;\bZ_{2^{m+1}})$ term is
+We take the definition of the Pontrjagin square for an element $x\in C^\bullet(-;\bZ_2)$
+to be \begin{equation}
+\fP(x):= \tilde x \cup\tilde x - \tilde x \cup_1 \delta \tilde x
+\end{equation} where $\tilde x $ is an integral cochain which reduces to $x$.
+The variation of the Pontrjagin square is then given by 
 \begin{equation}
 	\label{deltaPontrjagin}
 	\begin{array}{ccl}
 		\delta \left(\dfrac{1}{2^{m+1}}\fP(x)\right)
-		& = & \dfrac{1}{2^{m+1}}\cdot \delta \Big(\widetilde x \cup \widetilde x - \widetilde x \cup_1 \delta \widetilde x\Big)\\
-		& = & \dfrac{1}{2^{m+1}}\cdot\left[\Big(\delta \widetilde x \cup \widetilde x + \widetilde x \cup \delta \widetilde x\Big)
-				- \Big(\widetilde x \cup \delta \widetilde x - \delta \widetilde x \cup \widetilde x + \delta \widetilde x \cup_1 \delta \widetilde x\Big)\right]\vspace{2mm}\\
-		& = & \dfrac{1}{2^{m+1}}\cdot\Big[2\cdot \delta \widetilde x \cup \widetilde x - \delta \widetilde x \cup_1 \delta \widetilde x\Big],\\
+		& = & \dfrac{1}{2^{m+1}}\cdot \delta \Big(\tilde x \cup \tilde x - \tilde x \cup_1 \delta \tilde x\Big)\\
+		& = & \dfrac{1}{2^{m+1}}\cdot\left[\Big(\delta \tilde x \cup \tilde x + \tilde x \cup \delta \tilde x\Big)
+				- \Big(\tilde x \cup \delta \tilde x - \delta \tilde x \cup \tilde x + \delta \tilde x \cup_1 \delta \tilde x\Big)\right]\vspace{2mm}\\
+		& = & \dfrac{1}{2^{m+1}}\cdot\Big[2\cdot \delta \tilde x \cup \tilde x - \delta \tilde x \cup_1 \delta \tilde x\Big].\\
 	\end{array}
 \end{equation}
-and thus if $x$ were a $\bZ_{2^m}$-cocycle, 
-its integral lift $\widetilde x \in C^\bullet(-;\bZ)$ would be a cocycle mod $2^m$ \textit{i.e.}~$\delta \widetilde x = 0$ (mod $2^m$),
-and the right hand side would be $0$ mod 1,
-which then means that $\fP(x)$ would be a $\bZ_{2^{m+1}}$-cocycle as desired.
-However, when $x$ is not a cocycle but merely a cochain,
-$\fP(x)$ is also not a cocycle and it is not clear whether this term is well-defined in the first place.
+If $x$ is a $\bZ_{2^m}$-cocycle, 
+$\tilde x \in C^\bullet(-;\bZ)$ is a cocycle mod $2^m$ \textit{i.e.}~$\delta \tilde x = 0$ (mod $2^m$),
+and the right hand side is $0$ mod 1,
+which then means that $\fP(x)$ is a $\bZ_{2^{m+1}}$-cocycle as desired, 
+defining a cohomology operation $\fP : H^\bullet(-;\bZ_{2^m}) \to H^{2\bullet}(-;\bZ_{2^{m+1}})$.
 
-This problem arises when we consider $SO(2n_c)$ QCD,
-but it turns out that this can be saved somewhat miraculously as follows.
-First, a short exact sequence
+However, when $x$ is not a cocycle but merely a cochain,
+$\fP(x)$ is also not a cocycle.
+For the purpose of this paper, we only need to consider the case when
+\begin{equation}
+\delta x = \beta y
+\end{equation} 
+for a cocycle $y\in Z^2(-;\bZ_2)$.
+In this case, $x$ and $y$ combine to define a cocycle $z\in Z^2(-;\bZ_4)$,
+such that $z = y$ modulo 2 and $\tilde z=2\tilde x$ when $y=0$.
+This motivates us to consider the term \begin{equation}
+\frac 14 \cdot \frac14 \fP(\tilde z) 
+\end{equation} as a replacement for \begin{equation}
+\frac14 \fP(\tilde x).
+\end{equation}
+Using \eqref{deltaPontrjagin}, we find \begin{equation}
+\delta\left(
+\frac14\cdot\frac14 \fP(\tilde z)
+\right)
+ = \frac 12 (\frac14\delta\tilde z) \cup \tilde z
+ = \frac12 \beta_2 y \cup y
+\end{equation} where equalities are all modulo 1.
+
+Here, $\beta_2$ is the higher Bockstein operation
+defined for cocycles $y\in H^2(-;\bZ_2)$ known to be liftable to $z\in H^2(-;\bZ_4)$,
+by the formula \begin{equation}
+\beta_2 y := \frac14 \delta \tilde z
+\end{equation} where $\tilde z$ is a lift to an integral cochain of $z$.
+
+In general,
+%This problem arises when we consider $SO(2n_c)$ QCD,
+%but it turns out that this can be saved somewhat miraculously as follows.
+the short exact sequence
 \begin{equation*}
 	0
 	\to
-	\bZ_{2^f}
+	\bZ
 	\overset{\times 2^{f}}{\longrightarrow}
-	\bZ_{2^{2f}}
+	\bZ
 	\overset{p}{\longrightarrow}
 	\bZ_{2^f}
 	\to
 	0
 \end{equation*}
-buys us cohomology operations called the higher Bockstein $\beta_f: H^{\bullet}(-;\bZ_{2^f}) \to H^{\bullet+1}(-;\bZ_{2^f})$,
-and for the element $y \in C^{\bullet}(-;\bZ_{2^f})$ one has
+buys us a cohomology operation called the higher Bockstein $\beta_f: H^{\bullet}(-;\bZ_{2^f}) \to H^{\bullet+1}(-;\bZ)$, defined for the element $z \in Z^{\bullet}(-;\bZ_{2^f})$ 
+by 
 \begin{equation*}
-	\delta (p^\ast y)
-	=
-	2^f \beta_f (y) \in C^\bullet(-;\bZ_{2^{2f}}).
+	\beta_f (z) := \frac{1}{2^f}
+	\delta (\tilde z)
+	\in C^\bullet(-;\bZ).
 \end{equation*}
-Now, let us consider the case of odd $n_c$.
-Here, the cochain $w_2(c) \in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_2)$
-can be thought of as a mod-2 reduction of $\widetilde w_2(c)\in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_4)$.
-Dividing the $SO\times SU$ by $\bZ_2$, these cochains become non-closed
-\begin{equation*}
-	\delta \widetilde w_2(c) = 2 \beta v_2(c)
-\end{equation*}
-where $v_2(c)\in C^2\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}; \bZ_2\right)$.
+where $\tilde z$ is a lift of $z$ as an integral cochain.
+Then, $\beta_{n+1} y$  for $y \in H^2(-;\bZ_2)$ is defined only for those $y$ satisfying $\beta_{n}y=0$,
+and is the simplest example of a higher cohomology operation.
+
+
+%Now, let us consider the case of odd $n_c$.
+%Here, the cochain $w_2(c) \in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_2)$
+%can be thought of as a mod-2 reduction of $\tilde w_2(c)\in C^2(SO(4n'_c+2)\times SU(2n_f); \bZ_4)$.
+%Dividing the $SO\times SU$ by $\bZ_2$, these cochains become non-closed
+%\begin{equation*}
+%	\delta \tilde w_2(c) = 2 \beta v_2(c)
+%\end{equation*}
+%where $v_2(c)\in C^2\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}; \bZ_2\right)$.
 %\begin{equation*}
 %	\begin{array}{ccccccccc}
-%		&& w_2 && \widetilde w_2 & \longmapsto & v_2\\
+%		&& w_2 && \tilde w_2 & \longmapsto & v_2\\
 %		&& \rotatebox[]{270}{$\in$} && \rotatebox[]{270}{$\in$} && \rotatebox[]{270}{$\in$}\\
 %		0
 %		& \longrightarrow &
@@ -1563,26 +1601,27 @@ where $v_2(c)\in C^2\left(\tfrac{SO(4n'_c+2)\times SU(2n_f)}{\bZ_2}; \bZ_2\right
 %		& \longrightarrow &
 %		0\\
 %		&& \rotatebox[]{90}{$\in$} && \rotatebox[]{90}{$\in$}\\
-%		&& \delta w_2 && \delta \widetilde w_2
+%		&& \delta w_2 && \delta \tilde w_2
 %	\end{array}
 %\end{equation*}
-Since this implies $\delta \widetilde w_2(c) = 0$ or $2$ mod 4
-and furthermore $\delta (2\widetilde w_2(c)) = 0$ mod 4,
-one can safely define the Pontrjagin square $\tfrac{1}{8}\fP\big(2\widetilde w_2(c)\big)$.\footnote{
-	Be careful that this factor $2$ here is not the usual map sending $\{0,1\}=\bZ_2$ to $\{0,2\}\subset \bZ_4$.
-	This time we are \textit{really} multiplying by $2$.
-}
-Note that this can naively be regarded as $2\cdot \tfrac{1}{4}\fP\big(w_2(c)\big)$ at the integral cochain level.
-While the second term in the last line of \eqref{deltaPontrjagin} together with the overall factor takes value in
-$\tfrac{(2^m)^2}{2^{m+1}}\bZ = 2^{m-1}\bZ = 2\bZ$ and dividing by two does not cause any trouble,
-the first term does as it takes value in $\tfrac{2\cdot 2^m}{2^{m+1}}\bZ = \bZ$.
+%Since this implies $\delta \tilde w_2(c) = 0$ or $2$ mod 4
+%and furthermore $\delta (2\tilde w_2(c)) = 0$ mod 4,
+%one can safely define the Pontrjagin square $\tfrac{1}{8}\fP\big(2\tilde w_2(c)\big)$.\footnote{
+%	Be careful that this factor $2$ here is not the usual map sending $\{0,1\}=\bZ_2$ to $\{0,2\}\subset \bZ_4$.
+%	This time we are \textit{really} multiplying by $2$.
+%}
+%Note that this can naively be regarded as $2\cdot \tfrac{1}{4}\fP\big(w_2(c)\big)$ at the integral cochain level.
+%While the second term in the last line of \eqref{deltaPontrjagin} together with the overall factor takes value in
+%$\tfrac{(2^m)^2}{2^{m+1}}\bZ = 2^{m-1}\bZ = 2\bZ$ and dividing by two does not cause any trouble,
+%the first term does as it takes value in $\tfrac{2\cdot 2^m}{2^{m+1}}\bZ = \bZ$.
 
+\if0
 Let us take a closer look at the latter.
-The long exact sequence of cochain groups implies that $2\widetilde w_2(c)$ can be replaced by
-$\widetilde v_2(c)$, which is a cocycle mod 4.
+The long exact sequence of cochain groups implies that $2\tilde w_2(c)$ can be replaced by
+$\tilde v_2(c)$, which is a cocycle mod 4.
 Then the term of interest is
 \begin{equation*}
-	\dfrac{1}{8}\cdot 2\cdot 4\beta_2\widetilde v_2 \cup \widetilde v_2.
+	\dfrac{1}{8}\cdot 2\cdot 4\beta_2\tilde v_2 \cup \tilde v_2.
 \end{equation*}
 Therefore, the anomalous variation of the Pontrjagin square term seems to result in
 \begin{equation*}
@@ -1592,7 +1631,7 @@ Therefore, the anomalous variation of the Pontrjagin square term seems to result
 	=
 	\dfrac{1}{2}v_2 \beta_2 v_2.
 \end{equation*}
-
+\fi
 
 \def\arxivfont{\rm}
 \bibliographystyle{ytamsalpha}
