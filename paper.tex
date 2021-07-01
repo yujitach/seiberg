@@ -94,6 +94,7 @@
 \definecolor{lightgreen}{rgb}{0.7, 1.0, 0.4}
 
 \def\Nequals#1{$\mathcal{N}{=}#1$}
+\def\bQ{\mathbb{Q}}
 \def\bZ{\mathbb{Z}}
 \def\MF{\mathrm{MF}}
 \def\TMF{\mathrm{TMF}}
@@ -564,12 +565,13 @@ and `extended' means that they form a nontrivial 2-group.
 \section{$\SL(2,\bZ_2)$ action and the anomalies}
 \label{sec:sl2z}
 In the last section we determined the 2-group structure of the $\so(2n_c)$ gauge theories with $2n_f$ flavors, by studying the group of the charges of line operators. 
-In a QFT, any symmetry comes with its (possibly trivial) 't Hooft anomaly.
-Here we determine the anomalies of these theories using the $\SL(2,\bZ_2)$ action on the set of QFTs with $\bZ_2$ 1-form symmetry.
+%In a QFT, any symmetry can come with an't Hooft anomaly.
+Here we determine the anomalies of these symmetries, 
+utilizing the $\SL(2,\bZ_2)$ action on the set of QFTs with $\bZ_2$ 1-form symmetry.
 
 \subsection{$\SL(2,\bZ_2)$ action and $\so$ gauge theories}
 
-Let us say that  a four-dimensional spin QFT $Q$ with $\bZ_2$ 1-form symmetry is given.
+Let us say that we are given a four-dimensional spin QFT $Q$ with $\bZ_2$ 1-form symmetry.
 We denote its partition function on a manifold $X$ by $Z_Q[E]$, 
 where we suppress the dependence on $X$ in the notation and $E\in H^2(X;\bZ_2)$ is the background field for the $\bZ_2$ 1-form symmetry.
 We then define $SQ$ and $TQ$ to be QFTs with partition functions given by the formula \begin{equation}
@@ -577,12 +579,12 @@ Z_{SQ}[B] \propto \sum_{E} (-1)^{\int_X B\cup E} Z_Q[E],\qquad
 Z_{TQ}[E]= (-1)^{\int_X \tfrac12 \fP(E)} Z_Q[E].
 \end{equation}
 We can show that $S^2=T^2=1$ and $(ST)^3=1$, meaning that they generate $\SL(2,\bZ_2)$.
-This operation was considered in  \cite{Gaiotto:2014kfa} as an analogue of the $\SL(2,\bZ)$ action on 3d theories with $\U(1)$ symmetry of  \cite{Witten:2003ya} and then further studied in \cite{Bhardwaj:2020ymp}.
+This operation was introduced in  \cite{Gaiotto:2014kfa} as an analogue of the $\SL(2,\bZ)$ action on 3d theories with $\U(1)$ symmetry of  \cite{Witten:2003ya} and then further studied in \cite{Bhardwaj:2020ymp}.
 
 
 Importantly, $\Spin(2n_c)$ and $\SO(2n_c)_\pm$  gauge theories with $2n_f$ flavors with the same $n_c$ and $n_f$ form a single orbit under this $\SL(2,\bZ)$ action.
 More precisely, we need to make the distinction between $\Spin(2n_c)$ and $T(\Spin(2n_c))$ and  similarly between $\SO(2n_c)_\pm$ and $T(\SO(2n_c)_\pm)$, respectively.
-Here the theories with $T$ prepended are different from the original ones only by its coupling to the background.
+Here the theories with $T$ prepended are different from the original ones only by its discrete theta coupling to the background.
 Then we have the following chain of actions: \begin{equation}
 \begin{tikzpicture}
 	\node at (0,0) {$
@@ -597,6 +599,7 @@ Then we have the following chain of actions: \begin{equation}
 	\draw[->] (5.4,-1) -- (5.4,-0.5);
 	\draw (-5,-1) -- node[above] {\scriptsize $S$} (5.4,-1);
 \end{tikzpicture}
+\label{sl2z-on-so}
 \end{equation}
 
 \subsection{$\SL(2,\bZ_2)$ actions with extra background}
@@ -608,42 +611,57 @@ Let us regard $a_2$ as the background field for a flavor $\bZ_2$ 1-form symmetry
 
 The combined 1-form symmetry is either $\bZ_2\times \bZ_2$ or $\bZ_4$,
 and we perform the $\SL(2,\bZ_2)$ action  by picking a $\bZ_2$ subgroup.
-The symmetry and the anomaly of the resulting theory can be determined by a formal argument once those of the original theory 
-and the action of the anomaly-free subgroup to be gauged are given \cite{Tachikawa:2017gyf}.
+The symmetry and the anomaly of the resulting theory can be determined by a formal argument independent of the dynamics of the theory,
+once the symmetry and the anomaly of the original theory 
+and the action of the anomaly-free subgroup to be gauged are given, as discussed in \cite{Tachikawa:2017gyf}.
 
-Let us work at the level of anomalies described at the level of cohomology, since we do not need to deal with anomalies more general than that.
+Let us work at the level of anomalies described by cohomology, since we do not need to deal with more general anomalies described by bordism.
 We consider a $d$-dimensional QFT with a symmetry group $G$ with an anomaly specified by a cochain $\alpha\in C^{d+1}(G;\U(1))$. 
 We pick a subgroup $H\subset G$ such that $\alpha$ trivializes in it, so that one can find $\mu \in C^d(H;\U(1))$ such that $\delta \mu = \alpha|_H$. 
 We then gauge $H$, using $\mu$ as the action.
 What determines the symmetry and the anomaly of the gauged theory is the data $(\mu,\alpha)$.
 Clearly, given $\nu\in C^d(G;\U(1))$, the pair $(\mu,\alpha)$ and the pair $(\mu-\nu|_H,\alpha-\delta\nu)$ should give the same result, since we merely added the counterterm $\nu|_H$ as the action.
 This allows us to always choose the pair of the form $(0,\alpha')$ equivalent to a given $(\mu,\alpha)$, 
-by taking $\nu$ to be an arbitrary lift of $\mu$ from $H$ to $G$.
+by taking $\nu$ to be an arbitrary lift of $\mu$ from $H$ to $G$.\footnote{%
+At this stage, the residual identifications $(0,\alpha')\sim (0,\alpha'')$ are of the form 
+$\alpha''=\alpha'+\delta \nu$, where $\nu\in C^{d}(G;U(1))$ is required to satisfy $\nu|_H=0$.
+Their equivalence classes form the relative cohomology group $H^{d+1}(G,H;U(1))$.
+It might be interesting to study anomalies taking values in the relative cohomology groups.
+}
 This is convenient in discussing the $\SL(2,\bZ_2)$ action,
 since our $S$ operation is defined in the convention that $\mu=0$.
 
+\paragraph{The four choices:}
 Now, what are the possible choices of $(\mu,\alpha)\sim(0,\alpha')$ we need to discuss?
 Let us first consider $\bZ_2\times \bZ_2$ 1-form symmetry.
 As detailed in the Appendix~\ref{sec:bordism}, the only possible anomaly for 4d spin QFTs with this symmetry is \begin{equation}
-\alpha=2\pi i \cdot \frac12  B\beta E  \label{anom}
-\end{equation} where $B,E\in H^2(Y;\bZ_2)$ are the background fields on the bulk 5d spin manifold $Y$.
+\alpha=%2\pi i \cdot 
+\frac12  B\beta E  \label{anom}
+\end{equation} where $B,E\in H^2(Y;\bZ_2)$ are the background fields on the bulk 5d spin manifold $Y$,
+and we use $\bQ/\bZ$-valued cochains to describe the anomaly.
 Its restriction to $\bZ_2$ 1-form symmetry subgroup is trivial i.e. $\alpha|_{H=\bZ_2} = 0$,
 and thus the possible choice of $\mu$ is simply the discrete theta angle \begin{equation}
-\mu = 2\pi i \cdot \frac14 \fP(E).\label{P}
+\mu =% 2\pi i \cdot
+ \frac14 \fP(E),\label{P}
 \end{equation}
-This $\mu$ can be lifted from the $\bZ_2$ subgroup to the entire $\bZ_2\times \bZ_2$ group as a closed cochain.
+where $\fP$ is the Pontrjagin square.
+This $\mu$ can be lifted from the $\bZ_2$ subgroup to the entire $\bZ_2\times \bZ_2$ group as a closed cochain, 
+and therefore does not affect the gauging process.
 Therefore, we only have to consider pairs $(0,0)$ and $(0,\alpha)$.
 
 Next, we consider $\bZ_4$ 1-form symmetry.
-Again in the Appendix~\ref{sec:bordism}, we show that this time there is no anomaly for $\bZ_4$ 1-form symmetry.
-Therefore we can pick $\alpha=0$. Then the possible choice of $\mu$ for the $\bZ_2$ 1-form subgroup is again the discrete theta angle \eqref{P}.
+In the Appendix~\ref{sec:bordism}, we show that there is no anomaly for $\bZ_4$ 1-form symmetry.
+Therefore we can pick $\alpha=0$. Then the only possible choice of $\mu$ for the $\bZ_2$ 1-form subgroup is again the discrete theta angle \eqref{P}.
 One difference here is that the discrete theta angle \eqref{P} cannot be lifted as a closed cochain to the entire $\bZ_4$ 1-form subgroup.
 As discussed in the Appendix~\ref{sec:nonclosedP}, with $\delta E=\beta a_2$,
 where $a_2\in H^2(X;\bZ_4/\bZ_2)$,
 one finds \begin{equation}
-\alpha':=\delta \mu = 2\pi i \cdot \frac12 a_2 \beta_2 a_2.\label{anom'}
+\alpha':=\delta \mu = %2\pi i \cdot 
+\frac12 a_2 \beta_2 a_2,\label{anom'}
 \end{equation}
-Therefore, the pairs we need to consider are $(0,0)$ and $(\mu,0)\sim (0,\alpha')$. 
+where $\beta_2$ is the Bockstein associated to the sequence $0\to \bZ\to \bZ \to \bZ_4\to 0$,
+whose action on $a_2$ can be defined since $a_2$ lifts to a $\bZ_4$-valued cochain.
+Summarizing, the pairs  we need to consider for the $\bZ_4$ one-form symmetry are $(0,0)$ and $(\mu,0)\sim (0,\alpha')$. 
 
 \def\Textended{extended$_T$}
 Summarizing,  we need to consider the following four choices, namely:
@@ -652,7 +670,7 @@ Summarizing,  we need to consider the following four choices, namely:
 \item For $\bZ_4$, the pairs $(0,0)$ and $(\mu,0)\sim (0,\alpha')$, which we call `extended' and `\Textended'.
 \end{itemize}
 
-
+\paragraph{$\SL(2,\bZ_2)$ action on the four choices:}
 Let us now determine how the $\SL(2,\bZ_2)$ action affects these data.
 The case `none' is very easy.
 The additional $\bZ_2$ factor plays no role, and we find the chain of actions given by \begin{equation}
@@ -694,7 +712,7 @@ where $a_2$ is the background field for the quotient $\bZ_4/\bZ_2$ 1-form symmet
 Then the second term in \eqref{boo} is not closed, 
 and to even talk about the first term in \eqref{boo}, one first needs to extend the definition of the Pontryagin square $\fP$ to non-closed cochains.
 
-To make  the coupling \eqref{boo}  well-defined, we consider adding a background term to \eqref{boo} so that we have \begin{equation}
+To make  the coupling \eqref{boo}  well-defined, we consider adding a counterterm depending solely on the newly introduced field $B$ to \eqref{boo} so that we have \begin{equation}
 \exp\left[2\pi i\int_X \left( \frac14 \fP(E) +\frac12 B E + \frac14 \fP(B) \right)\right]
 = 
 \exp \left[2\pi i \int_X \frac14 \fP(E+B)\right] .
@@ -726,6 +744,20 @@ Combined, the preceding arguments allow us to see the chain of actions \begin{eq
 
 \subsection{Anomalies from $\SL(2,\bZ_2)$ action} 
 
+Let us now combine our result in Table~\ref{table:2group},
+which summarizes our knowledge whether the 0-form part and the 1-form part form a nontrivial 2-group,
+and the $SL(2,\bZ_2)$ action on the four choices, \eqref{trivial-chain} and \eqref{nontrivial-chain}, we determined above.
+We first need to double each column of Table~\ref{table:2group},
+since we need to distinguish $\Spin$ from $T\Spin$ and $\SO_\pm$ from $T\SO_\pm$.
+The entry `product' in Table~\ref{table:2group} corresponds to either `none' or `anomaly',
+and the entry `extended' there corresponds to either `extension' or `\Textended'.
+We now demand that the $\SL(2,\bZ_2)$ action \eqref{sl2z-on-so} on $\so$ QCDT to be compatible with the $\SL(2,\bZ_2)$ action on the labels, \eqref{trivial-chain} and \eqref{nontrivial-chain}.
+The only consistent assignment is given in Table~\ref{table:refined}.
+As the way we determined the symmetry structures were somewhat indirect,
+we confirm the symmetry structures of the $\Spin$ case in the next section
+in a different means.
+
+
 \begin{table}
 \centering
 \[
@@ -741,10 +773,10 @@ Combined, the preceding arguments allow us to see the chain of actions \begin{eq
 \tikz[overlay,remember picture]{%
 \draw[<->,bend left,color=Orange,line width=1.5] (a1.north) to (a6.north);
 \draw[<->,bend left,color=Orange,line width=1.5] (a2.north) to (a5.north);
-\draw[<->,color=Orange,line width=1.5] (a3) to (a4);
-\draw[<->,bend right,color=Orange,line width=1.5] (b1.south) to (b6.south);
-\draw[<->,bend right,color=Orange,line width=1.5] (b2.south) to (b5.south);
-\draw[<->,color=Orange,line width=1.5] (b3.south) to (b4.south);
+\draw[<->,bend left,color=Orange,line width=1.5] (a3.north) to (a4.north);
+\draw[<->,color=Orange,line width=1.5] (b1.north) .. controls +(10:10em) ..  (b6.north);
+\draw[<->,color=Orange,line width=1.5] (b2.north) .. controls +(10:5em) ..  (b5.north);
+\draw[<->,color=Orange,line width=1.5] ([yshift=.2em]b3.west) to ([yshift=.2em]b4.east);
 \draw[<->,color=Orange,line width=1.5] (c1.south) to (d6.north);
 \draw[<->,color=Orange,line width=1.5] (c2.south) to (d5.north);
 \draw[<->,color=Orange,line width=1.5] (c3.south) to (d4.north);
@@ -759,16 +791,6 @@ The symmetry structure of the $\Spin$ case will be checked independently in the 
 \label{table:refined}}
 \end{table}
 
-
-Comparing the chains of actions \eqref{trivial-chain} and \eqref{nontrivial-chain} we determined above 
-and Table~\ref{table:2group},
-we see that the anomaly is automatically determined and 
-we obtain the result which was already presented in Table~\ref{table:main}.
-More precisely, we should better distinguish $\Spin$ and $T(\Spin)$ etc.,
-and we find the assignment given in Table~\ref{table:refined}.
-As the way we determined the symmetry structures were somewhat indirect,
-we confirm the symmetry structures of the $\Spin$ case in the next section
-in a different means.
 
 We can also use this Table~\ref{table:refined}
 to give a further check of the Intriligator-Seiberg duality,
