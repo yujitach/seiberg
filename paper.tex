@@ -172,7 +172,7 @@ the global form of the gauge group, and the discrete theta angle.
 The contribution from the fermions plays a central role in our analysis.
 Furthermore, our conclusion applies to \Nequals1 supersymmetric cases as well, and
 we see that higher symmetries and anomalies match across the duality between
-$\so(2n_c)\leftrightarrow\so(2n_f-2n_c+4)$ of Intriligator and Seiberg.
+$\so(2n_c)\leftrightarrow\so(2n_f-2n_c+4)$, originally found by Intriligator and Seiberg.
 
 
 \end{titlepage}
@@ -184,7 +184,7 @@ $\so(2n_c)\leftrightarrow\so(2n_f-2n_c+4)$ of Intriligator and Seiberg.
 \label{sec:introduction}
 Our understanding of the concept of symmetries in quantum field theories (QFT) has been greatly improved in the last several years.
 We now have the concept of $p$-form symmetries acting on $p$-dimensional objects \cite{Gaiotto:2014kfa}.
-This concept  gives a unifying point of view to both
+This concept  gives a point of view which unifies both
 ordinary symmetries acting on point operators for $p=0$
 and center symmetries of gauge theories acting on Wilson line operators for $p=1$.
 In addition, the 't Hooft magnetic flux \cite{tHooft:1979rtg} can now be thought of as a background gauge field for the 1-form center symmetry.
@@ -199,9 +199,9 @@ Let us quickly recall the 0-form and 1-form symmetries these theories have.
 As for the 1-form symmetry, we first need to recall that 
 such theories come in three versions, $\Spin$, $\SO_+$ and $\SO_-$,
 distinguished firstly by the global form of the gauge group ($\Spin$ vs.~$\SO$)
-and further by the choice of a discrete theta angle ($\SO_+$ vs.~$\SO_-$) \cite{Aharony:2013hda}\footnote{%
+and further by the choice of the discrete theta angle ($\SO_+$ vs.~$\SO_-$) \cite{Aharony:2013hda}\footnote{%
 This is when the theories are considered on spin manifolds.
-On more general manifolds, a further distinction needs to be made \cite{Ang:2019txy}.
+For non-spin manifolds, a further distinction needs to be made \cite{Ang:2019txy}.
 For simplicity, we only consider spin manifolds in this paper.
 }.
 They also differ by the nontrivial line operator they possess: 
@@ -221,25 +221,28 @@ A partial answer was given in \cite{Hsin:2020nts}, but the contribution from fer
 Our conclusion is therefore somewhat different from theirs.
 }
 We concentrate on the case when $N_c$ and $N_f$ are both even: $N_c=2n_c$ and $N_f=2n_f$.
+We introduce three possible behaviors, which we call `extension', `anomaly' and `none'.
 
+\paragraph{The `extension':} 
 Take for example the $\Spin(2n_c)$ gauge theory with $2n_f$ flavors.
 When $n_c$ is odd,
 two copies of the Wilson line $W$ in the spinor representation
 form a Wilson line in the vector representation.
-This can be screened by a dynamical fermion, and that was why $W^2=1$ 
+This can be screened by a dynamical fermion, which was why $W^2=1$ 
 as far as the 1-form symmetry charge was concerned.
 Now let us recall that this dynamical fermion transforms nontrivially under $-1\in \SU(2n_f)$.
 Therefore, when we further take the flavor symmetry into account, $W^2$ is still nontrivial.
-As we will recall below,  formally this means that the $\bZ_2$ 1-form symmetry extends the $\SU(2n_f)/\bZ_2$ 0-form symmetry in a nontrivial manner, forming a 2-group $H$\begin{equation}
+As we will detail in this paper,  this means that the $\bZ_2$ 1-form symmetry extends the $\SU(2n_f)/\bZ_2$ 0-form symmetry in a nontrivial manner, forming a 2-group $H$\begin{equation}
 0\to \bZ_2[1] \to H\to \SU(2n_f)/\bZ_2\to 0,\label{2-group}
 \end{equation}
-whose Postnikov class is specified by \begin{equation}
+whose extension class is specified by \begin{equation}
 \beta a_2 \in H^3(B(\SU(2n_f)/\bZ_2);\bZ_2),\label{postnikov}
 \end{equation}
 where $a_2$ is the generator of $H^2(B(\SU(2n_f)/\bZ_2);\bZ_2)=\bZ_2$~\cite{KonoMimura1974}
 and $\beta$ is the Bockstein homomorphism.
 
-The $\SO_+$ gauge theory is then obtained by gauging the $\bZ_2$ 1-form symmetry \cite{Kapustin:2014gua}.
+\paragraph{The `anomaly':} 
+The $\SO_+$ gauge theory is obtained by gauging the $\bZ_2$ 1-form symmetry of the $\Spin$ gauge theory \cite{Kapustin:2014gua}.
 The presence of the fermions significantly complicates the analysis.
 For the moment let us suppose that we have $N_f$ scalars instead of fermions in the vector representation.
 Then, the argument of \cite{Tachikawa:2017gyf} immediately applies, and 
@@ -252,17 +255,21 @@ In the rest of the paper, we will carefully analyze how the $\bZ_2$ 1-form symme
 The derivation will be detailed in the following, and here we simply summarize the result  in Table~\ref{table:main}.
 There, `none' specifies that they remain a direct product without mixed anomaly;
 `anomaly' implies that they remain a direct product but with mixed anomaly of the form \eqref{mixed};
-and `extension' means that they combine into a 2-group given by \eqref{2-group} with the Postnikov class \eqref{postnikov}.
+and `extension' means that they combine into a 2-group given by \eqref{2-group} with the extension class \eqref{postnikov}.
 
 
 \begin{table}
 \centering
-\begin{tabular}{r@{\vphantom{$\Bigm|$}\,}l|ccc}
+\begin{tabular}{r@{\,}l|ccc}
 $(n_c,$&$n_f)$ & $\Spin$ & $\SO_+$ & $\SO_-$\\
 \hline
+\vphantom{$\Bigm($}
 (even,&even) & no\tikzmark{A}ne & no\tikzmark{B}ne & no\tikzmark{C}ne \\
+\vphantom{$\Bigm($}
 (odd,&even) & exte\tikzmark{P}nsion & ano\tikzmark{Q}maly & exte\tikzmark{R}nsion \\
+\vphantom{$\Bigm($}
 (even,&odd) & ano\tikzmark{S}maly & exte\tikzmark{T}nsion & exte\tikzmark{U}nsion \\
+\vphantom{$\Bigm($}
 (odd,&odd) & exte\tikzmark{L}nsion & exte\tikzmark{M}nsion & ano\tikzmark{N}maly 
 \end{tabular}
 \caption{How the $\bZ_2$ 1-form symmetry and the $\SU(2n_f)/\bZ_2$ 0-form symmetry are combined
@@ -275,39 +282,67 @@ The orange lines show how the duality of Intriligator and Seiberg acts on this s
 
 \tikz[overlay,remember picture]{%
 \draw[<->,bend left,color=Orange,line width=1.5] (A.north) to (C.north);
-\draw[<->,color=Orange,line width=1.5] (B.north west) .. controls +(80:0.5) ..  (B.north east);
+\draw[<->,color=Orange,line width=1.5] (B.north west) .. controls +(75:0.5) ..  (B.north east);
 \draw[<->,bend left,color=Orange,line width=1.5] (P.north) to (R.north);
-\draw[<->,color=Orange,line width=1.5] (Q.north west) .. controls +(80:0.5) ..  (Q.north east);
-\draw[<->,color=Orange,line width=1.5] (S.south) to (N.north);
-\draw[<->,color=Orange,line width=1.5] (T.south) to (M.north);
-\draw[<->,color=Orange,line width=1.5] (U.south) to (L.north);
+\draw[<->,color=Orange,line width=1.5] (Q.north west) .. controls +(75:0.5) ..  (Q.north east);
+\draw[<->,color=Orange,line width=1.5] (S.south) to ([yshift=.2em]N.north);
+\draw[<->,color=Orange,line width=1.5] ([yshift=+.2em]T.south) to ([yshift=0em]M.north);
+\draw[<->,color=Orange,line width=1.5] (U.south) to ([yshift=.2em]L.north);
 }
 \end{table}
 
-Our result is equally applicable in the case of \Nequals1 supersymmetric QCD, for which
-Intriligator and Seiberg found in \cite{Intriligator:1995id} a duality exchanging $\so(N_c)$ and $\so(N_f-N_c+4)$,
+Our result is equally applicable in the case of \Nequals1 supersymmetric QCD, 
+since they are connected to the non-supersymmetric QCD by a continuous deformation 
+preserving all the symmetries we care about.
+Now, let us recall that Intriligator and Seiberg found in \cite{Intriligator:1995id} a duality exchanging $\so(N_c)$ and $\so(N_f-N_c+4)$,
 which in our notation sends $n_c$ to $n_c'=n_f-n_c+2$.
 In \cite{Aharony:2013hda}, this duality was refined to account for the global form of the gauge group and the discrete theta angle, and it was concluded that $\Spin$ is exchanged with $\SO_-$ while $\SO_+$ maps to itself.
-This mapping was checked using supersymmetric localization on $S^3/\bZ_n \times S^1$ in \cite{Razamat:2013opa}.
+This mapping was given a further check e.g.~by using supersymmetric localization on $S^3/\bZ_n \times S^1$ in \cite{Razamat:2013opa}.
 Our analysis allows us to check this duality by comparing how the 1-form symmetry and the 0-form symmetry are combined in the dual pairs.
 We superimposed the action of the duality on our main Table~\ref{table:main}.
-It is satisfying to see that the duality action correctly preserves the labels `none', `anomaly' and `extension'.
+It is satisfying to see that the duality action correctly preserves the behaviors `none', `anomaly' and `extension'.
 
 The rest of the paper is organized as follows.
 In Sec.~\ref{sec:2-group},
 we determine exactly when the electric/magnetic/dyonic $\bZ_2$ 1-form symmetries
-and the $\SU(2n_f)/\bZ_2$ flavor 0-form symmetry are mixed nontrivially,
+and the $\SU(2n_f)/\bZ_2$ flavor 0-form symmetry form a nontrivial 2-group,
 by examining the charges of line operators in each theory.
 In Sec.~\ref{sec:sl2z},
-we exploit the $\SL(2,\bZ_2)$ actions on $\so(2n_f)$ QCDs to determine the 't Hooft anomalies they possess.
+we exploit the $\SL(2,\bZ_2)$ actions on theories with $\bZ_2$ 1-form symmetries, including our $\so(2n_f)$ QCDs.
+This will allow us to determine the 't Hooft anomalies they possess.
 Combining the results with those obtained in Sec.~\ref{sec:2-group},
 one can completely determine the structures of symmetries and anomalies of $\so(2n_f)$ QCDs,
 and can further confirm that they are indeed compatible with the Intriligator-Seiberg duality.
 Although the result itself is satisfactory, the analysis leading to it is somewhat ad-hoc, 
-so we partially complement it with the more direct computation of fermion anomalies in Sec.~\ref{sec:fermion}.
+so we partially complement it with a more direct computation of fermion anomalies in Sec.~\ref{sec:fermion}.
 Finally, the two appendices provide technical details of the mathematical facts used in the main part;
 in Appendix~\ref{sec:bordism}, we compute relevant bordism groups capturing the fermion anomalies associated to various symmetries;
 and in Appendix~\ref{sec:nonclosedP}, we describe some subtleties concerning the Pontrjagin square.
+
+Before proceeding, we list the obstruction classes we frequently encounter in this paper.
+In general, given a group $G$, a subgroup $\bZ_n$ in the center of $G$,
+and a $G/\bZ_n$ bundle on a manifold $X$, 
+there is a obstruction class $\in H^2(X; \bZ_n)$ controlling whether this bundle lifts to $G$.
+For $G=\Spin(N_c)$ and $G/\bZ_2=\SO(N_c)$ this is the familiar second Stiefel-Whitney class $w_2$.
+The classes we use are listed in Table~\ref{table:w2}.
+
+\begin{table}
+\[
+\begin{array}{c| cc| c|c}
+\text{name} & G/\bZ_n & G & \bZ_n & \text{comments}\\
+\hline 
+w_2 & \SO(2n_c) & \Spin(2n_c) & \bZ_2\\
+v_2 & \SO(2n_c)/\bZ_2 & \SO(2n_c) &\bZ_2\\
+x_2 & \SO(2n_c)/\bZ_2 & \Spin(2n_c) &\bZ_4 & (n_c:\text{odd})\\
+\hline
+a_2 & \SU(2n_f)/\bZ_2 & \SU(2n_f) &\bZ_2\\
+a_2 & \USp(2n_f)/\bZ_2 & \USp(2n_f) &\bZ_2\\
+\end{array}
+\]
+\caption{Our names for the obstruction classes $\in H^2(X,\bZ_n)$ controlling whether a $G/\bZ_n$ bundle
+on $X$ lifts to a $G$ bundle.  \label{table:w2}}
+\end{table}
+
 
 \section{2-group structure}
 \label{sec:2-group}
